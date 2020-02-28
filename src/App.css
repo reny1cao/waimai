@@ -65,3 +65,7 @@ input[type=text]:focus {
     min-width: 170px;
     
 }
+
+.flex-container .restaurantCard img {
+    max-width: 200px;
+}

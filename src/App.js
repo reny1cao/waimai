@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from './components/Header'
-import { RestaurantCard } from './components/RestaurantCard'
+import { Header } from './components/Header';
+import { RestaurantCard } from './components/RestaurantCard';
 import restaurantData from './restaurantData';
 import './App.css';
 
@@ -9,7 +9,7 @@ function createRestaurant(props) {
     return acc + curr.rating;
   }, 0)
   const rating = (parseInt(total)/props.reviews.length).toFixed(1);
-  return <RestaurantCard key={props.id} name={props.name} type={props.cuisine_type}  rating={rating}/>
+  return <RestaurantCard key={props.id} restImg={props.photograph} name={props.name} type={props.cuisine_type}  rating={rating}/>
 }
 
 function App() {
