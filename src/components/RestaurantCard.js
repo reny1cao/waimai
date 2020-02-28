@@ -1,12 +1,12 @@
 import React from 'react'
 
-export const RestaurantCard = () => {
+export const RestaurantCard = (prop) => {
     return (
         <div className="restaurantCard">
             <img src="#" alt="img"></img>
-            <h3>Restaurant Name</h3>
-            <h4>Type</h4>
-            <h4>Rating</h4>
+            <h3>{prop.name}</h3>
+            <h4>{prop.type}</h4>
+            <h4>{prop.rating}</h4>
         </div>
     )
 }

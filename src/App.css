@@ -1,18 +1,40 @@
 #header {
-    height: 200px;
+    height: 150px;
     text-align: center;
 }
+
 #header #searchBar {
     top: 50px;
     position: relative;
     padding: 5px;
 }
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 50%;
+}
+
+
 #login {
     display: inline-block;
     position: absolute;
     right: 70px;
     top: 25px;
 }
+
 #avatar {
     border-radius: 50%;
     width: 50px;
@@ -23,13 +45,23 @@
     right: 10px;
     top: 10px;
 }
+
 .flex-container {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
-.flex-container .card {
+.flex-container::-webkit-scrollbar {
+    display: none;
+}
+
+.flex-container .restaurantCard {
     flex: 0 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    padding: 5px;
+    margin: 10px;
+    min-width: 170px;
+    
 }
-
