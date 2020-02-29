@@ -69,3 +69,8 @@ input[type=text]:focus {
 .flex-container .restaurantCard img {
     max-width: 200px;
 }
+
+.flex-container a, a:visited{
+    text-decoration: none;
+    color: black;
+}

@@ -1,6 +1,11 @@
 import React from 'react'
 
 export const RestaurantCard = (prop) => {
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('clicked');
+    }
+
     return (
         <div className="restaurantCard">
             <img src={prop.restImg} alt="img"></img>
