@@ -3,13 +3,24 @@ import React from 'react'
 import Header from "./Header";
 import LogInForm from "./LogInForm";
 
+import { logIn } from "./../actions/logInActions";
+
 class LogInPage extends React.Component {
-    states = {};
+    state = {
+        username: "",
+        password: ""
+    };
 
     handleInputChange = event => {
         const target = event.target;
         const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        })
     }
+
 
 
     render() {
@@ -20,6 +31,10 @@ class LogInPage extends React.Component {
                     userState="Log In"
                 />
                 <LogInForm
+                    username={this.state.username}
+                    password={this.state.password}
+                    handleChange={this.handleInputChange}
+                    logIn={() => logIn(this)}
                     
                 />
             </div>

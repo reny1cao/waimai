@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 
+
 import Input from './Input';
 import "./LogInForm.css";
 
@@ -11,7 +12,7 @@ class LogInForm extends React.Component {
         username,
         handleChange,
         password,
-        addStudent
+        logIn
       } = this.props;
   
       return (
@@ -41,11 +42,12 @@ class LogInForm extends React.Component {
             s={12}
             xs={12}
             >
-            
+          
+
             <Button
                 variant="contained"
                 color="white"
-                onClick={addStudent}
+                onClick={logIn}
                 className="user-login-form__submit-button"
             >
             Log In
