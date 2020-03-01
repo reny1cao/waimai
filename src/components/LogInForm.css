@@ -6,8 +6,10 @@
 }
 
 .login__bg-image {
-  background-size: cover;
+    display: block;
+  background-size: 50%;
+  background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  background-image: url("./../../public/img/login-background.jpg");
+  background-image: url("./../img/login-background.jpg");
 }

@@ -15,24 +15,24 @@ class LogInForm extends React.Component {
       } = this.props;
   
       return (
-        <div className="login__bg-image center">
-        <Grid className="login-form" container spacing={1}>
-          {/* Inputs to add student */}
-          <Input
+        
+        <Grid className="login__bg-image center" container spacing={1}>
+
+            <Input
             name="username"
             value={username}
             onChange={handleChange}
             label="Username"
-          />
-  
-          <Input
+            />
+
+            <Input
             name="password"
             value={password}
             onChange={handleChange}
             label="Password"
-          />
-  
-          <Grid
+            />
+
+            <Grid
             className="user-login-form__button-grid"
             item
             xl={2}
@@ -40,19 +40,19 @@ class LogInForm extends React.Component {
             md={12}
             s={12}
             xs={12}
-          >
-            <Button
-              variant="contained"
-              color="white"
-              onClick={addStudent}
-              className="user-login-form__submit-button"
             >
-             Log In
+            
+            <Button
+                variant="contained"
+                color="white"
+                onClick={addStudent}
+                className="user-login-form__submit-button"
+            >
+            Log In
             </Button>
-          </Grid>
+            </Grid>
         </Grid>
-        </div>
-      );
+        );
     }
   }
   

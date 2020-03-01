@@ -19,6 +19,7 @@ class LogInPage extends React.Component {
                     title="Log In"
                 />
                 <LogInForm
+                    
                 />
             </div>
 

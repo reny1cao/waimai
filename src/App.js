@@ -5,16 +5,22 @@ import { Menu } from './components/Menu'
 import LogInPage from './components/LogInPage'
 import './App.css';
 
-function App() {
-  return (
-    <Router>
-      <div>
-          <Route path="/" exact component={Home} />
-          <Route path="/menu" component={Menu} />
-          <Route path="/loginPage" component={LogInPage} />
-      </div>
-    </Router>
+class App extends React.Component {
+  state = {
+    ActionAvailable: "Log In"
+  }
+  
+  render() {
+    return (
+      <Router>
+        <div>
+            <Route path="/" exact component={Home} />
+            <Route path="/menu" component={Menu} />
+            <Route path="/loginPage" component={LogInPage} />
+        </div>
+      </Router>
   );
+    }
 }
 
 export default App;

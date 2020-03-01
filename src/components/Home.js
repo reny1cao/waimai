@@ -18,7 +18,9 @@ export const Home = () => {
         <div>
             <Header 
                 title="Browsing Restaurants"
+                userState="Log In"
             />
+
             <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
             <h2>Popular</h2>
             <div className="flex-container">
