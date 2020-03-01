@@ -1,9 +1,8 @@
 import React from 'react'
 
 import Header from "./Header";
-import LogInForm from "./LogInForm";
 
-class LogInPage extends React.Component {
+class AdminPage extends React.Component {
     states = {};
 
     handleInputChange = event => {
@@ -14,9 +13,9 @@ class LogInPage extends React.Component {
 
     render() {
         return (
-            <div className="LogInPage">
+            <div className="AdminPage">
                 <Header
-                    title="Log In"
+                    title="Admin"
                     userState="Log In"
                 />
                 <LogInForm
@@ -27,4 +26,4 @@ class LogInPage extends React.Component {
         );
     }
 }
-export default LogInPage;
+export default AdminPage;

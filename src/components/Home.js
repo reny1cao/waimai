@@ -17,7 +17,7 @@ export const Home = () => {
     return (
         <div>
             <Header 
-                title="Browsing Restaurants"
+                title="WAIMAI"
                 userState="Log In"
             />
 
