@@ -1,10 +1,17 @@
 import React from 'react'
 
-export const LogInPage = () => {
-    return (
-        <div id="login">
-            Hi
-            
-        </div>
-    )
+import Header from "./Header";
+
+class LogInPage extends React.Component {
+    states = {};
+
+
+    render() {
+        return (
+            <Header
+                title="Log In"
+            />
+        );
+    }
 }
+export default LogInPage;
