@@ -1,0 +1,59 @@
+import React from 'react'
+import Grid from "@material-ui/core/Grid";
+import Button from '@material-ui/core/Button';
+
+import Input from './Input';
+import "./LogInForm.css";
+
+class LogInForm extends React.Component {
+    render() {
+      const {
+        username,
+        handleChange,
+        password,
+        addStudent
+      } = this.props;
+  
+      return (
+        <div className="login__bg-image center">
+        <Grid className="login-form" container spacing={1}>
+          {/* Inputs to add student */}
+          <Input
+            name="username"
+            value={username}
+            onChange={handleChange}
+            label="Username"
+          />
+  
+          <Input
+            name="password"
+            value={password}
+            onChange={handleChange}
+            label="Password"
+          />
+  
+          <Grid
+            className="user-login-form__button-grid"
+            item
+            xl={2}
+            lg={2}
+            md={12}
+            s={12}
+            xs={12}
+          >
+            <Button
+              variant="contained"
+              color="white"
+              onClick={addStudent}
+              className="user-login-form__submit-button"
+            >
+             Log In
+            </Button>
+          </Grid>
+        </Grid>
+        </div>
+      );
+    }
+  }
+  
+  export default LogInForm;
