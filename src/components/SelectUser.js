@@ -8,41 +8,43 @@ class SelectUser extends React.Component{
     render() {
     
         const {title,
-            handleClick,
-            chooseUser} = this.props;
+            handleClick} = this.props;
         
         return (
-        <Grid className="login-form__container" container>
-        <Grid className="login__bg-image" spacing={1}>
+        <Grid className="login-form__container" container spacing={1}>
+        <Grid className="login__bg-image" >
           <img src={require("./../img/login-background.jpg")}>
           </img>
             
         </Grid>
 
         <Grid
-        className="select-user__grid" spacing={5}>
+        className="select-user__grid" container spacing={3}>
                 <div id="header">
                     <h1 id="title">{title}</h1>
                     <Button
+                    value="Customer"
                     variant="contained"
-                    color="white"
-                    onClick={chooseUser}
+                    color="primary"
+                    onClick={handleClick}
                     className="select__submit-button"
                     >
                     Customer
                     </Button>
                     <Button
+                    value="Restaurant"
                     variant="contained"
-                    color="white"
-                    onClick={chooseUser}
+                    color="primary"
+                    onClick={handleClick}
                     className="select__submit-button"
                     >
                     Restaurant
                     </Button>
                     <Button
+                    value="Admin"
                     variant="contained"
-                    color="white"
-                    onClick={chooseUser}
+                    color="primary"
+                    onClick={handleClick}
                     className="select__submit-button"
                     >
                     Admin
