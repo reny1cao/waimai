@@ -32,3 +32,16 @@ export const switchToUsers = page => {
         view: "users"
     })
 }
+
+export const searchName = page => {
+    const searchingFor = page.state.searchName
+
+    const filterNames = page.state.users.filter(s => {
+        return s.name === searchingFor;
+    }
+    )
+
+    page.setState({
+        users: filterNames
+    })
+}

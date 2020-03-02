@@ -2,16 +2,18 @@ import React from 'react'
 
 import Header from "./Header";
 import UserList from "./UserList";
+import NameSearchBar from "./NameSearchBar";
 import RestaurantList from "./RestaurantList";
 import Button from '@material-ui/core/Button';
 
-import { switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
+import { searchName, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
 
 
 class AdminView extends React.Component {
 
     state = {
         view: "users",
+        searchName: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
             {name: "Allen Hsiao", username:"user3", password:"user3"},
@@ -30,10 +32,15 @@ class AdminView extends React.Component {
         ]
 
     };
-
     handleInputChange = event => {
+
         const target = event.target;
         const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        })
     }
 
 
@@ -43,6 +50,11 @@ class AdminView extends React.Component {
             <div className="AdminPage">
             <Header
                 title="Admin"
+            />
+            <NameSearchBar
+                name={this.state.searchName}
+                handleChange={this.handleInputChange}
+                searchName={() => searchName(this)}
             />
             <Button
             variant="contained"
@@ -71,6 +83,11 @@ class AdminView extends React.Component {
             <div className="AdminPage">
                 <Header
                     title="Admin"
+                />
+                <NameSearchBar
+                name={this.state.searchName}
+                handleChange={this.handleInputChange}
+                searchName={() => searchName(this)}
                 />
                 <Button
                 variant="contained"
