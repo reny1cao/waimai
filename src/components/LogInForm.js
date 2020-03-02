@@ -24,14 +24,7 @@ class LogInForm extends React.Component {
         </Grid>
 
         <Grid
-        className="user-login-form__grid"
-        item
-        xl={2}
-        lg={2}
-        md={12}
-        s={12}
-        xs={12}
-        >
+        className="user-login-form__grid" spacing={1}>
         <Input
         name="username"
         value={username}
@@ -48,13 +41,7 @@ class LogInForm extends React.Component {
         </Grid>
 
         <Grid
-        className="user-login-form__button-grid"
-        item
-        xl={2}
-        lg={2}
-        md={12}
-        s={12}
-        xs={12}
+        className="user-login-form__button-grid" spacing={1}
         >
       
 

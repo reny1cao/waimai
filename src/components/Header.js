@@ -11,7 +11,7 @@ class Header extends React.Component{
         
         return (
                 <div id="header">
-                    <h1>{title}</h1>
+                    <h1 id="title">{title}</h1>
                     <Login 
                         text = {userState}
                     />
