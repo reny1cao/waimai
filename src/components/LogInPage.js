@@ -4,14 +4,15 @@ import Header from "./Header";
 import LogInForm from "./LogInForm";
 import SelectUser from "./SelectUser";
 
-import { logIn, chooseUser } from "./../actions/logInActions";
+import { logInAdmin, logInRestaurant, logInUser, backTrack } from "./../actions/logInActions";
 import "./LogInPage.css";
 
 class LogInPage extends React.Component {
     state = {
         username: "",
         password: "",
-        userType: ""
+        userType: "",
+        errMsg: ""
     };
 
     handleInputChange = event => {
@@ -26,9 +27,14 @@ class LogInPage extends React.Component {
     }
 
     handleClick = event => {
-        return;
-    }
+        const target = event.target;
+        const value = target.value;
+        
+        this.setState({
+            userType: value
+        })
 
+    }
 
 
     render() {
@@ -38,20 +44,20 @@ class LogInPage extends React.Component {
                     <Header
                         title="Log In"
                         userState="Log In"
+                        userState1="Sign Up"
                     />
 
                     <SelectUser
                         title='I would like to log in as:'
                         handleClick={this.handleClick}
-                        chooseUser={() => chooseUser(this)}
                         
                     />
                 </div>
 
             )
         }
-            else {
-                return (
+        else if (this.state.userType === "Customer") {
+            return (
                     <div className="LogInPage">
                         <Header
                             title="Log In"
@@ -62,14 +68,56 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
-                            logIn={() => logIn(this)}
-                            
+                            errMsg={this.errMsg}
+                            logIn={() => logInUser(this)}
+                            backTrack={() =>backTrack(this)}
                         />
                     </div>
 
                 );
-            }
         }
+        else if (this.state.userType === "Restaurant") {
+            return (
+                    <div className="LogInPage">
+                        <Header
+                            title="Log In"
+                            userState="Log In"
+                        />
+
+                        <LogInForm
+                            username={this.state.username}
+                            password={this.state.password}
+                            handleChange={this.handleInputChange}
+                            errMsg={this.errMsg}
+                            logIn={() => logInRestaurant(this)}
+                            backTrack={() =>backTrack(this)}
+                        />
+                    </div>
+
+            );
+            
+        }
+        else if (this.state.userType === "Admin") {
+            return (
+                <div className="LogInPage">
+                    <Header
+                        title="Log In"
+                        userState="Log In"
+                    />
+                    <LogInForm
+                        username={this.state.username}
+                        password={this.state.password}
+                        handleChange={this.handleInputChange}
+                        errMsg={this.errMsg}
+                        logIn={() => logInAdmin(this)}
+                        backTrack={() =>backTrack(this)}
+                            
+                    />
+                </div>
+
+            );
+        }
+    }
     
 }
 export default LogInPage;

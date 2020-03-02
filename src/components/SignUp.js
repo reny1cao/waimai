@@ -6,7 +6,7 @@ class SignUp extends React.Component {
     render() {
         const {text} = this.props;
         return (
-            <div id = "signup">
+            <div id="signup">
                 <Link to={"./SignUpPage"}>
                 <button>{text}</button>
                 </Link>                

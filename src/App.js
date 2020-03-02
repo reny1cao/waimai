@@ -7,6 +7,7 @@ import { RestaurantHome } from './components/RestaurantHome'
 import { RestaurantSignUp } from './components/RestaurantSignUp'
 import { SignUpPage } from './components/SignUpPage';
 import LogInPage from './components/LogInPage'
+import AdminView from './components/AdminView'
 import './App.css';
 
 class App extends React.Component {
@@ -24,7 +25,9 @@ class App extends React.Component {
             <Route path="/Restaurant/menu" component={Menu} />
             <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
             <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
-            <Route path = "/Restaurant/SignUp" component = {RestaurantSignUp} />              
+            <Route path = "/Restaurant/SignUp" component = {RestaurantSignUp} />   
+            <Route path="/AdminView" component={AdminView} />
+
         </div>
       </Router>
   );

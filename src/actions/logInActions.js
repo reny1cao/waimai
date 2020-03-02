@@ -1,26 +1,68 @@
-import React from 'react';
 
-import { Link } from 'react-router-dom';
-export const logIn = page => {
+export const logInAdmin = page => {
     const account = {
         name: page.state.username,
         pass: page.state.password
     }
 
     if (account.name === 'admin' && account.pass === 'admin') {
-        return <Link to={("./../AdminView")}></Link>
+        page.setState({
+            errMsg:""
+        })
+        window.location.replace("./../AdminView");
     }
-    else if (account.name === 'user' && account.pass === 'user') {
-        window.location.replace("./../UserView");
-    }
-    else if (account.name === 'user2' && account.pass === 'user2') {
-        window.location.replace("./../RestaurantView");
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
     }
 }
 
-export const chooseUser = page => {
 
-    // page.setState({
-    //     userType: this.event
-    // })
+export const logInUser = page => {
+    const account = {
+        name: page.state.username,
+        pass: page.state.password
+    }
+
+    if (account.name === 'user' && account.pass === 'user') {
+        page.setState({
+            errMsg:""
+        })
+        window.location.replace("./../UserView");
+    }
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
+    }
+    
+}
+
+
+export const logInRestaurant = page => {
+    const account = {
+        name: page.state.username,
+        pass: page.state.password
+    }
+
+    if (account.name === 'user2' && account.pass === 'user2') {
+        page.setState({
+            errMsg:""
+        })
+        window.location.replace("./../RestaurantView");
+    }
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
+    }
+}
+
+export const backTrack = page => {
+
+    page.setState({
+        userType: ""
+    })
+    
 }
