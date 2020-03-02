@@ -46,3 +46,17 @@ export const searchForName = page => {
         users: filterNames
     })
 }
+
+export const searchForRestaurant = page => {
+    const searchingFor = page.state.searchName
+
+    const filterNames = page.state.restaurants.filter(s => {
+        return s.name.toLowerCase().indexOf((searchingFor.toLowerCase())) !== -1;
+    }
+    )
+    
+
+    page.setState({
+        restaurants: filterNames
+    })
+}

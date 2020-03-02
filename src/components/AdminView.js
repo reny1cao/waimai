@@ -6,7 +6,7 @@ import NameSearchBar from "./NameSearchBar";
 import RestaurantList from "./RestaurantList";
 import Button from '@material-ui/core/Button';
 
-import { searchForName, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
+import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
 
 
 class AdminView extends React.Component {
@@ -28,16 +28,15 @@ class AdminView extends React.Component {
         restaurants: [
             {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
             area: "all", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"}
+            {name: "Emily", address:"919 Fulton St, Brooklyn, NY 11238", 
+            area: "all", category: "Pizza", username:"user13", password:"user13"},
+            {name: "Kang Ho Dong Baekjeong", address:"1 E 32nd St, New York, NY 10016", 
+            area: "all", category: "Asian", username:"user14", password:"user14"},
+            {name: "Lee's Chinese Food", address:"172 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user12", password:"user12"},
+            {name: "Miss Foodie", address:"1 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user15", password:"user15"},
+        
 
         ]
 
@@ -64,7 +63,7 @@ class AdminView extends React.Component {
             <NameSearchBar
                 fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
-                searchForName={() => searchForName(this)}
+                searchForName={() => searchForRestaurant(this)}
             />
             <Button
             variant="contained"
