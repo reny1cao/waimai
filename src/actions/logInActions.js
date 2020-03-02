@@ -17,3 +17,10 @@ export const logIn = page => {
         window.location.replace("./../RestaurantView");
     }
 }
+
+export const chooseUser = page => {
+
+    // page.setState({
+    //     userType: this.event
+    // })
+}
