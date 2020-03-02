@@ -11,7 +11,8 @@ class LogInPage extends React.Component {
     state = {
         username: "",
         password: "",
-        userType: ""
+        userType: "",
+        errMsg: ""
     };
 
     handleInputChange = event => {
@@ -67,6 +68,7 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
+                            errMsg={this.errMsg}
                             logIn={() => logInUser(this)}
                             backTrack={() =>backTrack(this)}
                         />
@@ -86,6 +88,7 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
+                            errMsg={this.errMsg}
                             logIn={() => logInRestaurant(this)}
                             backTrack={() =>backTrack(this)}
                         />
@@ -105,6 +108,7 @@ class LogInPage extends React.Component {
                         username={this.state.username}
                         password={this.state.password}
                         handleChange={this.handleInputChange}
+                        errMsg={this.errMsg}
                         logIn={() => logInAdmin(this)}
                         backTrack={() =>backTrack(this)}
                             

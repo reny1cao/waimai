@@ -6,9 +6,16 @@ export const logInAdmin = page => {
     }
 
     if (account.name === 'admin' && account.pass === 'admin') {
+        page.setState({
+            errMsg:""
+        })
         window.location.replace("./../AdminView");
     }
-    
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
+    }
 }
 
 
@@ -19,7 +26,15 @@ export const logInUser = page => {
     }
 
     if (account.name === 'user' && account.pass === 'user') {
+        page.setState({
+            errMsg:""
+        })
         window.location.replace("./../UserView");
+    }
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
     }
     
 }
@@ -32,7 +47,15 @@ export const logInRestaurant = page => {
     }
 
     if (account.name === 'user2' && account.pass === 'user2') {
+        page.setState({
+            errMsg:""
+        })
         window.location.replace("./../RestaurantView");
+    }
+    else {
+        page.setState({
+            errMsg: "Wrong UserName/ Password"
+        })
     }
 }
 

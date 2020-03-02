@@ -13,7 +13,8 @@ class LogInForm extends React.Component {
         handleChange,
         password,
         logIn,
-        backTrack
+        backTrack,
+        errMsg
       } = this.props;
   
       return (
@@ -40,6 +41,7 @@ class LogInForm extends React.Component {
         label="Password"
         />
         </Grid>
+        <div className='errMsg'>{errMsg}</div>
 
         <Grid
         className="user-login-form__button-grid" spacing={1}
