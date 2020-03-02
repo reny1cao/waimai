@@ -3,12 +3,12 @@ import Button from "@material-ui/core/Button";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
-import { removeUser } from "./../actions/AdminActions";
+import { removeRestaurant } from "./../actions/AdminActions";
 
 
 const log = console.log;
 
-class User extends React.Component {
+class RestaurantAdmin extends React.Component {
 
   constructor(props) {
     super(props);
@@ -35,23 +35,31 @@ class User extends React.Component {
 //   }
 
   render() {
-    const { user, AdminComponent } = this.props;
+    const { restaurant, AdminComponent } = this.props;
 
     return (
-      <TableRow className="user" key={user.name}>
+      <TableRow className="restaurant" key={restaurant.name}>
         <TableCell component="th" scope="row">
-          {user.username}
+          {restaurant.name}
         </TableCell>
 
         <TableCell component="th" scope="row">
-          {user.password}
+          {restaurant.address}
         </TableCell>
 
-        {/* Show how long the student has been waiting for */}
         <TableCell component="th" scope="row">
-          Created {Math.floor(this.state.seconds / 60)} minutes{" "}
-          {this.state.seconds % 60} seconds ago.
+          {restaurant.area}
         </TableCell>
+        <TableCell component="th" scope="row">
+          {restaurant.category}
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {restaurant.username}
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {restaurant.password}
+        </TableCell>
+
 
         <TableCell component="th" scope="row">
           <Button
@@ -59,7 +67,7 @@ class User extends React.Component {
             color="secondary"
             onClick={
               /* Remove button onClick binds the student as the parameter to the remove function. */
-              removeUser.bind(this, AdminComponent, user)
+              removeRestaurant.bind(this, AdminComponent, restaurant)
               //() => this.removeStudent(student) // this also works
             }
           >
@@ -71,4 +79,4 @@ class User extends React.Component {
   }
 }
 
-export default User;
+export default RestaurantAdmin;

@@ -9,3 +9,14 @@ export const removeUser = (page, user) => {
       users: filteredUsers
     });
   };
+
+export const removeRestaurant = (page, restaurant) => {
+    const filteredRestaurants = page.state.restaurants.filter(s => {
+      return s !== restaurant;
+    });
+  
+  
+    page.setState({
+      restaurants: filteredRestaurants
+    });
+};
