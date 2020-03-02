@@ -19,6 +19,7 @@ export const Home = () => {
             <Header 
                 title="WAIMAI"
                 userState="Log In"
+                userState1="Sign Up"
             />
 
             <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>

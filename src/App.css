@@ -43,6 +43,13 @@ input[type=text]:focus {
     top: 25px;
 }
 
+#signup {
+    display: inline-block;
+    position: absolute;
+    right: 130px;
+    top: 25px;
+}
+
 #avatar {
     border-radius: 50%;
     width: 50px;
