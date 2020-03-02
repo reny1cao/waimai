@@ -4,7 +4,7 @@ import Header from "./Header";
 import LogInForm from "./LogInForm";
 import SelectUser from "./SelectUser";
 
-import { logIn } from "./../actions/logInActions";
+import { logInAdmin, logInRestaurant, logInUser, backTrack } from "./../actions/logInActions";
 import "./LogInPage.css";
 
 class LogInPage extends React.Component {
@@ -43,6 +43,7 @@ class LogInPage extends React.Component {
                     <Header
                         title="Log In"
                         userState="Log In"
+                        userState1="Sign Up"
                     />
 
                     <SelectUser
@@ -66,8 +67,8 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
-                            logIn={() => logIn(this)}
-                            
+                            logIn={() => logInUser(this)}
+                            backTrack={() =>backTrack(this)}
                         />
                     </div>
 
@@ -85,8 +86,8 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
-                            logIn={() => logIn(this)}
-                            
+                            logIn={() => logInRestaurant(this)}
+                            backTrack={() =>backTrack(this)}
                         />
                     </div>
 
@@ -104,7 +105,8 @@ class LogInPage extends React.Component {
                         username={this.state.username}
                         password={this.state.password}
                         handleChange={this.handleInputChange}
-                        logIn={() => logIn(this)}
+                        logIn={() => logInAdmin(this)}
+                        backTrack={() =>backTrack(this)}
                             
                     />
                 </div>

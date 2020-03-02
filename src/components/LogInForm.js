@@ -12,7 +12,8 @@ class LogInForm extends React.Component {
         username,
         handleChange,
         password,
-        logIn
+        logIn,
+        backTrack
       } = this.props;
   
       return (
@@ -52,6 +53,14 @@ class LogInForm extends React.Component {
             className="user-login-form__submit-button"
         >
         Log In
+        </Button>
+        <Button
+            variant="contained"
+            color="primary"
+            onClick={backTrack}
+            className="user-login-form__back-button"
+        >
+        Back
         </Button>
         </Grid>
         </Grid>

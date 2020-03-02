@@ -17,23 +17,6 @@ class RestaurantAdmin extends React.Component {
     };
   }
 
-//   componentDidMount() {
-//     // When the component enters the DOM
-//     this.userTimer = setInterval(() => this.tick(), 1000);
-//   }
-
-//   componentWillUnmount() {
-//     // When the component leaves the DOM
-//     clearInterval(this.userTimer);
-//   }
-
-//   // To tick off the seconds
-//   tick() {;
-//     this.setState({
-//       seconds: this.state.seconds + 1
-//     });
-//   }
-
   render() {
     const { restaurant, AdminComponent } = this.props;
 

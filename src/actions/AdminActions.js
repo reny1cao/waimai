@@ -20,3 +20,15 @@ export const removeRestaurant = (page, restaurant) => {
       restaurants: filteredRestaurants
     });
 };
+
+export const switchToRestaurants = page => {
+    page.setState({
+        view: "restaurants"
+    })
+}
+
+export const switchToUsers = page => {
+    page.setState({
+        view: "users"
+    })
+}

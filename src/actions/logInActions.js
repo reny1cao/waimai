@@ -1,5 +1,5 @@
 
-export const logIn = page => {
+export const logInAdmin = page => {
     const account = {
         name: page.state.username,
         pass: page.state.password
@@ -8,17 +8,38 @@ export const logIn = page => {
     if (account.name === 'admin' && account.pass === 'admin') {
         window.location.replace("./../AdminView");
     }
-    else if (account.name === 'user' && account.pass === 'user') {
+    
+}
+
+
+export const logInUser = page => {
+    const account = {
+        name: page.state.username,
+        pass: page.state.password
+    }
+
+    if (account.name === 'user' && account.pass === 'user') {
         window.location.replace("./../UserView");
     }
-    else if (account.name === 'user2' && account.pass === 'user2') {
+    
+}
+
+
+export const logInRestaurant = page => {
+    const account = {
+        name: page.state.username,
+        pass: page.state.password
+    }
+
+    if (account.name === 'user2' && account.pass === 'user2') {
         window.location.replace("./../RestaurantView");
     }
 }
 
-// export const chooseUser = page => {
+export const backTrack = page => {
 
-//     page.setState({
-//         userType: page.props.text
-//     })
-// }
+    page.setState({
+        userType: ""
+    })
+    
+}

@@ -17,28 +17,15 @@ class User extends React.Component {
     };
   }
 
-//   componentDidMount() {
-//     // When the component enters the DOM
-//     this.userTimer = setInterval(() => this.tick(), 1000);
-//   }
-
-//   componentWillUnmount() {
-//     // When the component leaves the DOM
-//     clearInterval(this.userTimer);
-//   }
-
-//   // To tick off the seconds
-//   tick() {;
-//     this.setState({
-//       seconds: this.state.seconds + 1
-//     });
-//   }
-
   render() {
     const { user, AdminComponent } = this.props;
 
     return (
       <TableRow className="user" key={user.name}>
+        <TableCell component="th" scope="row">
+        {user.name}
+        </TableCell>
+
         <TableCell component="th" scope="row">
           {user.username}
         </TableCell>
@@ -47,11 +34,6 @@ class User extends React.Component {
           {user.password}
         </TableCell>
 
-        {/* Show how long the student has been waiting for */}
-        <TableCell component="th" scope="row">
-          Created {Math.floor(this.state.seconds / 60)} minutes{" "}
-          {this.state.seconds % 60} seconds ago.
-        </TableCell>
 
         <TableCell component="th" scope="row">
           <Button
