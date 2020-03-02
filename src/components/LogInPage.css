@@ -1,0 +1,8 @@
+.Header {
+    position: absolute;
+}
+
+.LogInForm{
+    position: relative;
+    top:10px;
+}

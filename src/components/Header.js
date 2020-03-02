@@ -2,6 +2,8 @@ import React from 'react'
 import Login from './Login'
 import { Avatar } from './Avatar'
 
+import "./Header.css";
+
 class Header extends React.Component{
     render() {
         const {title} = this.props;

@@ -1,3 +1,6 @@
+import React from 'react';
+
+import { Link } from 'react-router-dom';
 export const logIn = page => {
     const account = {
         name: page.state.username,
@@ -5,7 +8,12 @@ export const logIn = page => {
     }
 
     if (account.name === 'admin' && account.pass === 'admin') {
-        console.log('hi')
-        window.location.replace("./../AdminView");
+        return <Link to={("./../AdminView")}></Link>
+    }
+    else if (account.name === 'user' && account.pass === 'user') {
+        window.location.replace("./../UserView");
+    }
+    else if (account.name === 'user2' && account.pass === 'user2') {
+        window.location.replace("./../RestaurantView");
     }
 }

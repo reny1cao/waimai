@@ -16,43 +16,55 @@ class LogInForm extends React.Component {
       } = this.props;
   
       return (
-        
-        <Grid className="login__bg-image center" container spacing={1}>
+        <Grid className="login-form__container" container>
+        <Grid className="login__bg-image center" spacing={1}>
 
-            <Input
-            name="username"
-            value={username}
-            onChange={handleChange}
-            label="Username"
-            />
+            
+        </Grid>
+        <Grid
+        className="user-login-form__grid"
+        item
+        xl={2}
+        lg={2}
+        md={12}
+        s={12}
+        xs={12}
+        >
+        <Input
+        name="username"
+        value={username}
+        onChange={handleChange}
+        label="Username"
+        />
 
-            <Input
-            name="password"
-            value={password}
-            onChange={handleChange}
-            label="Password"
-            />
+        <Input
+        name="password"
+        value={password}
+        onChange={handleChange}
+        label="Password"
+        />
+        </Grid>
 
-            <Grid
-            className="user-login-form__button-grid"
-            item
-            xl={2}
-            lg={2}
-            md={12}
-            s={12}
-            xs={12}
-            >
-          
+        <Grid
+        className="user-login-form__button-grid"
+        item
+        xl={2}
+        lg={2}
+        md={12}
+        s={12}
+        xs={12}
+        >
+      
 
-            <Button
-                variant="contained"
-                color="white"
-                onClick={logIn}
-                className="user-login-form__submit-button"
-            >
-            Log In
-            </Button>
-            </Grid>
+        <Button
+            variant="contained"
+            color="white"
+            onClick={logIn}
+            className="user-login-form__submit-button"
+        >
+        Log In
+        </Button>
+        </Grid>
         </Grid>
         );
     }

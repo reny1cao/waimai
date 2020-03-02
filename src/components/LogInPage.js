@@ -4,6 +4,7 @@ import Header from "./Header";
 import LogInForm from "./LogInForm";
 
 import { logIn } from "./../actions/logInActions";
+import "./LogInPage.css";
 
 class LogInPage extends React.Component {
     state = {
@@ -30,6 +31,7 @@ class LogInPage extends React.Component {
                     title="Log In"
                     userState="Log In"
                 />
+
                 <LogInForm
                     username={this.state.username}
                     password={this.state.password}
