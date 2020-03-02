@@ -40,7 +40,6 @@ export const searchForName = page => {
         return s.name.toLowerCase().indexOf((searchingFor.toLowerCase())) !== -1;
     }
     )
-    
 
     page.setState({
         users: filterNames
@@ -54,7 +53,6 @@ export const searchForRestaurant = page => {
         return s.name.toLowerCase().indexOf((searchingFor.toLowerCase())) !== -1;
     }
     )
-    
 
     page.setState({
         restaurants: filterNames

@@ -41,6 +41,17 @@ class AdminView extends React.Component {
         ]
 
     };
+
+    baseState = this.state;
+
+    resetForm = () => {
+        const tempName = this.state.searchName
+        this.setState(this.baseState)
+        this.setState({
+            searchName: tempName
+        })
+    }
+
     handleInputChange = event => {
 
         const target = event.target;
@@ -59,11 +70,14 @@ class AdminView extends React.Component {
             <div className="AdminPage">
             <Header
                 title="Admin"
+                userState="Log In"
+                userState1="Sign Up"
             />
             <NameSearchBar
                 fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
                 searchForName={() => searchForRestaurant(this)}
+                resetState={this.resetForm}
             />
             <Button
             variant="contained"
@@ -92,11 +106,14 @@ class AdminView extends React.Component {
             <div className="AdminPage">
                 <Header
                     title="Admin"
+                    userState="Log In"
+                    userState1="Sign Up"
                 />
                 <NameSearchBar
                 fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
                 searchForName={() => searchForName(this)}
+                resetState={this.resetForm}
                 />
                 <Button
                 variant="contained"

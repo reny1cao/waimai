@@ -10,7 +10,8 @@ class NameSearchBar extends React.Component {
       const {
         searchName,
         handleChange,
-        searchForName
+        searchForName,
+        resetState
       } = this.props;
   
       return (
@@ -29,6 +30,14 @@ class NameSearchBar extends React.Component {
             className="search-button"
         >
         Search
+        </Button>
+        <Button
+            variant="contained"
+            color="danger"
+            onClick={resetState}
+            className="back-button"
+        >
+        Back
         </Button>
         </Grid>
       )
