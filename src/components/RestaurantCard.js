@@ -9,9 +9,9 @@ export const RestaurantCard = (prop) => {
     return (
         <div className="restaurantCard">
             <img src={prop.restImg} alt="img"></img>
-            <h3>{prop.name}</h3>
-            <h4>{prop.type}</h4>
-            <h4>{prop.rating}</h4>
+            <h4>{prop.name}</h4>
+            <p>{prop.type}</p>
+            <p>{prop.rating}</p>
         </div>
     )
 }

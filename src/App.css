@@ -9,12 +9,14 @@
     padding: 5px;
 }
 
-input[type=text] {
-    width: 130px;
+#searchBar {
+    width: 300px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+
+    padding: 5px;
     background-color: white;
     background-position: 10px 10px;
     background-repeat: no-repeat;
@@ -23,8 +25,8 @@ input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
-    width: 50%;
+#searchBar:focus {
+    width: 500px;
 }
 
 
@@ -62,8 +64,13 @@ input[type=text]:focus {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
     padding: 5px;
     margin: 10px;
-    min-width: 170px;
+    min-width: 200px;
     
+}
+
+.flex-container .restaurantCard h4, p {
+    padding: 0;
+    margin: 10px;
 }
 
 .flex-container .restaurantCard img {
@@ -73,4 +80,29 @@ input[type=text]:focus {
 .flex-container a, a:visited{
     text-decoration: none;
     color: black;
+}
+
+.item-card {
+    flex: 0 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 300px;
+    min-width: 300px;
+    display: inline-block;
+}
+
+.item-card .info {
+    width: 70%;
+    float: left;
+}
+
+.item-card img {
+    width: 30%;
+}
+
+.item-card h4, p, input, textarea{
+    padding: 0;
+    margin: 10px;
+    resize: none;
 }

@@ -6,12 +6,15 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
       <div>
+      <Router>
+      <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/menu" component={Menu} />
+      </Switch>
+      </Router>
+          
       </div>
-    </Router>
   );
 }
 
