@@ -7,7 +7,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "3 Chicken Wings",
             "position": 1,
             "description": "Tender, Spicy and Juicy. Original or Peri-Crusted",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":12,
             "subItems": [{
                 "id": "224471",
@@ -29,7 +29,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Livers and Portuguese Roll",
             "position": 2,
             "description": "Chicken Livers Topped with PERi-PERi Sauce, Served with A Roll To Soak Up The Sauce",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":12,
             "subItems": [{
                 "id": "224474",
@@ -51,7 +51,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Spicy Mixed Olives (V)",
             "position": 3,
             "description": "Co-Starring Garlic, Pepper and Chili",
-            "images": [],
+            "images": "../FoodImg/3.jpg",
             "price":12,
             "subItems": [{
                 "id": "224477",
@@ -73,7 +73,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Hummus with PERI-PERI Drizzle (V)",
             "position": 4,
             "description": "Pour Smoky PERi-PERi Oil Over Creamy Hummus and Dig in with Strips Of Warm Pita",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":12,
             "subItems": [{
                 "id": "224480",
@@ -95,7 +95,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Red Pepper Dip (V)",
             "position": 5,
             "description": "Dive Into Temping Roasted Red Pepper and Chili Spice Dip with Warm Pita Strips",
-            "images": [],
+            "images": "../FoodImg/5.jpg",
             "price":12,
             "subItems": [{
                 "id": "224483",
@@ -117,7 +117,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Appeteaser Platter",
             "position": 6,
             "description": "Choose any Three Appeteasers",
-            "images": [],
+            "images": "../FoodImg/6.jpg",
             "price":12,
             "subItems": [{
                 "id": "224486",
@@ -139,7 +139,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "All Together Now (V)",
             "position": 7,
             "description": "Spicy Mixed Olives, Red Pepper Dip, Hummus with PERi-PERi Drizzle and Warm Pita Strips",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":12,
             "subItems": [{
                 "id": "224489",
@@ -167,7 +167,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "PERi-PERi Wedges (P)",
             "position": 8,
             "description": "",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":12,
             "subItems": [{
                     "id": "224522",
@@ -204,7 +204,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Corn-On-The-Cob",
             "position": 9,
             "description": "",
-            "images": [],
+            "images": "../FoodImg/3.jpg",
             "price":6,
             "subItems": [{
                     "id": "224528",
@@ -247,7 +247,8 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "1/4 Chicken",
             "position": 10,
             "description": "Quarter Chicken Marinated with PERi-PERi Sauce and Grilled",
-            "images": 12.99,
+            "images": "../FoodImg/3.jpg",
+            "price":6,
             "subItems": [{
                     "id": "224543",
                     "name": "On its own",
@@ -297,7 +298,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "1/2 Chicken",
             "position": 11,
             "description": "Half Chicken Marinated with PERi-PERi Sauce and Grilled",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":24.99,
             "subItems": [{
                     "id": "224552",
@@ -348,7 +349,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "5 Chicken Wings",
             "position": 12,
             "description": "Original Flavours or PERi-PEREi Crusted (P)",
-            "images": [],
+            "images": "../FoodImg/5.jpg",
             "price":7.99,
             "subItems": [{
                     "id": "224561",
@@ -399,7 +400,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Wing Roulette",
             "position": 13,
             "description": "10 Wings in PERi-PERi Flavors",
-            "images": [],
+            "images": "../FoodImg/6.jpg",
             "price":12,
             "subItems": [{
                 "id": "224570",
@@ -421,7 +422,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Whole Chicken",
             "position": 14,
             "description": "Whole Chicken Marinated in PERi-PERi Sauce and Grilled",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":34.99,
             "subItems": [{
                 "id": "224573",
@@ -443,7 +444,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Butterfly",
             "position": 15,
             "description": "Succulent Double Chicken Breast in Crispy Skin",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":12,
             "subItems": [{
                     "id": "224576",
@@ -494,7 +495,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Espetada",
             "position": 16,
             "description": "Tender Marinated Chicken Thighs and Fresh Peppers, Served on a Skewer",
-            "images": [],
+            "images": "../FoodImg/3.jpg",
             "price":12,
             "subItems": [{
                     "id": "224585",
@@ -545,7 +546,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Espetada Carnival",
             "position": 17,
             "description": "Flame-Grilled PERi-PERi Thighs, Stuffed with Feta and Parsley, Skewered with Mixed Peppers",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":24.99,
             "subItems": [{
                     "id": "224594",
@@ -596,7 +597,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Grilled Chicken Tenders",
             "position": 18,
             "description": "Juicy and Tender, Delicious with All Sides",
-            "images": [],
+            "images": "../FoodImg/5.jpg",
             "price":12,
             "subItems": [{
                     "id": "224603",
@@ -653,7 +654,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Full Platter",
             "position": 19,
             "description": "For 3-4 People, Whole Chicken with  2 Large or 4 Regular Rides",
-            "images": [],
+            "images":"../FoodImg/6.jpg",
             "price":12,
             "subItems": [{
                     "id": "224615",
@@ -690,7 +691,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "No Bones Platter",
             "position": 20,
             "description": "For 2-3 People, Chicken Butterfly and a Espetada, with 2 Large or 4 Regular Sides",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":12,
             "subItems": [{
                     "id": "224621",
@@ -727,7 +728,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Jumbo Platter",
             "position": 21,
             "description": "For 4-6 People, 2 Whole Chickens and 5 Large Sides",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":12,
             "subItems": [{
                 "id": "224627",
@@ -755,7 +756,7 @@ const oneRestaurantMenu = {"categorys": [{
         "name": "Dessert",
         "position": 22,
         "description": "",
-        "images": [],
+        "images": "../FoodImg/3.jpg",
         "price":12,
         "subItems": [{
                 "id": "224665",
@@ -797,7 +798,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "PERi-PERi Chips (P)",
             "position": 23,
             "description": "Crunchy Chips with PERi-PERi Sauce",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":7.99,
             "subItems": [{
                     "id": "224492",
@@ -834,7 +835,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Spicy Rice",
             "position": 24,
             "description": "Spicy fried rice",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":4.99,
             "subItemss": [{
                     "id": "224498",
@@ -871,7 +872,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Coleslaw (M)",
             "position": 25,
             "description": "Cabbage, Carrot, Nando&amp;#039;s Special Mayonnaise",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":12,
             "subItems": [{
                     "id": "224504",
@@ -908,7 +909,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Grilled Veg",
             "position": 26,
             "description": "Grilled Assorted Vegetables",
-            "images": [],
+            "images":"../FoodImg/3.jpg",
             "price":12,
             "subItems": [{
                     "id": "224510",
@@ -945,7 +946,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Garlic Bread",
             "position": 27,
             "description": "Toasted Garlic Flavored Bread",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":4.99,
             "subItems": [{
                     "id": "224516",
@@ -988,7 +989,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Portuguese Salad",
             "position": 28,
             "description": "Fresh Tomato, Nando&amp;#039;s Peri-Olives, Mixed Peppers, Cucumber and Onion on A Bed of Crisp Lettuce",
-            "images": [],
+            "images": "../FoodImg/5.jpg",
             "price":12,
             "subItems": [{
                 "id": "224534",
@@ -1010,7 +1011,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Mediterranean Salad",
             "position": 29,
             "description": "Piccolo Tomato, Cucumber, Sweet Peppers and Mixed Leaves. Sprinkled with Olives and Feta Cheese",
-            "images": [],
+            "images": "../FoodImg/6.jpg",
             "price":10.99,
             "subItems": [{
                 "id": "224537",
@@ -1032,7 +1033,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Caesar Salad (M)",
             "position": 30,
             "description": "Cos Lettuce Sprinkled with Parmesan Cheese, Caesar Dressing and Crunchy Croutons",
-            "images": [],
+            "images": "../FoodImg/4.jpg",
             "price":9.99,
             "subItems": [{
                 "id": "224540",
@@ -1060,7 +1061,7 @@ const oneRestaurantMenu = {"categorys": [{
         "name": "Cataplana Algarve",
         "position": 31,
         "description": "PERi-PERi Chicken Thighs, Mixed Peppers, Chickpeas, Spicy Rice and Cataplana Sauce",
-        "images": [],
+        "images": "../FoodImg/3.jpg",
         "price":12,
         "subItems": [{
             "id": "224612",
@@ -1087,7 +1088,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Wrap (Y)",
             "position": 32,
             "description": "A Lightly Toasted Wrap, Generously Filled With Tender Chicken, Chili Jam, Green Leaf Lettuce and Tangy Yoghurt Sauce",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":11.99,
             "subItems": [{
                     "id": "224630",
@@ -1138,7 +1139,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Breast Burger (M)",
             "position": 33,
             "description": "Served on A Toasted Portuguese Roll with Fresh Rocket, Tomato, Pickled Red Onions and Perinaise",
-            "images": [],
+            "images": "../FoodImg/2.jpg",
             "price":15.99,
             "subItems": [{
                     "id": "224639",
@@ -1189,7 +1190,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Caesar Wrap (M)",
             "position": 34,
             "description": "Served in A Toasted Wrap Full Of PERi-PERi Chicken, Crunchy Croutons, Parmesan Cheese and Sundried Tomatoes, All Smothered in Creamy Caesar Dressing",
-            "images": [],
+            "images": "../FoodImg/1.jpg",
             "price":15,
             "subItems": [{
                     "id": "224648",
@@ -1240,7 +1241,7 @@ const oneRestaurantMenu = {"categorys": [{
             "name": "Chicken Pita (M)",
             "position": 35,
             "description": "Served in A Lightly Toasted Pita, Stuffed With Chicken Tenders, Crisp Veggie Salad and Creamy Whip",
-            "images": [],
+            "images": "../FoodImg/5.jpg",
             "price":12,
             "subItems": [{
                     "id": "224657",
@@ -1289,4 +1290,9 @@ const oneRestaurantMenu = {"categorys": [{
     ]}
 ]}
 
-export default oneRestaurantMenu;
+function updateMenu(key, value) {
+    console.log(oneRestaurantMenu.categorys.menuItems.key, value);
+    // oneRestaurantMenu.categorys. = value;
+}
+
+export { oneRestaurantMenu, updateMenu };

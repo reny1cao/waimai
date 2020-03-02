@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import {updateMenu} from '../restDataWithMenu';
 import './ItemCard.css';
 
 export const ItemCard = (props) => {
-    const [foodName, setFoodName] = useState(props.name);
+    const [name, setFoodName] = useState(props.name);
     const [description, setDescription] = useState(props.description);
     const [price, setPrice] = useState(props.price);
     const [editMode, setEditMode] = useState(false);
@@ -10,22 +11,21 @@ export const ItemCard = (props) => {
 
     function changeEditMode(e) {
         setEditMode(!editMode);
-        console.log(e.target.value)
     }
     function handleChange(e) {
         e.preventDefault();
+        setFoodName(e.target.value);
         // console.log(e.target.value);
     }
 
     function renderEditView() {
         return (
-            <div className="item-card">
+            <div className="menu-wrappe">
                 <div className="info">
-                    <input name="foodName" type="text" defaultValue={foodName} onChange={handleChange}></input>
+                    <input name="name" type="text" defaultValue={name} onChange={handleChange}></input>
                     <input name="description" type="text" defaultValue={description}></input>
                     <input name="price" type="text" defaultValue={price}></input>
                 </div>
-                <img src="#" alt="food img"></img>
                 <button onClick={changeEditMode}>Save</button>
             </div>
         )
@@ -33,18 +33,21 @@ export const ItemCard = (props) => {
 
     function renderDefaultView() {
         return (
-            <div className="item-card">
+            <div className="menu-wrapper">
                 <div className="info">
-                    <h4>{foodName}</h4>
+                    <h4>{name}</h4>
                     <p>{description}</p>
                     <p>{price}</p>
                 </div>
-                <img src="#" alt="food img"></img>
+                {/* <img src={require(props.images)} alt="food img"></img> */}
                 <button onClick={changeEditMode}>Edit</button>
             </div>
         )
     }
 
-    return (editMode ? renderEditView() : renderDefaultView())
+    return (<div className="item-card">
+                {editMode ? renderEditView() : renderDefaultView()}
+                <img src={require("../FoodImg/1.jpg")} alt="food img"></img>
+            </div>)
 }
 
