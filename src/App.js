@@ -2,20 +2,25 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Home } from './components/Home'
 import { Menu } from './components/Menu'
+import LogInPage from './components/LogInPage'
 import './App.css';
 
-function App() {
-  return (
-      <div>
+class App extends React.Component {
+  state = {
+    ActionAvailable: "Log In"
+  }
+  
+  render() {
+    return (
       <Router>
-      <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/menu" component={Menu} />
-      </Switch>
+        <div>
+            <Route path="/" exact component={Home} />
+            <Route path="/menu" component={Menu} />
+            <Route path="/loginPage" component={LogInPage} />
+        </div>
       </Router>
-          
-      </div>
   );
+    }
 }
 
 export default App;

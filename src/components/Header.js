@@ -1,13 +1,25 @@
 import React from 'react'
-import { Login } from './Login'
+import Login from './Login'
 import { Avatar } from './Avatar'
 
-export const Header = () => {
-    return (
-        <div id="header">
-            <Login />
-            <Avatar />
-            <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
-        </div>
-    )
+import "./Header.css";
+
+class Header extends React.Component{
+    render() {
+        const {title} = this.props;
+        const {userState} = this.props;
+        
+        return (
+                <div id="header">
+                    <h1>{title}</h1>
+                    <Login 
+                        text = {userState}
+                    />
+                    <Avatar />
+                </div>
+        );
+
+    }
 }
+
+export default Header;

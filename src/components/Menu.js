@@ -1,6 +1,6 @@
 import React from 'react';
 import oneRestaurantMenu from '../restDataWithMenu';
-import { Login } from './Login'
+import Login from './Login'
 import { Avatar } from './Avatar'
 import { Header } from './Header';
 import { ItemCard } from './ItemCard';
