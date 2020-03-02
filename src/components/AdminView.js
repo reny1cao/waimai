@@ -6,7 +6,7 @@ import NameSearchBar from "./NameSearchBar";
 import RestaurantList from "./RestaurantList";
 import Button from '@material-ui/core/Button';
 
-import { searchName, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
+import { searchForName, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
 
 
 class AdminView extends React.Component {
@@ -16,16 +16,26 @@ class AdminView extends React.Component {
         searchName: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
-            {name: "Allen Hsiao", username:"user3", password:"user3"},
-            {name: "Allen Hsiao", username:"user4", password:"user4"},
-            {name: "Allen Hsiao", username:"user5", password:"user5"},
-            {name: "Allen Hsiao", username:"user6", password:"user6"},
-            {name: "Allen Hsiao", username:"user7", password:"user7"},
-            {name: "Allen Hsiao", username:"user8", password:"user8"}
+            {name: "Alice Hsiao", username:"user3", password:"user3"},
+            {name: "Allen Chen", username:"user4", password:"user4"},
+            {name: "Steven Hsiao", username:"user5", password:"user5"},
+            {name: "Mary Hsiao", username:"user6", password:"user6"},
+            {name: "Alfred Nyugen", username:"user7", password:"user7"},
+            {name: "Steven Lee", username:"user8", password:"user8"},
 
 
         ],
         restaurants: [
+            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
+            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
+            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
+            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
+            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
             {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
             area: "all", category: "Chinese", username:"user2", password:"user2"}
 
@@ -36,11 +46,11 @@ class AdminView extends React.Component {
 
         const target = event.target;
         const value = target.value;
-        const name = target.name;
 
         this.setState({
-            [name]: value
+            searchName: value
         })
+
     }
 
 
@@ -52,9 +62,9 @@ class AdminView extends React.Component {
                 title="Admin"
             />
             <NameSearchBar
-                name={this.state.searchName}
+                fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
-                searchName={() => searchName(this)}
+                searchForName={() => searchForName(this)}
             />
             <Button
             variant="contained"
@@ -85,9 +95,9 @@ class AdminView extends React.Component {
                     title="Admin"
                 />
                 <NameSearchBar
-                name={this.state.searchName}
+                fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
-                searchName={() => searchName(this)}
+                searchForName={() => searchForName(this)}
                 />
                 <Button
                 variant="contained"
