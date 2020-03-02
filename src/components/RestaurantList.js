@@ -2,6 +2,10 @@ import React from "react";
 import { uid } from "react-uid";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell"
+import TableHead from "@material-ui/core/TableHead"
+import TableRow from "@material-ui/core/TableRow"
+import TableContainer from "@material-ui/core/TableContainer"
 
 import RestaurantAdmin from "./RestaurantAdmin";
 class RestaurantList extends React.Component {
@@ -11,7 +15,18 @@ class RestaurantList extends React.Component {
     /* Our student list.  We use the state to iterate through the 
        student list and make an <li> for each one. */
     return (
-      <Table className="restaurant-list">
+        <TableContainer>
+            <Table className="restaurant-list" size="small">
+                <TableHead>
+                        <TableRow>
+                            <TableCell > Name </TableCell>
+                            <TableCell > Address </TableCell>
+                            <TableCell > Delivery Area </TableCell>
+                            <TableCell > Category </TableCell>
+                            <TableCell > Username </TableCell>
+                            <TableCell > Password </TableCell>
+                        </TableRow>
+                    </TableHead>
         <TableBody>
           {restaurants.map(restaurant => (
             <RestaurantAdmin
@@ -24,6 +39,7 @@ class RestaurantList extends React.Component {
           ))}
         </TableBody>
       </Table>
+        </TableContainer>
     );
   }
 }

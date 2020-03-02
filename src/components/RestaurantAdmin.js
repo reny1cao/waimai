@@ -49,12 +49,10 @@ class RestaurantAdmin extends React.Component {
             variant="contained"
             color="secondary"
             onClick={
-              /* Remove button onClick binds the student as the parameter to the remove function. */
               removeRestaurant.bind(this, AdminComponent, restaurant)
-              //() => this.removeStudent(student) // this also works
             }
           >
-            remove
+            Delete Restaurant
           </Button>
         </TableCell>
       </TableRow>
