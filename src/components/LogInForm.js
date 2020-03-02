@@ -17,10 +17,12 @@ class LogInForm extends React.Component {
   
       return (
         <Grid className="login-form__container" container>
-        <Grid className="login__bg-image center" spacing={1}>
-
+        <Grid className="login__bg-image" spacing={1}>
+          <img src={require("./../img/login-background.jpg")}>
+          </img>
             
         </Grid>
+
         <Grid
         className="user-login-form__grid"
         item

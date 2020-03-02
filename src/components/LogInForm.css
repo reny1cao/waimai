@@ -1,15 +1,15 @@
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.login-form__container {
+  justify-content: center;
 }
 
 .login__bg-image {
-  background-size: 50%;
-  background-repeat: no-repeat;
-  width: 100%;
+  float:left;
+  position: absolute;
+  width: 50%;
   height: 100%;
-  background-image: url("./../img/login-background.jpg");
 }
 
+.user-login-form__grid {
+  float: left;
+
+}
