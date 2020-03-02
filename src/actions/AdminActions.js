@@ -33,13 +33,14 @@ export const switchToUsers = page => {
     })
 }
 
-export const searchName = page => {
+export const searchForName = page => {
     const searchingFor = page.state.searchName
 
     const filterNames = page.state.users.filter(s => {
-        return s.name === searchingFor;
+        return s.name.toLowerCase().indexOf((searchingFor.toLowerCase())) !== -1;
     }
     )
+    
 
     page.setState({
         users: filterNames

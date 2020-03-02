@@ -8,9 +8,9 @@ import Input from './Input';
 class NameSearchBar extends React.Component {
     render() {
       const {
-        name,
+        searchName,
         handleChange,
-        searchName
+        searchForName
       } = this.props;
   
       return (
@@ -18,14 +18,14 @@ class NameSearchBar extends React.Component {
         
         <Input
         name="name"
-        value={name}
+        value={searchName}
         onChange={handleChange}
         label="Search by name:"
         />
         <Button
             variant="contained"
             color="primary"
-            onClick={searchName}
+            onClick={searchForName}
             className="search-button"
         >
         Search
