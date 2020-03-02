@@ -1,15 +1,28 @@
 .login-form__container {
+  position: relative;
   justify-content: center;
+  border: 2px solid black;
+  height: 600px;
 }
 
 .login__bg-image {
-  float:left;
   position: absolute;
-  width: 50%;
-  height: 100%;
+  left:0px;
+  margin:50px;
+  height:500px;
 }
 
 .user-login-form__grid {
-  float: left;
+  position:absolute;
+  left:600px;
+  top:120px;
+  margin:50px;
+}
 
+.user-login-form__button-grid{
+  position: absolute;
+  left:625px;
+  margin:50px;
+  top:300px;
+  justify-content: center;
 }
