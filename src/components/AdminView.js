@@ -1,9 +1,21 @@
 import React from 'react'
 
 import Header from "./Header";
+import UserList from "./UserList";
 
-class AdminPage extends React.Component {
-    states = {};
+
+class AdminView extends React.Component {
+    state = {
+        view: "customers",
+        customers: [
+            {username:"user", password:"user"}
+
+        ],
+        restaurants: [
+
+        ]
+
+    };
 
     handleInputChange = event => {
         const target = event.target;
@@ -16,14 +28,14 @@ class AdminPage extends React.Component {
             <div className="AdminPage">
                 <Header
                     title="Admin"
-                    userState="Log In"
                 />
-                <LogInForm
-                    
+                <UserList
+                users={this.state.customers} AdminComponent={this}
                 />
+                
             </div>
 
         );
     }
 }
-export default AdminPage;
+export default AdminView;
