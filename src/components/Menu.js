@@ -1,8 +1,6 @@
 import React from 'react';
 import oneRestaurantMenu from '../restDataWithMenu';
-import Login from './Login'
-import { Avatar } from './Avatar'
-import { Header } from './Header';
+import Header from './Header';
 import { ItemCard } from './ItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -24,10 +22,10 @@ function createItems(props) {
 export const Menu = () => {
     return (
         <div>
-            <div id="header">
-                <Login />
-                <Avatar />
-            </div>
+            <Header 
+                title="WAIMAI"
+                userState="Log In"
+            />
             <Tabs>
                 <TabList>
                     {oneRestaurantMenu.categorys.map(createCategorys)}

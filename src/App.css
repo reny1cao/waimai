@@ -11,6 +11,18 @@
 
 #searchBar {
     width: 300px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+
+    padding: 5px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
 
 #typeBar{
@@ -26,15 +38,9 @@ input[type=text] {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
-
     padding: 5px;
     background-color: white;
-    background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
 }
 
 #searchBar:focus {
@@ -94,30 +100,6 @@ input[type=text] {
     color: black;
 }
 
-.item-card {
-    flex: 0 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
-    padding: 10px;
-    margin: 10px;
-    max-width: 300px;
-    min-width: 300px;
-    display: inline-block;
-}
-
-.item-card .info {
-    width: 70%;
-    float: left;
-}
-
-.item-card img {
-    width: 30%;
-}
-
-.item-card h4, p, input, textarea{
-    padding: 0;
-    margin: 10px;
-    resize: none;
-}
 .customer-list{
     display: inline block;
     border-color: blue;

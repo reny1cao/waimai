@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './ItemCard.css';
 
 export const ItemCard = (props) => {
     const [foodName, setFoodName] = useState(props.name);
@@ -21,7 +22,7 @@ export const ItemCard = (props) => {
             <div className="item-card">
                 <div className="info">
                     <input name="foodName" type="text" defaultValue={foodName} onChange={handleChange}></input>
-                    <textarea name="description" type="text" defaultValue={description}></textarea>
+                    <input name="description" type="text" defaultValue={description}></input>
                     <input name="price" type="text" defaultValue={price}></input>
                 </div>
                 <img src="#" alt="food img"></img>
