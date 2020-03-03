@@ -17,6 +17,8 @@ import UserMenu from './components/UserMenu';
 class App extends React.Component {
   state = {
     ActionAvailable: "Log In",
+    User:[],
+    Restaurant:[],
     menu: [{
         id: 5,
         category: "Most Popular",
@@ -96,13 +98,28 @@ class App extends React.Component {
       })
     })
   }
+
+  addUser = (name, address, contact, preference, area, username, password) => {
+    this.setState(state => {
+      const list = state.User.push({
+        name: name,
+        address: address,
+        contact: contact,
+        preference: preference,
+        area: area,
+        username: username,
+        password: password
+      })
+      return list
+    })
+  }
   render() {
     return (
       <Router>
         <div>
             <Route path="/loginPage" component={LogInPage} />
             <Route path="/" exact component={Home} />
-            <Route path="/SignUpPage" component={SignUpPage} />
+            <Route path="/SignUpPage" render={props => (<SignUpPage {...props} user={this.state.User} addUser={this.addUser} />)} />
             <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
             <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
             <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
