@@ -2,6 +2,7 @@ body {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 #typeBar{
+    margin-top:10px;
     margin-left:10px;
     width: 80%;
     padding: 10px;
@@ -86,6 +87,7 @@ input[type=text] {
     position:relative;
     top:10px;
     box-sizing: border-box;
+    margin-left:10px;
 }
 
 #sign-up-info{
@@ -93,6 +95,7 @@ input[type=text] {
     position: relative;
     top:180px;
     box-sizing: border-box;
+    margin-left: 10px;
 }
 
 #signup-submit{
@@ -107,6 +110,15 @@ input[type=text] {
     background-color: rgb(110, 122, 236);
     color:black;
     height:30px;
+    margin-top:20px;
+}
+
+.sign-up-preference{
+    margin-top:10px;
+}
+
+.sign-up-category{
+    margin-top:10px;
 }
 
 
