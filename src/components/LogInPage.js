@@ -30,10 +30,14 @@ class LogInPage extends React.Component {
         const target = event.target;
         const value = target.value;
         
-        this.setState({
-            userType: value
-        })
+        if (value===undefined) {
+            this.setState({
+                userType: target.innerHTML
+            })}
+            else {
+            this.setState({userType: value})
 
+        }
     }
 
 
