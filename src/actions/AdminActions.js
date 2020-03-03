@@ -8,6 +8,8 @@ export const removeUser = (page, user) => {
     page.setState({
       users: filteredUsers
     });
+
+    page.baseState.users = filteredUsers
   };
 
 export const removeRestaurant = (page, restaurant) => {
@@ -19,6 +21,9 @@ export const removeRestaurant = (page, restaurant) => {
     page.setState({
       restaurants: filteredRestaurants
     });
+
+    page.baseState.restaurants = filteredRestaurants
+    
 };
 
 export const switchToRestaurants = page => {

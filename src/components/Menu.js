@@ -30,6 +30,7 @@ export const Menu = () => {
             <Header 
                 title="WAIMAI"
                 userState="Log In"
+                userState1="Sign Up"
             />
             <Tabs>
                 <TabList>

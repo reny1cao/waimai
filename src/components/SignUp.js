@@ -7,7 +7,7 @@ class SignUp extends React.Component {
         const {text} = this.props;
         return (
             <div id="signup">
-                <Link to={"./SignUpPage"}>
+                <Link to={"./../SignUpPage"}>
                 <button>{text}</button>
                 </Link>                
             </div>
