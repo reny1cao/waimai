@@ -14,6 +14,9 @@ class AdminView extends React.Component {
     state = {
         view: "users",
         searchName: "",
+        editName: "",
+        editUsername: "",
+        editPassword: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
             {name: "Alice Hsiao", username:"user3", password:"user3"},
@@ -69,12 +72,21 @@ class AdminView extends React.Component {
         const target = event.target;
         const value = target.value;
         const name = target.name;
-
-        // this.setState({
-        //     [name]: value
-        // })
-
-        console.log(target)
+        if (name === "name"){
+        this.setState({
+            editName: value
+        })
+    }
+        else if (name === "username"){
+            this.setState({
+                editUsername: value
+            })
+        }
+        else if (name ==="password") {
+            this.setState({
+                editPassword: value
+            })
+        }
         
     }
 

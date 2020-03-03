@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 
 import Input from './Input';
-import { removeUser } from "./../actions/AdminActions";
+import { removeUser, editUser } from "./../actions/AdminActions";
 
 
 const log = console.log;
@@ -16,7 +16,7 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+          editing: false
     };
   }
 
@@ -52,7 +52,6 @@ class User extends React.Component {
                     variant="contained"
                     color="secondary"
                     onClick={ () => {
-                        console.log(this.state)
                     this.setState({editing:true})
                     }}
                 >
@@ -83,7 +82,7 @@ class User extends React.Component {
 
     <TableCell component="th" scope="row">
     <Input
-        name="username"
+        name="password"
         value={user.password}
         onChange={handleChangeEdit}
         />
@@ -103,10 +102,9 @@ class User extends React.Component {
     <Button
         variant="contained"
         color="secondary"
-        onClick={ () => {
-
-            this.setState({editing:false})
-            }}
+        onClick={
+            editUser.bind(this, AdminComponent, user, this)
+            }
     >
         Save User
     </Button>
