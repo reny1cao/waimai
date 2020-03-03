@@ -50,7 +50,7 @@ export const logInRestaurant = page => {
         page.setState({
             errMsg:""
         })
-        window.location.replace("./../Menu");
+        window.location.replace("./../Restaurant/menu");
     }
     else {
         page.setState({

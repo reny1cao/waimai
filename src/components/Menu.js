@@ -28,7 +28,7 @@ export const Menu = () => {
     return (
         <div>
             <Header 
-                title="WAIMAI"
+                title="Mission Chinese Food"
                 userState="Log In"
                 userState1="Sign Up"
             />

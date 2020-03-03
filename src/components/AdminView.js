@@ -65,6 +65,19 @@ class AdminView extends React.Component {
 
     }
 
+    handleChangeEdit = event=>{
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        // this.setState({
+        //     [name]: value
+        // })
+
+        console.log(target)
+        
+    }
+
 
     render() {
         if (this.state.view === "restaurants"){
@@ -134,6 +147,7 @@ class AdminView extends React.Component {
                 </Button>
                 <UserList
                 users={this.state.users} AdminComponent={this}
+                handleChangeEdit={this.handleChangeEdit}
                 />
                 
             </div>
