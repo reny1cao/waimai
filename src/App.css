@@ -1,30 +1,6 @@
-#header {
-    height: 150px;
-    text-align: center;
+body {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
-
-#header #searchBar {
-    top: 50px;
-    position: relative;
-    padding: 5px;
-}
-
-#searchBar {
-    width: 300px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-
-    padding: 5px;
-    background-color: white;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-
 #typeBar{
     margin-left:10px;
     width: 80%;
@@ -44,35 +20,10 @@ input[type=text] {
     background-repeat: no-repeat;
 }
 
-#searchBar:focus {
-    width: 500px;
+#home h2 {
+    margin-left: 12px;
 }
 
-
-#login {
-    display: inline-block;
-    position: absolute;
-    right: 70px;
-    top: 25px;
-}
-
-#signup {
-    display: inline-block;
-    position: absolute;
-    right: 130px;
-    top: 25px;
-}
-
-#avatar {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: aqua;
-    display: inline-block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
 
 .flex-container {
     display: flex;
@@ -89,8 +40,8 @@ input[type=text] {
     flex: 0 0 auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
     padding: 5px;
-    margin: 10px;
-    min-width: 200px;
+    margin: 12px;
+    min-width: 220px;
     
 }
 
@@ -100,7 +51,7 @@ input[type=text] {
 }
 
 .flex-container .restaurantCard img {
-    max-width: 200px;
+    max-width: 220px;
 }
 
 .flex-container a, a:visited{

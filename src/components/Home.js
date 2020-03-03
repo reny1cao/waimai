@@ -16,14 +16,13 @@ function createRestaurant(props) {
 
 export const Home = () => {
     return (
-        <div>
+        <div id="home">
             <Header 
                 title="WAIMAI"
                 userState="Log In"
                 userState1="Sign Up"
             />
 
-            <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
             <h2>Popular</h2>
             <div className="flex-container">
                 {restaurantData.map(createRestaurant)}

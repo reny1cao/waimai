@@ -31,6 +31,7 @@ export default class UserMenu extends Component {
                 <Header 
                     title="WAIMAI"
                     userState="Log In"
+                    userState1="Sign Up"
                 />
                 <Tabs>
                     <TabList id="tabList">
