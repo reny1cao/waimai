@@ -4,7 +4,7 @@ import { Home } from './components/Home'
 import Menu from './components/Menu'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
-import { RestaurantSignUp } from './components/RestaurantSignUp'
+import RestaurantSignUp from './components/RestaurantSignUp'
 import { CustomerSignUp } from './components/CustomerSignUp'
 import { SignUpPage } from './components/SignUpPage';
 import LogInPage from './components/LogInPage'
@@ -113,18 +113,27 @@ class App extends React.Component {
       return list
     })
   }
+
+  addRestaurant = (restaurant) => {
+    this.setState(state => {
+      const list = state.Restaurant.push(restaurant)
+      console.log(this.state.Restaurant)
+      return list
+    })
+  }
+
   render() {
     return (
       <Router>
         <div>
             <Route path="/loginPage" component={LogInPage} />
             <Route path="/" exact component={Home} />
-            <Route path="/SignUpPage" render={props => (<SignUpPage {...props} user={this.state.User} addUser={this.addUser} />)} />
+            <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
             <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
             <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
             <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
             <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
-            <Route path = "/Restaurant/SignUp" component = {RestaurantSignUp} />   
+            <Route path = "/SignUpPage" component = {SignUpPage} />    
             <Route path = "/Customer/SignUp" component = {CustomerSignUp} />   
             <Route path="/UserEdit" component={UserEdit} />
             <Route path="/AdminView" component={AdminView} />

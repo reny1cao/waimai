@@ -23,7 +23,7 @@ const getCheckBox = (category) => {
         }  
         categoryList = categoryList.nextElementSibling;
     }
-    console.log(category);
+    // console.log(category);
     return category;
 
 }
@@ -40,6 +40,9 @@ export const submitFunction = (name,address,deliveryArea,username,password,categ
 
     const restaurant = new Restaurant(name, address, deliveryArea, username, password)
     restaurant.catorgory = getCheckBox(category);
+    // this.addRestaurant(restaurant)
+    // console.log(addRestaurant)
     console.log("hey")
-    console.log(restaurant)
+    return restaurant
+    // console.log(restaurant)
 }
