@@ -1,30 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Header from './Header';
-import ItemCard from './ItemCard';
+import UserItemCard from './UserItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import TabCard from './TabCard'
 import Restaurant from './Restaurant'
 import 'react-tabs/style/react-tabs.css';
 
-class Menu extends Component {
 
+export default class UserMenu extends Component {
     createCategorys = (props) => {
         return ( 
             <Tab key={props.id}>
-                <TabCard name={props.category} id={props.id} editCategory={this.props.editCategory}/>
+                {props.category}
             </Tab>
             
         )
-    }
-
-    handleAddMenu = () => {
-
-    }
+        }
 
     createItems = (props) => {
         return (
             <TabPanel key={props.id}>
-                {props.menuItems.map(item => <ItemCard key={item.id} id={item.id}name={item.name} description={item.description} price={item.price} category={props.category} editMenuItems={this.props.editMenuItems}/>)}
+                {props.menuItems.map(item => <UserItemCard key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} category={props.category} image={item.images}/>)}
                 {/* <button className="add-menu-card">add</button> */}
             </TabPanel>
         )
@@ -48,5 +43,3 @@ class Menu extends Component {
         )
     }
 }
-
-export default Menu;

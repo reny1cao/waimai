@@ -10,7 +10,7 @@ function createRestaurant(props) {
     }, 0)
     const rating = (parseInt(total)/props.reviews.length).toFixed(1);
 //     return <Link to={`/${props.id}`}  key={props.id}><RestaurantCard restImg={props.photograph} name={props.name} type={props.cuisine_type}  rating={rating}/> </Link>
-    return <Link to={"/Restaurant/menu"}  key={props.id}><RestaurantCard restImg={props.photograph} name={props.name} type={props.cuisine_type}  rating={rating}/> </Link>
+    return <Link to={"/menu"}  key={props.id}><RestaurantCard restImg={props.photograph} name={props.name} type={props.cuisine_type}  rating={rating}/> </Link>
 }
 
 
