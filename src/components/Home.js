@@ -22,7 +22,7 @@ export const Home = () => {
                 userState="Log In"
                 userState1="Sign Up"
             />
-
+            <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
             <h2>Popular</h2>
             <div className="flex-container">
                 {restaurantData.map(createRestaurant)}
