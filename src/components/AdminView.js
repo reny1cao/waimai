@@ -19,14 +19,16 @@ class AdminView extends React.Component {
         editPassword: "",
         editAddress: "",
         editNumber:"",
+        editPref:"",
+        editCategory:"",
         users: [
-            {name: "Allen Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user", password:"user"},
-            {name: "Alice Hsiao",address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user3", password:"user3"},
-            {name: "Allen Chen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"",username:"user4", password:"user4"},
-            {name: "Steven Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user5", password:"user5"},
-            {name: "Mary Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user6", password:"user6"},
-            {name: "Alfred Nyugen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user7", password:"user7"},
-            {name: "Steven Lee", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user8", password:"user8"},
+            {name: "Allen Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Pizza", username:"user", password:"user"},
+            {name: "Alice Hsiao",address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese", username:"user3", password:"user3"},
+            {name: "Allen Chen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese",username:"user4", password:"user4"},
+            {name: "Steven Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese", username:"user5", password:"user5"},
+            {name: "Mary Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese", username:"user6", password:"user6"},
+            {name: "Alfred Nyugen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese", username:"user7", password:"user7"},
+            {name: "Steven Lee", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"Chinese", username:"user8", password:"user8"},
 
 
         ],
@@ -98,6 +100,16 @@ class AdminView extends React.Component {
         else if (name ==="number") {
             this.setState({
                 editNumber: value
+            })
+        }
+        else if (name ==="preference") {
+            this.setState({
+                editPref: value
+            })
+        }
+        else if (name ==="category") {
+            this.setState({
+                editCategory: value
             })
         }
         

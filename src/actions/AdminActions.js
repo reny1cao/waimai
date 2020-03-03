@@ -34,6 +34,7 @@ export const editUser = (page, user, usercomp) => {
     const password = page.state.editPassword
     const address = page.state.editAddress
     const number = page.state.editNumber
+    const preference = page.state.editPref
     if (name !== ''){
     user.name = name
     }
@@ -43,12 +44,15 @@ export const editUser = (page, user, usercomp) => {
     if (password !== '') {
     user.password = password
     }
-    if (password !== '') {
+    if (address !== '') {
         user.address = address
         }
-    if (password !== '') {
+    if (number !== '') {
         user.number = number
         }
+        if (preference !== '') {
+            user.preference = preference
+            }
 
     usercomp.setState({
         editing: false
@@ -60,10 +64,11 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
     const address = page.state.editAddress
     const username = page.state.editUsername
     const password = page.state.editPassword
+    const category = page.state.editCategory
     if (name !== ''){
     restaurant.name = name
     }
-    if (name !== ''){
+    if (address !== ''){
         restaurant.address = address
         }
     if (username !== '') {
@@ -72,6 +77,9 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
     if (password !== '') {
     restaurant.password = password
     }
+    if (category !== '') {
+        restaurant.category = category
+        }
     restaurantcomp.setState({
         editing: false
     })

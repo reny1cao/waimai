@@ -111,7 +111,11 @@ class RestaurantAdmin extends React.Component {
     
             </TableCell>
             <TableCell component="th" scope="row">
-              {restaurant.category}
+        <Input
+        name="category"
+        value={restaurant.category}
+        onChange={handleChangeEdit}
+        />
             </TableCell>
             <TableCell component="th" scope="row">
             <Input
