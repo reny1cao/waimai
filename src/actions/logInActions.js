@@ -7,7 +7,7 @@ export const logInAdmin = page => {
 
     if (account.name === 'admin' && account.pass === 'admin') {
         page.setState({
-            errMsg:""
+            errMsg: ""
         })
         window.location.replace("./../AdminView");
     }
@@ -29,7 +29,7 @@ export const logInUser = page => {
         page.setState({
             errMsg:""
         })
-        window.location.replace("./../UserView");
+        window.location.replace("./../UserEdit");
     }
     else {
         page.setState({
@@ -50,7 +50,7 @@ export const logInRestaurant = page => {
         page.setState({
             errMsg:""
         })
-        window.location.replace("./../RestaurantView");
+        window.location.replace("./../Restaurant/menu");
     }
     else {
         page.setState({
