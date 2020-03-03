@@ -46,6 +46,28 @@ export const editUser = (page, user, usercomp) => {
     })
 }
 
+export const editRestaurant = (page, restaurant, restaurantcomp) => {
+    const name = page.state.editName
+    const address = page.state.editAddress
+    const username = page.state.editUsername
+    const password = page.state.editPassword
+    if (name !== ''){
+    restaurant.name = name
+    }
+    if (name !== ''){
+        restaurant.address = address
+        }
+    if (username !== '') {
+    restaurant.username = username
+    }
+    if (password !== '') {
+    restaurant.password = password
+    }
+    restaurantcomp.setState({
+        editing: false
+    })
+}
+
 export const switchToRestaurants = page => {
     page.setState({
         view: "restaurants"

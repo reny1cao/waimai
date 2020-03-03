@@ -17,6 +17,7 @@ class AdminView extends React.Component {
         editName: "",
         editUsername: "",
         editPassword: "",
+        editAddress: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
             {name: "Alice Hsiao", username:"user3", password:"user3"},
@@ -87,6 +88,11 @@ class AdminView extends React.Component {
                 editPassword: value
             })
         }
+        else if (name ==="address") {
+            this.setState({
+                editAddress: value
+            })
+        }
         
     }
 
@@ -122,7 +128,7 @@ class AdminView extends React.Component {
             Restaurants
             </Button>
             <RestaurantList
-            restaurants={this.state.restaurants} AdminComponent={this}
+            restaurants={this.state.restaurants} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
             />
             </div>
 
