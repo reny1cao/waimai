@@ -6,7 +6,7 @@ import NameSearchBar from "./NameSearchBar";
 import RestaurantList from "./RestaurantList";
 import Button from '@material-ui/core/Button';
 
-import { searchName, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
+import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
 
 
 class AdminView extends React.Component {
@@ -16,31 +16,51 @@ class AdminView extends React.Component {
         searchName: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
-            {name: "Allen Hsiao", username:"user3", password:"user3"},
-            {name: "Allen Hsiao", username:"user4", password:"user4"},
-            {name: "Allen Hsiao", username:"user5", password:"user5"},
-            {name: "Allen Hsiao", username:"user6", password:"user6"},
-            {name: "Allen Hsiao", username:"user7", password:"user7"},
-            {name: "Allen Hsiao", username:"user8", password:"user8"}
+            {name: "Alice Hsiao", username:"user3", password:"user3"},
+            {name: "Allen Chen", username:"user4", password:"user4"},
+            {name: "Steven Hsiao", username:"user5", password:"user5"},
+            {name: "Mary Hsiao", username:"user6", password:"user6"},
+            {name: "Alfred Nyugen", username:"user7", password:"user7"},
+            {name: "Steven Lee", username:"user8", password:"user8"},
 
 
         ],
         restaurants: [
             {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user2", password:"user2"}
+            area: "all", category: "Chinese", username:"user2", password:"user2"},
+            {name: "Emily", address:"919 Fulton St, Brooklyn, NY 11238", 
+            area: "all", category: "Pizza", username:"user13", password:"user13"},
+            {name: "Kang Ho Dong Baekjeong", address:"1 E 32nd St, New York, NY 10016", 
+            area: "all", category: "Asian", username:"user14", password:"user14"},
+            {name: "Lee's Chinese Food", address:"172 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user12", password:"user12"},
+            {name: "Miss Foodie", address:"1 E Broadway, New York, NY 10002", 
+            area: "all", category: "Chinese", username:"user15", password:"user15"},
+        
 
         ]
 
     };
+
+    baseState = this.state;
+
+    resetForm = () => {
+        const tempName = this.state.searchName
+        this.setState(this.baseState)
+        this.setState({
+            searchName: tempName
+        })
+    }
+
     handleInputChange = event => {
 
         const target = event.target;
         const value = target.value;
-        const name = target.name;
 
         this.setState({
-            [name]: value
+            searchName: value
         })
+
     }
 
 
@@ -50,11 +70,14 @@ class AdminView extends React.Component {
             <div className="AdminPage">
             <Header
                 title="Admin"
+                userState="Log In"
+                userState1="Sign Up"
             />
             <NameSearchBar
-                name={this.state.searchName}
+                fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
-                searchName={() => searchName(this)}
+                searchForName={() => searchForRestaurant(this)}
+                resetState={this.resetForm}
             />
             <Button
             variant="contained"
@@ -83,11 +106,14 @@ class AdminView extends React.Component {
             <div className="AdminPage">
                 <Header
                     title="Admin"
+                    userState="Log In"
+                    userState1="Sign Up"
                 />
                 <NameSearchBar
-                name={this.state.searchName}
+                fullName={this.state.searchName}
                 handleChange={this.handleInputChange}
-                searchName={() => searchName(this)}
+                searchForName={() => searchForName(this)}
+                resetState={this.resetForm}
                 />
                 <Button
                 variant="contained"

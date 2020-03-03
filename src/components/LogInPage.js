@@ -62,6 +62,7 @@ class LogInPage extends React.Component {
                         <Header
                             title="Log In"
                             userState="Log In"
+                            userState1="Sign Up"
                         />
 
                         <LogInForm
@@ -82,6 +83,7 @@ class LogInPage extends React.Component {
                         <Header
                             title="Log In"
                             userState="Log In"
+                            userState1="Sign Up"
                         />
 
                         <LogInForm
@@ -103,6 +105,7 @@ class LogInPage extends React.Component {
                     <Header
                         title="Log In"
                         userState="Log In"
+                        userState1="Sign Up"
                     />
                     <LogInForm
                         username={this.state.username}

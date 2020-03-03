@@ -7,7 +7,7 @@ export const logInAdmin = page => {
 
     if (account.name === 'admin' && account.pass === 'admin') {
         page.setState({
-            errMsg:""
+            errMsg: ""
         })
         window.location.replace("./../AdminView");
     }
