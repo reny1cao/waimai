@@ -22,6 +22,7 @@ class Header extends React.Component{
                         text = {userState1}
                     />
                     <Avatar />
+                    <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
                 </div>
         );
 

@@ -33,7 +33,7 @@ class NameSearchBar extends React.Component {
         </Button>
         <Button
             variant="contained"
-            color="danger"
+            color="secondary"
             onClick={resetState}
             className="back-button"
         >

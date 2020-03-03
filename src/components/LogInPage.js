@@ -30,10 +30,14 @@ class LogInPage extends React.Component {
         const target = event.target;
         const value = target.value;
         
-        this.setState({
-            userType: value
-        })
+        if (value===undefined) {
+            this.setState({
+                userType: target.innerHTML
+            })}
+            else {
+            this.setState({userType: value})
 
+        }
     }
 
 
@@ -69,7 +73,7 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
-                            errMsg={this.errMsg}
+                            errMsg={this.state.errMsg}
                             logIn={() => logInUser(this)}
                             backTrack={() =>backTrack(this)}
                         />
@@ -90,7 +94,7 @@ class LogInPage extends React.Component {
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
-                            errMsg={this.errMsg}
+                            errMsg={this.state.errMsg}
                             logIn={() => logInRestaurant(this)}
                             backTrack={() =>backTrack(this)}
                         />
@@ -111,7 +115,7 @@ class LogInPage extends React.Component {
                         username={this.state.username}
                         password={this.state.password}
                         handleChange={this.handleInputChange}
-                        errMsg={this.errMsg}
+                        errMsg={this.state.errMsg}
                         logIn={() => logInAdmin(this)}
                         backTrack={() =>backTrack(this)}
                             

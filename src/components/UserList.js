@@ -10,7 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer"
 import User from "./User";
 class UserList extends React.Component {
   render() {
-    const { users, AdminComponent } = this.props;
+    const { users, AdminComponent, handleChangeEdit} = this.props;
 
     /* Our student list.  We use the state to iterate through the 
        student list and make an <li> for each one. */
@@ -32,6 +32,8 @@ class UserList extends React.Component {
                         )} /* unique id required to help React render more efficiently when we modify the students list. */
                         user={user}
                         AdminComponent={AdminComponent}
+                        handleChangeEdit={handleChangeEdit}
+
                         />
                     ))}
                     </TableBody>

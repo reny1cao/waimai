@@ -1,53 +1,66 @@
-import React, { useState } from 'react';
-import {updateMenu} from '../restDataWithMenu';
+import React, { Component } from 'react';
 import './ItemCard.css';
 
-export const ItemCard = (props) => {
-    const [name, setFoodName] = useState(props.name);
-    const [description, setDescription] = useState(props.description);
-    const [price, setPrice] = useState(props.price);
-    const [editMode, setEditMode] = useState(false);
-    // const [img, setImg] = useState();
-
-    function changeEditMode(e) {
-        setEditMode(!editMode);
-    }
-    function handleChange(e) {
-        e.preventDefault();
-        setFoodName(e.target.value);
-        // console.log(e.target.value);
+class ItemCard extends Component {
+    state = {
+        name: this.props.name,
+        description: this.props.description,
+        price: this.props.price,
+        editable: false,
     }
 
-    function renderEditView() {
+    changeEditMode = () => {
+        this.setState({ editable: !this.state.editable });
+    }
+
+    handleNameChange = (e) => {
+        this.setState({name: e.target.value});
+        this.props.editMenuItems(this.props.category, e.target.name, e.target.value, this.props.id);
+    }
+
+    handleDescriptionChange = (e) => {
+        this.setState({description: e.target.value});
+        this.props.editMenuItems(this.props.category, e.target.name, e.target.value, this.props.id);
+    }
+
+    handlePriceChange = (e) => {
+        this.setState({price: e.target.value});
+        this.props.editMenuItems(this.props.category, e.target.name, e.target.value, this.props.id);
+    }
+
+    renderEditView = () => {
         return (
             <div className="menu-wrappe">
                 <div className="info">
-                    <input name="name" type="text" defaultValue={name} onChange={handleChange}></input>
-                    <input name="description" type="text" defaultValue={description}></input>
-                    <input name="price" type="text" defaultValue={price}></input>
+                    <input name="name" type="text" value={this.state.name} onChange={this.handleNameChange}></input>
+                    <input name="description" type="text" value={this.state.description} onChange={this.handleDescriptionChange}></input>
+                    <input name="price" type="text" value={this.state.price} onChange={this.handlePriceChange}></input>
                 </div>
-                <button onClick={changeEditMode}>Save</button>
+                <button onClick={this.changeEditMode}>Add</button>
             </div>
         )
     }
 
-    function renderDefaultView() {
+    renderDefaultView = () => {
         return (
             <div className="menu-wrapper">
                 <div className="info">
-                    <h4>{name}</h4>
-                    <p>{description}</p>
-                    <p>{price}</p>
+                    <h4>{this.state.name}</h4>
+                    <p>{this.state.description}</p>
+                    <p>{this.state.price}</p>
                 </div>
-                {/* <img src={require(props.images)} alt="food img"></img> */}
-                <button onClick={changeEditMode}>Edit</button>
+                <button onClick={this.changeEditMode}>Edit</button>
             </div>
         )
     }
 
-    return (<div className="item-card">
-                {editMode ? renderEditView() : renderDefaultView()}
+    render () {
+
+        return (<div className="item-card">
+                {this.state.editable ? this.renderEditView() : this.renderDefaultView()}
                 <img src={require("../FoodImg/1.jpg")} alt="food img"></img>
             </div>)
+        }
 }
 
+export default ItemCard;

@@ -10,7 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer"
 import RestaurantAdmin from "./RestaurantAdmin";
 class RestaurantList extends React.Component {
   render() {
-    const { restaurants, AdminComponent } = this.props;
+    const { restaurants, AdminComponent, handleChangeEdit} = this.props;
 
     /* Our student list.  We use the state to iterate through the 
        student list and make an <li> for each one. */
@@ -35,6 +35,7 @@ class RestaurantList extends React.Component {
               )} /* unique id required to help React render more efficiently when we modify the students list. */
               restaurant={restaurant}
               AdminComponent={AdminComponent}
+              handleChangeEdit={handleChangeEdit}
             />
           ))}
         </TableBody>

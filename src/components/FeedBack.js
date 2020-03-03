@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Button, Form, Modal } from 'react-bootstrap'
 import {Row, Col} from 'react-bootstrap/'
-import Modal from 'react-bootstrap/Modal'
+
 
 export class FeedBack extends Component {
     render() {

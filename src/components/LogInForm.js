@@ -44,7 +44,7 @@ class LogInForm extends React.Component {
         <div className='errMsg'>{errMsg}</div>
 
         <Grid
-        className="user-login-form__button-grid" spacing={1}
+        className="user-login-form__button-grid" container spacing={1}
         >
       
 

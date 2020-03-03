@@ -14,6 +14,10 @@ class AdminView extends React.Component {
     state = {
         view: "users",
         searchName: "",
+        editName: "",
+        editUsername: "",
+        editPassword: "",
+        editAddress: "",
         users: [
             {name: "Allen Hsiao", username:"user", password:"user"},
             {name: "Alice Hsiao", username:"user3", password:"user3"},
@@ -46,9 +50,11 @@ class AdminView extends React.Component {
 
     resetForm = () => {
         const tempName = this.state.searchName
+        const tempView = this.state.view
         this.setState(this.baseState)
         this.setState({
-            searchName: tempName
+            searchName: tempName,
+            view: tempView
         })
     }
 
@@ -61,6 +67,33 @@ class AdminView extends React.Component {
             searchName: value
         })
 
+    }
+
+    handleChangeEdit = event=>{
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        if (name === "name"){
+        this.setState({
+            editName: value
+        })
+    }
+        else if (name === "username"){
+            this.setState({
+                editUsername: value
+            })
+        }
+        else if (name ==="password") {
+            this.setState({
+                editPassword: value
+            })
+        }
+        else if (name ==="address") {
+            this.setState({
+                editAddress: value
+            })
+        }
+        
     }
 
 
@@ -95,7 +128,7 @@ class AdminView extends React.Component {
             Restaurants
             </Button>
             <RestaurantList
-            restaurants={this.state.restaurants} AdminComponent={this}
+            restaurants={this.state.restaurants} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
             />
             </div>
 
@@ -132,6 +165,7 @@ class AdminView extends React.Component {
                 </Button>
                 <UserList
                 users={this.state.users} AdminComponent={this}
+                handleChangeEdit={this.handleChangeEdit}
                 />
                 
             </div>
