@@ -30,6 +30,22 @@ class User extends React.Component {
                 </TableCell>
 
                 <TableCell component="th" scope="row">
+                {user.address}
+                </TableCell>
+
+                <TableCell component="th" scope="row">
+                {user.number}
+                </TableCell>
+
+                <TableCell component="th" scope="row">
+                {user.area}
+                </TableCell>
+
+                <TableCell component="th" scope="row">
+                {user.preference}
+                </TableCell>
+
+                <TableCell component="th" scope="row">
                 {user.username}
                 </TableCell>
 
@@ -71,6 +87,40 @@ class User extends React.Component {
         onChange={handleChangeEdit}
         />
     </TableCell>
+
+    <TableCell component="th" scope="row">
+        <Input
+        name="address"
+        value={user.address}
+        onChange={handleChangeEdit}
+        />
+    </TableCell>
+
+    <TableCell component="th" scope="row">
+        <Input
+        name="number"
+        value={user.number}
+        onChange={handleChangeEdit}
+        />
+    </TableCell>
+
+    <TableCell component="th" scope="row">
+        <Input
+        name="area"
+        value={user.area}
+        onChange={handleChangeEdit}
+        />
+    </TableCell>
+
+    <TableCell component="th" scope="row">
+        <Input
+        name="preference"
+        value={user.preference}
+        onChange={handleChangeEdit}
+        />
+    </TableCell>
+
+
 
     <TableCell component="th" scope="row">
     <Input

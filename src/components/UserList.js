@@ -20,6 +20,10 @@ class UserList extends React.Component {
                 <TableHead>
                         <TableRow>
                             <TableCell > Name </TableCell>
+                            <TableCell > Address </TableCell>
+                            <TableCell > Contact Number </TableCell>
+                            <TableCell > Area </TableCell>
+                            <TableCell > Preference </TableCell>
                             <TableCell > Username </TableCell>
                             <TableCell > Password </TableCell>
                         </TableRow>

@@ -32,6 +32,8 @@ export const editUser = (page, user, usercomp) => {
     const name = page.state.editName
     const username = page.state.editUsername
     const password = page.state.editPassword
+    const address = page.state.editAddress
+    const number = page.state.editNumber
     if (name !== ''){
     user.name = name
     }
@@ -41,6 +43,13 @@ export const editUser = (page, user, usercomp) => {
     if (password !== '') {
     user.password = password
     }
+    if (password !== '') {
+        user.address = address
+        }
+    if (password !== '') {
+        user.number = number
+        }
+
     usercomp.setState({
         editing: false
     })

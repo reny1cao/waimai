@@ -18,14 +18,15 @@ class AdminView extends React.Component {
         editUsername: "",
         editPassword: "",
         editAddress: "",
+        editNumber:"",
         users: [
-            {name: "Allen Hsiao", username:"user", password:"user"},
-            {name: "Alice Hsiao", username:"user3", password:"user3"},
-            {name: "Allen Chen", username:"user4", password:"user4"},
-            {name: "Steven Hsiao", username:"user5", password:"user5"},
-            {name: "Mary Hsiao", username:"user6", password:"user6"},
-            {name: "Alfred Nyugen", username:"user7", password:"user7"},
-            {name: "Steven Lee", username:"user8", password:"user8"},
+            {name: "Allen Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user", password:"user"},
+            {name: "Alice Hsiao",address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user3", password:"user3"},
+            {name: "Allen Chen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"",username:"user4", password:"user4"},
+            {name: "Steven Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user5", password:"user5"},
+            {name: "Mary Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user6", password:"user6"},
+            {name: "Alfred Nyugen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user7", password:"user7"},
+            {name: "Steven Lee", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"", preference:"", username:"user8", password:"user8"},
 
 
         ],
@@ -93,6 +94,13 @@ class AdminView extends React.Component {
                 editAddress: value
             })
         }
+
+        else if (name ==="number") {
+            this.setState({
+                editNumber: value
+            })
+        }
+        
         
     }
 
