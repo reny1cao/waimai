@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { submitFunction } from './restaurantFunction'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 export const RestaurantSignUp = () => {
@@ -66,7 +68,7 @@ export const RestaurantSignUp = () => {
                 </form>
             </div>
             <div id="signup-submit">
-                <button id="submit-button" onClick={()=>submitFunction(name,address,deliveryArea,username,password,category)}><h2>Submit</h2></button>
+                <Link to = "/loginPage"><button id="submit-button" onClick={()=>submitFunction(name,address,deliveryArea,username,password,category)}><h5>Submit</h5></button></Link>
             </div>
         </div>
     )

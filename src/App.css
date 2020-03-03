@@ -153,8 +153,9 @@ input[type=text] {
 #submit-button{
     border-radius:4px;
     border-color: white;
-    background-color: rgb(135, 217, 245);
-    color: rgb(83, 81, 81);
+    background-color: rgb(110, 122, 236);
+    color:black;
+    height:30px;
 }
 
 

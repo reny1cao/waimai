@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export const SignUpPage = () => {
     return (
         <div>
-            <p><button className = "restaurant-home"><Link to = "/Restaurant/SignUp">Sign up as customer</Link></button></p>
-            <p><button className = "restaurant-home"><Link to = "/Restaurant/SignUp">Sign up as restaurant</Link></button></p>
+            <p><Link to = "/Restaurant/SignUp"><button className = "restaurant-home">Sign up as customer</button></Link></p>
+            <p><Link to = "/Restaurant/SignUp"><button className = "restaurant-home">Sign up as restaurant</button></Link></p>
         </div>
     )
 }
