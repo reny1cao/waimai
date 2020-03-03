@@ -1,19 +1,28 @@
 import React from 'react'
-import { onClickFunction } from './restaurantFunction'
+import { submitFunction } from './restaurantFunction'
 
 
 export const RestaurantSignUp = () => {
     let category = [];
+    let name;
+    let deliveryArea;
+    let address;
+    let username;
+    let password;
     return (
         <div>
             <h1>Sign Up</h1>
             <div id = "sign-up">
                 <span>Restaurant Name</span>
-                <p><input id="typeBar" type="text" placeholder="Enter Restaurant Name"></input></p>
+                <form id = "signUpName">
+                    <input id='typeBar' type="text" placeholder="Enter Restaurant Name" />
+                </form>
             </div>
             <div id = "sign-up">
                 <span>Restaurant Address</span>
-                <p><input id="typeBar" type="text" placeholder="Enter Restaurant Adress"></input></p>
+                <form id = "signUpAddress">
+                    <input id="typeBar" type="text" placeholder="Enter Restaurant Adress" />
+                </form>
             </div>
             <div id = "sign-up">
                 <span>Restaurant Delivery Area</span>
@@ -28,32 +37,36 @@ export const RestaurantSignUp = () => {
                 <span>Restaurant Category</span>
                 <div className="sign-up-category">
                     <p><label>
-                        <input type="checkbox" id="myCheck" onClick={() => onClickFunction(category)}></input>Fast food
+                        <input type="checkbox" id="myCheck" ></input>Fast food
                     </label></p>
                     <p><label>
-                        <input type="checkbox" id="myCheck" onClick={() => onClickFunction(category)}></input>Healthy Food
+                        <input type="checkbox" id="myCheck" ></input>Healthy Food
                     </label></p>
                     <p><label>
-                        <input type="checkbox" id="myCheck" onClick={() => onClickFunction(category)}></input>Chinese
+                        <input type="checkbox" id="myCheck" ></input>Chinese
                     </label></p>
                     <p><label>
-                        <input type="checkbox" id="myCheck" onClick={() => onClickFunction(category)}></input>Thai
+                        <input type="checkbox" id="myCheck" ></input>Thai
                     </label></p>
                     <p><label>
-                        <input type="checkbox" id="myCheck" onClick={() => onClickFunction(category)}></input>Canadian
+                        <input type="checkbox" id="myCheck" ></input>Canadian
                     </label></p>
                 </div>
             </div>
             <div id = "sign-up-info">
                 <span>username</span>
-                <p><input id="typeBar" type="text" placeholder="Enter username"></input></p>
+                <form id = "signUpUsername">
+                    <input id="typeBar" type="text" placeholder="Enter username" />
+                </form>
             </div>
             <div id = "sign-up-info">
                 <span>password</span>
-                <p><input id="typeBar" type="text" placeholder="Enter password"></input></p>
+                <form id = "signUpPassword">
+                    <input id="typeBar" type="text" placeholder="Enter password"/>
+                </form>
             </div>
             <div id="signup-submit">
-                <button id="submit-button" Onclick><h2>Submit</h2></button>
+                <button id="submit-button" onClick={()=>submitFunction(name,address,deliveryArea,username,password,category)}><h2>Submit</h2></button>
             </div>
         </div>
     )

@@ -138,9 +138,9 @@ input[type=text] {
 }
 
 #sign-up-info{
-    /* height:100px; */
+    height:100px;
     position: relative;
-    top:130px;
+    top:150px;
     box-sizing: border-box;
 }
 

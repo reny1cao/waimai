@@ -9,7 +9,7 @@ import React from 'react'
 //     RestaurantList.push(newRestaurant)
 // }
 
-export const onClickFunction = (category) => {
+const getCheckBox = (category) => {
     const signUpCategory = document.getElementsByClassName("sign-up-category")
     let categoryList = signUpCategory[0].firstElementChild;
 
@@ -24,4 +24,22 @@ export const onClickFunction = (category) => {
         categoryList = categoryList.nextElementSibling;
     }
     console.log(category);
+    return category;
+
+}
+
+export const submitFunction = (name,address,deliveryArea,username,password,category) => {
+    const nameElement = document.querySelector('#signUpName')
+    name = nameElement.elements[0].value
+    const addressElement = document.querySelector('#signUpAddress')
+    address = addressElement.elements[0].value
+    const usernameElement = document.querySelector('#signUpUsername')
+    username = usernameElement.elements[0].value
+    const passwordElement = document.querySelector('#signUpPassword')
+    username = passwordElement.elements[0].value
+
+    const restaurant = new Restaurant(name, address, deliveryArea, username, password)
+    restaurant.catorgory = getCheckBox(category);
+    console.log("hey")
+    console.log(restaurant)
 }
