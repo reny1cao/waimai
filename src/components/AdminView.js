@@ -46,9 +46,11 @@ class AdminView extends React.Component {
 
     resetForm = () => {
         const tempName = this.state.searchName
+        const tempView = this.state.view
         this.setState(this.baseState)
         this.setState({
-            searchName: tempName
+            searchName: tempName,
+            view: tempView
         })
     }
 
