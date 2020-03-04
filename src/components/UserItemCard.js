@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class UserItemCard extends Component {
 
     addDish = () => {
-        this.props.addOrder({name:this.props.name})
+        this.props.addOrder({name:this.props.name, price: this.props.price})
     }
     render () {
         return (<div className="item-card">

@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import Header from './Header';
 import UserItemCard from './UserItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Link } from "react-router-dom";
 import Restaurant from './Restaurant'
 import 'react-tabs/style/react-tabs.css';
+// import { Link } from '@material-ui/core';
 
 
 export default class UserMenu extends Component {
@@ -36,7 +38,7 @@ export default class UserMenu extends Component {
             </TabPanel>
         )
     }
-    
+
     render() {
         return (
             <div>
@@ -45,6 +47,7 @@ export default class UserMenu extends Component {
                     userState="Log In"
                     userState1="Sign Up"
                 />
+                <Link to={{pathname:"/Cart", state:{cart:this.state.orders}}}><button id="cartButton">Cart</button></Link>
                 <Tabs>
                     <TabList id="tabList">
                         {this.props.menu.map(this.createCategorys)}

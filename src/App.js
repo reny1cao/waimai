@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/Home'
 import Menu from './components/Menu'
+import Cart from './components/Cart'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
 import RestaurantSignUp from './components/RestaurantSignUp'
@@ -131,6 +132,7 @@ class App extends React.Component {
             <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
             <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
             <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
+            <Route path="/Cart" component={Cart} />
             <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
             <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
             <Route path = "/SignUpPage" component = {SignUpPage} />    
