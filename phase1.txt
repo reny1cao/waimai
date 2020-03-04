@@ -26,5 +26,5 @@ Sign Up Page:
 - The sign up information can be seen in the console
 
 Customer Page:
--the order information can be seen in the console
+-the order information can be seen in cart
 
