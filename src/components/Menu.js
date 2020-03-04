@@ -35,8 +35,8 @@ class Menu extends Component {
             <div>
                 <Header 
                 title="Mission Chinese Food"
-                userState="Log In"
-                userState1="Sign Up"
+                // userState="Log In"
+                // userState1="Sign Up"
             />
                 <Tabs>
                     <TabList id="tabList">
