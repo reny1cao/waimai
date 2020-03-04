@@ -7,6 +7,18 @@ import 'react-tabs/style/react-tabs.css';
 
 
 export default class UserMenu extends Component {
+    state = {
+        orders: []
+    }
+    
+    addOrder = (dish) => {
+        this.setState(state => {
+            const list = state.orders.push(dish);
+            return list;
+        });
+        console.log(this.state.orders)
+    }
+    
     createCategorys = (props) => {
         return ( 
             <Tab key={props.id}>
@@ -14,12 +26,12 @@ export default class UserMenu extends Component {
             </Tab>
             
         )
-        }
+    }
 
     createItems = (props) => {
         return (
             <TabPanel key={props.id}>
-                {props.menuItems.map(item => <UserItemCard key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} category={props.category} image={item.images}/>)}
+                {props.menuItems.map(item => <UserItemCard key={item.id} id={item.id} name={item.name} description={item.description} price={item.price} category={props.category} image={item.images} addOrder={this.addOrder}/>)}
                 {/* <button className="add-menu-card">add</button> */}
             </TabPanel>
         )

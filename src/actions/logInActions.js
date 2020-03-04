@@ -29,7 +29,7 @@ export const logInUser = page => {
         page.setState({
             errMsg:""
         })
-        window.location.replace("./../UserEdit");
+        window.location.replace("./../");
     }
     else {
         page.setState({

@@ -3,11 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {Form, Button} from 'react-bootstrap'
 import {Row, Col} from 'react-bootstrap/'
 
-export class UserEdit extends Component {
+class UserEdit extends Component {
     render() {
         const name = sessionStorage.getItem('first_name') + ' ' + sessionStorage.getItem('last_name')
         return (
-         
           <Form>
               <a href="www.google.ca">
                 <img className="img-fluid" border="0" alt="W3Schools" src="../img/5.jpg" />
@@ -88,5 +87,5 @@ export class UserEdit extends Component {
     }
 }
 
-export default UserEdit
+export default UserEdit;
 

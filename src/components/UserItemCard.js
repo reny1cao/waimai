@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 export default class UserItemCard extends Component {
 
+    addDish = () => {
+        this.props.addOrder({name:this.props.name})
+    }
     render () {
         return (<div className="item-card">
                 <div className="menu-wrapper">
@@ -11,7 +14,7 @@ export default class UserItemCard extends Component {
                     <p>{this.props.price}</p>
                 </div>
             </div>
-                <button>+</button>
+                <button onClick={this.addDish}>+</button>
                 <img src={require("../FoodImg/1.jpg")} alt="food img"></img>
             </div>)
         }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { Home } from './components/Home'
+import Home from './components/Home'
 import Menu from './components/Menu'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
 import RestaurantSignUp from './components/RestaurantSignUp'
-import { CustomerSignUp } from './components/CustomerSignUp'
+import CustomerSignUp from './components/CustomerSignUp'
 import { SignUpPage } from './components/SignUpPage';
 import LogInPage from './components/LogInPage'
 import AdminView from './components/AdminView'
@@ -17,7 +17,7 @@ import UserMenu from './components/UserMenu';
 class App extends React.Component {
   state = {
     ActionAvailable: "Log In",
-    User:[],
+    Customer:[],
     Restaurant:[],
     menu: [{
         id: 5,
@@ -99,17 +99,10 @@ class App extends React.Component {
     })
   }
 
-  addUser = (name, address, contact, preference, area, username, password) => {
+  addCustomer = (customer) => {
     this.setState(state => {
-      const list = state.User.push({
-        name: name,
-        address: address,
-        contact: contact,
-        preference: preference,
-        area: area,
-        username: username,
-        password: password
-      })
+      const list = state.Customer.push(customer)
+      console.log(this.state.Customer)
       return list
     })
   }
@@ -134,7 +127,7 @@ class App extends React.Component {
             <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
             <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
             <Route path = "/SignUpPage" component = {SignUpPage} />    
-            <Route path = "/Customer/SignUp" component = {CustomerSignUp} />   
+            <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />   
             <Route path="/UserEdit" component={UserEdit} />
             <Route path="/AdminView" component={AdminView} />
             <Route path="/FeedBack" component={FeedBack} />

@@ -7,11 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class RestaurantSignUp extends Component{
     state={
         category : [],
-        name:"",
-        deliveryArea:"",
-        address:"",
-        username:"",
-        password:""
+        deliveryArea:[],
     }
 
     render(){
@@ -32,7 +28,7 @@ class RestaurantSignUp extends Component{
                 </div>
                 <div id = "sign-up">
                     <span>Restaurant Delivery Area</span>
-                    <p><select id="typeBar">
+                    <p><select id="signUpDelivreyArea">
                         <option value = "0">UTSG</option>
                         <option value = "1">UTM</option>
                         <option value = "2">UTSC</option>
@@ -72,8 +68,7 @@ class RestaurantSignUp extends Component{
                     </form>
                 </div>
                 <div id="signup-submit">
-                    {/* {console.log(this.props.addRestaurant)} */}
-                    <Link to = "/loginPage"><button id="submit-button" onClick={()=>this.props.addRestaurant(submitFunction(this.state.name,this.state.address,this.state.deliveryArea,this.state.username,this.state.password,this.state.category))}><h5>Submit</h5></button></Link>
+                    <Link to = "/loginPage"><button id="submit-button" onClick={()=>this.props.addRestaurant(submitFunction(this.state.category))}><h5>Submit</h5></button></Link>
                 </div>
             </div>
         )
