@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 export const RestaurantHome = () => {
     return (
         <div>
-            <p><button className = "restaurant-home"><Link to = "/Restaurant/Menu">Menu</Link></button></p>
-            <p><button className = "restaurant-home"><Link to = "/Restaurant/OrderRecord">Orders</Link></button></p>
+            <p><Link to = "/Restaurant/Menu"><button className = "restaurant-home">Menu</button></Link></p>
+            <p><Link to = "/Restaurant/OrderRecord"><button className = "restaurant-home">Orders</button></Link></p>
         </div>
     )
 }

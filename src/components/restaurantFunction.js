@@ -1,14 +1,6 @@
 import { Restaurant } from './Restaurant'
 import React from 'react'
 
-// const RestaurantList = require('RestaurantList');
-// export function addNewRestaurant(name, address, delieveryArea, catogory, username, password){
-//     const newRestaurant = new Restaurant(name, address, username, password);
-//     newRestaurant.delieveryArea.push(delieveryArea);
-//     newRestaurant.category.push();
-//     RestaurantList.push(newRestaurant)
-// }
-
 const getCheckBox = (category) => {
     const signUpCategory = document.getElementsByClassName("sign-up-category")
     let categoryList = signUpCategory[0].firstElementChild;
@@ -28,21 +20,20 @@ const getCheckBox = (category) => {
 
 }
 
-export const submitFunction = (name,address,deliveryArea,username,password,category) => {
+export const submitFunction = (category) => {
     const nameElement = document.querySelector('#signUpName')
-    name = nameElement.elements[0].value
+    const name = nameElement.elements[0].value
     const addressElement = document.querySelector('#signUpAddress')
-    address = addressElement.elements[0].value
+    const address = addressElement.elements[0].value
     const usernameElement = document.querySelector('#signUpUsername')
-    username = usernameElement.elements[0].value
+    const username = usernameElement.elements[0].value
     const passwordElement = document.querySelector('#signUpPassword')
-    username = passwordElement.elements[0].value
+    const password = passwordElement.elements[0].value
+    const deliveryAreaElement = document.getElementById('signUpDelivreyArea');
+    const deliveryArea = deliveryAreaElement.options[deliveryAreaElement.selectedIndex].text;
 
     const restaurant = new Restaurant(name, address, deliveryArea, username, password)
     restaurant.catorgory = getCheckBox(category);
-    // this.addRestaurant(restaurant)
-    // console.log(addRestaurant)
-    console.log("hey")
+
     return restaurant
-    // console.log(restaurant)
 }
