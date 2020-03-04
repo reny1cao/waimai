@@ -70,6 +70,7 @@ class LogInPage extends React.Component {
                         />
 
                         <LogInForm
+                        pageTitle={this.state.userType}
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
@@ -91,6 +92,7 @@ class LogInPage extends React.Component {
                         />
 
                         <LogInForm
+                        pageTitle={this.state.userType}
                             username={this.state.username}
                             password={this.state.password}
                             handleChange={this.handleInputChange}
@@ -112,6 +114,7 @@ class LogInPage extends React.Component {
                         userState1="Sign Up"
                     />
                     <LogInForm
+                        pageTitle={this.state.userType}
                         username={this.state.username}
                         password={this.state.password}
                         handleChange={this.handleInputChange}
