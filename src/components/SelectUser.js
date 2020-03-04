@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
-
+import "./SelectUser.css";
 
 class SelectUser extends React.Component{
     
@@ -11,17 +11,17 @@ class SelectUser extends React.Component{
             handleClick} = this.props;
         
         return (
-        <Grid className="login-form__container" container spacing={1}>
-        <Grid className="login__bg-image" >
-          <img src={require("./../img/login-background.jpg")}>
+        <div className="login-form__container">
+        <div className="login__bg-image" >
+          <img id="img" src={require("./../img/login-background.jpg")}>
           </img>
             
-        </Grid>
+        </div>
 
-        <Grid
-        className="select-user__grid" container spacing={3}>
+        <div
+        className="select-user__grid">
                 <div id="header">
-                    <h1 id="title">{title}</h1>
+                    <h1 id="select-title">{title}</h1>
                     <Button
                     value="Customer"
                     variant="contained"
@@ -50,8 +50,8 @@ class SelectUser extends React.Component{
                     Admin
                     </Button>
                 </div>
-        </Grid>
-        </Grid>
+        </div>
+        </div>
                 
         );
 

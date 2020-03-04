@@ -1,5 +1,5 @@
 .login-form__container {
-  position: absolute;
+    position: absolute;
     display: inline-block;
     justify-content: center;
     border: 2px solid black;
@@ -7,36 +7,34 @@
     height: 600px;
     width: 100%;
   }
+
+  #select-title {
+      font-size: 20px;
+  }
   
-.login__bg-image {
-  position: relative;
+  .login__bg-image {
+    position: relative;
     float:left;
     margin:50px;
     width:500px;
     height:500px;
     
-}
-
-#img {
-  width:500px;
-  height:500px;
-}
-
-.user-login-form__grid {
-  position:relative;
-    float:left;
-    align-content: center;
-    margin:50px;
-    width:250px;
-    height:500px;
-    top:200px;
-    left:100px;
   }
 
-.user-login-form__button-grid{
-  justify-content: center;
-}
-
-.errMsg{
-  color: red;
-}
+  #img {
+      width:500px;
+      height:500px;
+  }
+  
+  .select-user__grid {
+    position:relative;
+    float:left;
+    margin:50px;
+    width:400px;
+    height:500px;
+    top:200px;
+  }
+  
+  .select__submit-button{
+    justify-content: center;
+  }

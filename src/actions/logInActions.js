@@ -62,7 +62,8 @@ export const logInRestaurant = page => {
 export const backTrack = page => {
 
     page.setState({
-        userType: ""
+        userType: "",
+        errMsg: ""
     })
     
 }
