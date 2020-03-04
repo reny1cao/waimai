@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { Home } from './components/Home'
+import Home from './components/Home'
 import Menu from './components/Menu'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'

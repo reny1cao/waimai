@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Header from './Header';
 import { RestaurantCard } from './RestaurantCard';
 import restaurantData from '../restaurantData';
@@ -14,23 +14,28 @@ function createRestaurant(props) {
 }
 
 
-export const Home = () => {
-    return (
-        <div id="home">
-            <Header 
-                title="WAIMAI"
-                userState="Log In"
-                userState1="Sign Up"
-            />
-            <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
-            <h2>Popular</h2>
-            <div className="flex-container">
-                {restaurantData.map(createRestaurant)}
+class Home extends Component{
+    render(){
+        return (
+            <div id="home">
+                <Header 
+                    title="WAIMAI"
+                    userState="Log In"
+                    userState1="Sign Up"
+                />
+                <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
+                <h2>Popular</h2>
+                <div className="flex-container">
+                    {restaurantData.map(createRestaurant)}
+                </div>
+                <h2>New on Waimai</h2>
+                <div className="flex-container">
+                    {restaurantData.map(createRestaurant)}
+                </div>
             </div>
-            <h2>New on Waimai</h2>
-            <div className="flex-container">
-                {restaurantData.map(createRestaurant)}
-            </div>
-        </div>
-    )
+        )
+    }
+    
 }
+
+export default Home;

@@ -21,7 +21,7 @@ class SelectUser extends React.Component{
         <Grid
         className="select-user__grid" container spacing={3}>
                 <div id="header">
-                    <h1 id="title">{title}</h1>
+                    <h3 id="title">{title}</h3>
                     <Button
                     value="Customer"
                     variant="contained"

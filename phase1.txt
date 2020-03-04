@@ -1,0 +1,24 @@
+This app uses React use npm install and npm start to launch the app.
+
+Log In Page:
+- In the log in page you first select whether you are a customer, restaurant owner, or admin.
+- Each button will lead to the corresponding log in view
+    For customer, use username: user and password: user
+    For restaurant, use username: user2 and password: user2
+    For admin, use username: admin and password: admin
+- Only these usernames/ password will work on their respective pages, wrong input will show an error message
+- Back button after selecting the type of user will bring you back to the selection screen
+- From this page you can also access the sign up page on the top right
+- Entering the correct credentials and clicking Log In will direct you to corresponding pages
+
+Admin Page:
+- Default shows the users on the "server" with their information inputed during signup
+- The User and Restaurant buttons on the top can toggle between viewing list of users or lists of restaurants
+- Both users and restaurants have remove button that removes their info "permenantly" from the "server"
+- Both have edit function, when clicked all fields in the row becomes editable or dropdown menu
+    Clicking Save will save the new info "to the server"
+    Cannot save empty string
+- Search bar on top allows admin to search by name for both 
+    Will look for the string typed within the string in each user/restaurant name and filter (capitalization does not matter)
+- Back button will refresh the view to unfiltered but removed users/restaurants will remain removed
+
