@@ -6,6 +6,8 @@ import NameSearchBar from "./NameSearchBar";
 import RestaurantList from "./RestaurantList";
 import Button from '@material-ui/core/Button';
 
+import "./AdminView.css";
+
 import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
 
 
@@ -21,6 +23,7 @@ class AdminView extends React.Component {
         editNumber:"",
         editPref:"",
         editCategory:"",
+        // Users and Restaurant data here is hardcoded, would be fetched from server when signed up
         users: [
             {name: "Allen Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"all", preference:"Pizza", username:"user", password:"user"},
             {name: "Alice Hsiao",address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTSC", preference:"Chinese", username:"user3", password:"user3"},
@@ -115,6 +118,9 @@ class AdminView extends React.Component {
         
         
     }
+    //When editing the information, this will also be sent to server to update proper 
+    //username and password combination. Information will also update on corresponding
+    //user or restaurant profile pages.
 
 
     render() {
@@ -126,14 +132,9 @@ class AdminView extends React.Component {
                 userState="Log In"
                 userState1="Sign Up"
             />
-            <NameSearchBar
-                fullName={this.state.searchName}
-                handleChange={this.handleInputChange}
-                searchForName={() => searchForRestaurant(this)}
-                resetState={this.resetForm}
-            />
+            <div className="toggleContainer">
             <Button
-            variant="contained"
+            variant="outlined"
             color="primary"
             onClick={() => switchToUsers(this)}
             className="admin-form__user-button"
@@ -142,11 +143,21 @@ class AdminView extends React.Component {
             </Button>
             <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             className="admin-form__restaurant-button"
             >
             Restaurants
             </Button>
+            </div>
+            <div className="searchContainer">
+            <NameSearchBar
+                className="search"
+                fullName={this.state.searchName}
+                handleChange={this.handleInputChange}
+                searchForName={() => searchForRestaurant(this)}
+                resetState={this.resetForm}
+            />
+            </div>
             <RestaurantList
             restaurants={this.state.restaurants} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
             />
@@ -162,27 +173,32 @@ class AdminView extends React.Component {
                     userState="Log In"
                     userState1="Sign Up"
                 />
-                <NameSearchBar
-                fullName={this.state.searchName}
-                handleChange={this.handleInputChange}
-                searchForName={() => searchForName(this)}
-                resetState={this.resetForm}
-                />
+                <div className="toggleContainer">
                 <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 className="admin-form__user-button"
                 >
                 Users
                 </Button>
                 <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 onClick={() => switchToRestaurants(this)}
                 className="admin-form__restaurant-button"
                 >
                 Restaurants
                 </Button>
+                </div>
+                <div className="searchContainer">
+                <NameSearchBar
+                className="search"
+                fullName={this.state.searchName}
+                handleChange={this.handleInputChange}
+                searchForName={() => searchForName(this)}
+                resetState={this.resetForm}
+                />
+                </div>
                 <UserList
                 users={this.state.users} AdminComponent={this}
                 handleChangeEdit={this.handleChangeEdit}

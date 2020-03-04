@@ -14,20 +14,23 @@ class LogInForm extends React.Component {
         password,
         logIn,
         backTrack,
-        errMsg
+        errMsg,
+        pageTitle
       } = this.props;
   
       return (
-        <Grid className="login-form__container" container spacing={1}>
-        <Grid className="login__bg-image" >
-          <img src={require("./../img/login-background.jpg")}>
+        <div className="login-form__container">
+        <div className="login__bg-image" >
+          <img id='img' src={require("./../img/login-background.jpg")}>
           </img>
             
-        </Grid>
+        </div>
 
-        <Grid
-        className="user-login-form__grid" container spacing={1}>
+        <div
+        className="user-login-form__grid">
+          <h1>{pageTitle}</h1>
         <Input
+        id="userinput"
         name="username"
         value={username}
         onChange={handleChange}
@@ -35,15 +38,15 @@ class LogInForm extends React.Component {
         />
 
         <Input
+        id="passinput"
         name="password"
         value={password}
         onChange={handleChange}
         label="Password"
         />
-        </Grid>
         <div className='errMsg'>{errMsg}</div>
 
-        <Grid
+        <div
         className="user-login-form__button-grid" container spacing={1}
         >
       
@@ -64,8 +67,9 @@ class LogInForm extends React.Component {
         >
         Back
         </Button>
-        </Grid>
-        </Grid>
+        </div>
+        </div>
+        </div>
         );
     }
   }

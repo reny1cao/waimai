@@ -1,19 +1,12 @@
-export const Customer = [
-    {
-        id: 1,
-        name: 'a',
-        address: '386 Yonge Street',
-        contactNumber: '647-998-6999',
-        order: 'duck',
-        specialRequirement: ''
-    },
-    {
-        id: 2,
-        name: 'b',
-        address: '1090 Queen Street West',
-        contactNumber: '647-888-6999',
-        order: 'chicken',
-        specialRequirement: ''
+export class Customer {
+    constructor(name, address,deliveryArea, contactNumber, username, password) {
+        this.name = name;
+        this.address = address;
+        this.deliveryArea = deliveryArea;
+        this.contactNumber = contactNumber;
+        this.preference = [];
+        this.username = username;
+        this.password = password;
+        this.order = [];
     }
-
-]
+}

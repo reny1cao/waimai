@@ -7,7 +7,7 @@ export const logInAdmin = page => {
 
     if (account.name === 'admin' && account.pass === 'admin') {
         page.setState({
-            errMsg: ""
+            errMsg: "successfully log in"
         })
         window.location.replace("./../AdminView");
     }
@@ -27,7 +27,7 @@ export const logInUser = page => {
 
     if (account.name === 'user' && account.pass === 'user') {
         page.setState({
-            errMsg:""
+            errMsg:"successfully log in"
         })
         window.location.replace("./../");
     }
@@ -48,7 +48,7 @@ export const logInRestaurant = page => {
 
     if (account.name === 'user2' && account.pass === 'user2') {
         page.setState({
-            errMsg:""
+            errMsg:"successfully log in"
         })
         window.location.replace("./../RestaurantHome");
     }
@@ -62,7 +62,8 @@ export const logInRestaurant = page => {
 export const backTrack = page => {
 
     page.setState({
-        userType: ""
+        userType: "",
+        errMsg: ""
     })
     
 }

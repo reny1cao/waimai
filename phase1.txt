@@ -22,3 +22,9 @@ Admin Page:
     Will look for the string typed within the string in each user/restaurant name and filter (capitalization does not matter)
 - Back button will refresh the view to unfiltered but removed users/restaurants will remain removed
 
+Sign Up Page:
+- The sign up information can be seen in the console
+
+Customer Page:
+-the order information can be seen in the console
+
