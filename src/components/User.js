@@ -4,12 +4,12 @@ import Button from "@material-ui/core/Button";
 
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
 import Input from './Input';
-import { removeUser, editUser } from "./../actions/AdminActions";
+import { removeUser, editUser, setChange } from "./../actions/AdminActions";
 
-
-const log = console.log;
 
 class User extends React.Component {
 
@@ -19,9 +19,15 @@ class User extends React.Component {
           editing: false
     };
   }
+  
 
   render() {
+      
     const { user, AdminComponent, handleChangeEdit} = this.props;
+
+    const onChangeDropdown = event => {
+        setChange(user, this, event.target.value);
+    };
     if (this.state.editing === false){
     return (
                 <TableRow className="user" key={user.name}>
@@ -105,11 +111,17 @@ class User extends React.Component {
     </TableCell>
 
     <TableCell component="th" scope="row">
-        <Input
-        name="area"
-        value={user.area}
-        onChange={handleChangeEdit}
-        />
+        <FormControl>
+                <Select
+                onChange={onChangeDropdown}
+                value={user.area}
+                >
+                <MenuItem value={"UTM"}>UTM</MenuItem>
+                <MenuItem value={"UTSC"}>UTSC</MenuItem>
+                <MenuItem value={"UTSG"}>UTSG</MenuItem>
+                <MenuItem value={"all"}>all</MenuItem>
+                </Select>
+            </FormControl>
     </TableCell>
 
     <TableCell component="th" scope="row">

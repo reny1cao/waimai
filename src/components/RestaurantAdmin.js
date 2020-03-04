@@ -3,10 +3,12 @@ import Button from "@material-ui/core/Button";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import Input from './Input';
 
-import { removeRestaurant, editRestaurant } from "./../actions/AdminActions";
+import { removeRestaurant, editRestaurant, setChange } from "./../actions/AdminActions";
 
 
 class RestaurantAdmin extends React.Component {
@@ -19,18 +21,12 @@ class RestaurantAdmin extends React.Component {
   }
 
   render() {
-    const { restaurant, AdminComponent, handleChangeEdit, onChangeDropdown} = this.props;
+    const { restaurant, AdminComponent, handleChangeEdit} = this.props;
 
-    const areaOptions = [{
-        text: "UTM",
-        value: "UTM"},{
-            text:"UTSC",
-            value: "UTSC"}
-            ,{
-                text:"UTSG",
-                value: "UTSG"}
-            ,{text:"all",
-        value:"all"}]
+    const onChangeDropdown = event => {
+        setChange(restaurant, this, event.target.value);
+    };
+
     if (this.state.editing === false){
     return (
       <TableRow className="restaurant" key={restaurant.name}>
@@ -100,14 +96,17 @@ class RestaurantAdmin extends React.Component {
             </TableCell>
     
             <TableCell component="th" scope="row">
+                <FormControl>
                 <Select
-                placeholder='area'
-                search
-                selection
-                options={areaOptions}
                 onChange={onChangeDropdown}
                 value={restaurant.area}
-                />
+                >
+                <MenuItem value={"UTM"}>UTM</MenuItem>
+                <MenuItem value={"UTSC"}>UTSC</MenuItem>
+                <MenuItem value={"UTSG"}>UTSG</MenuItem>
+                <MenuItem value={"all"}>all</MenuItem>
+                </Select>
+            </FormControl>
     
             </TableCell>
             <TableCell component="th" scope="row">

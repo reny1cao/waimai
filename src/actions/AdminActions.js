@@ -123,3 +123,9 @@ export const searchForRestaurant = page => {
     })
 }
 
+export const setChange = (thing, comp, value) => {
+    thing.area = value
+    comp.setState({
+        editing: true
+    })
+}
