@@ -1,13 +1,12 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 
 class Input extends React.Component {
     render() {
         const { label, value, onChange, name} = this.props;
 
         return (
-            <Grid>
+            <div>
               <TextField
                 name={name}
                 label={label}
@@ -16,8 +15,9 @@ class Input extends React.Component {
                 className="input"
                 margin="normal"
                 onChange={onChange}
+                variant="outlined"
               />
-            </Grid>
+            </div>
           );
     }
 }
