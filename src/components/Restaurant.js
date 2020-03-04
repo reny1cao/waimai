@@ -22,7 +22,7 @@ export class Restaurant {
         this.addCategory = (name) => {
             this.menu.catorgory.push({
                 "id": "",
-                "name": "name",
+                "name": name,
                 menuItems: [{
                     "id": "",
                     "name": "",
