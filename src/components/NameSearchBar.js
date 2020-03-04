@@ -24,7 +24,6 @@ class NameSearchBar extends React.Component {
         label="Search by name:"
         />
         <Button
-            variant="contained"
             color="primary"
             onClick={searchForName}
             className="search-button"
@@ -32,7 +31,6 @@ class NameSearchBar extends React.Component {
         Search
         </Button>
         <Button
-            variant="contained"
             color="secondary"
             onClick={resetState}
             className="back-button"
