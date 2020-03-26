@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // Mongo and Mongoose
-// const { ObjectID } = require('mongodb');
+const { ObjectID } = require('mongodb');
 const { mongoose } = require('./db/mongoose');
+
 const { Customer } = require('./models/customer');
+const { Order } = require('./models/order');
+const { Restaurant } = require('./models/restaurant');
 
 
 app.get('/', (req, res) => {
@@ -18,9 +21,8 @@ app.get('/', (req, res) => {
 
 
 /* Customer resource routes */
-// A POST route to create a cusotmer
 
-app.post('/Customer/SignUp', (req, res) => {
+app.post('/customer/signUp', (req, res) => {
     
     const {name, address, contactNumber, deliveryArea, preference, username, password} = req.body;
     const customer = new Customer({
@@ -43,7 +45,8 @@ app.post('/Customer/SignUp', (req, res) => {
     )
 })
 
-app.get('/logInPage', (req, res) => {
+
+app.get('/login-page', (req, res) => {
     const {username, password} = req.body;
 
     Customer.findOne({username:username}, (err, customer) => {
@@ -64,9 +67,103 @@ app.get('/logInPage', (req, res) => {
     })
 })
 
+app.get('/customer/:id', (req, res) => {
+    const id = req.params.id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send()  
+		return;  
+    }
+    
+	Customer.findById(id).then((customer) => {
+		if (!customer) {
+			res.status(404).send()  
+		} else {
+			res.send(customer)
+		}
+	}).catch((error) => {
+		res.status(500).send() 
+	})
+})
+
+//Save newly created order to customer, order, restaurant
+app.post('/customer/:id/:rest_id/cart', (req, res) => {
+    const id = req.params.id;
+    const rest_id = req.params.rest_id;
+    const { dishes, totalPrice, time, deliveryAddress} = req.body;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("customer id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(rest_id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    const orderInfo = {
+        dishes: dishes,
+        totalPrice: totalPrice,
+        time: time,
+        deliveryAddress: deliveryAddress,
+        deliverTo: id,
+        deliverFrom: rest_id
+    }
+
+    const order = new Order(orderInfo);
+
+    order.save();
+
+    Customer.findById(id).then((customer) => {
+		if (!customer) {
+			res.status(404).send("customer not found")  
+		} else {
+            customer.activeOrders.push(orderInfo);
+            customer.save();
+			res.send(customer)
+		}
+	}).catch((error) => {
+		res.status(500).send() 
+    })
+
+    Restaurant.findById(rest_id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send("restaurant not found")  
+		} else {
+            restaurant.activeOrders.push(orderInfo);
+            restaurant.save();
+			res.send(restaurant)
+		}
+	}).catch((error) => {
+		res.status(500).send() 
+    })
+})
 
 
+/* Restaurant resource routes */
 
+app.post('/restaurant/sign-up', (req, res) => {
+    const {name, address, deliveryArea, category, username, password} = req.body;
+
+    const restaurant = new Restaurant({
+        name: name,
+        address: address,
+        deliveryArea: deliveryArea,
+        category: category,
+        username: username,
+        password: password
+    });
+
+    restaurant.save().then(
+        result => {
+            res.send(result);
+        },
+        error => {
+            res.status(400).send(error);
+        }
+    )
+})
 
 
 
