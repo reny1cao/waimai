@@ -1,3 +1,4 @@
+const { OrderSchema } = require('./order') ;
 const mongoose = require('mongoose');
 
 const CustomerSchema = new mongoose.Schema({
@@ -7,9 +8,11 @@ const CustomerSchema = new mongoose.Schema({
     deliveryArea: String,
     preference: String,
     username: String,
-    password: String
+    password: String,
+    activeOrders: [OrderSchema],
+    orderHistory: [OrderSchema]
 });
 
-const Customer = mongoose.model('Restaurant', CustomerSchema);
+const Customer = mongoose.model('Customer', CustomerSchema);
 
 module.exports = { Customer };
