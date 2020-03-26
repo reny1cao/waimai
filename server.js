@@ -9,8 +9,8 @@ app.use(bodyParser.json());
 // Mongo and Mongoose
 const { ObjectID } = require('mongodb')
 const { mongoose } = require('./db/mongoose');
-const { Restaurant } = require('./models/restaurant')
-const { Customer } = require('./models/customer')
+// const { Restaurant } = require('./models/restaurant')
+// const { Customer } = require('./models/customer')
 
 
 

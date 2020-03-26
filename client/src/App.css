@@ -1,0 +1,155 @@
+
+#typeBar{
+    margin-top:10px;
+    margin-left:10px;
+    width: 80%;
+    padding: 10px;
+    position: relative;
+    height: 30px;
+}
+
+#signUpDelivreyArea{
+    margin-top:10px;
+    margin-left:10px;
+    width: 80%;
+    padding: 10px;
+    position: relative;
+    height: 30px;
+}
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 5px;
+    background-color: white;
+    background-repeat: no-repeat;
+}
+
+#home h2 {
+    margin-left: 12px;
+}
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.flex-container::-webkit-scrollbar {
+    display: none;
+}
+
+.flex-container .restaurantCard {
+    flex: 0 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    padding: 5px;
+    margin: 12px;
+    min-width: 220px;
+    
+}
+
+.flex-container .restaurantCard h4, p {
+    padding: 0;
+    margin: 10px;
+}
+
+.flex-container .restaurantCard img {
+    max-width: 220px;
+}
+
+.flex-container a, a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.customer-list{
+    display: inline block;
+    border-color: blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+}
+
+.order-title{
+    margin-top:10px;
+    margin-left: 10px;
+}
+
+.order-list{
+    display: inline block;
+    border-color: blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.restaurant-home{
+    margin-top:20%;
+    width: 50%;
+    height: 50%;
+    margin-left: 30%;
+    margin-right: 30%; 
+    position: relative;
+    border-radius:4px;
+    font-size:16px;
+    padding: 32px*40px;
+}
+
+.restaurant-home a{
+    text-decoration: none;
+}
+
+#sign-up{
+    height:100px;
+    position:relative;
+    top:10px;
+    box-sizing: border-box;
+    margin-left:10px;
+}
+
+#sign-up-info{
+    height:100px;
+    position: relative;
+    top:180px;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+#signup-submit{
+    position:relative;
+    top:150px;
+    left:75%;
+}
+
+#submit-button{
+    border-radius:4px;
+    border-color: white;
+    background-color: rgb(110, 122, 236);
+    color:black;
+    height:30px;
+    margin-top:20px;
+}
+
+.sign-up-preference{
+    margin-top:10px;
+}
+
+.sign-up-category{
+    margin-top:10px;
+}
+
+
+#cartButton {
+    display: inline-block;
+    position: relative;
+    left: 95%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 3px 3px;
+    border-radius: 4px;
+    border: none;
+    padding: 10px;
+    margin: 0 5px 0 5px;
+    background-color: white;
+}

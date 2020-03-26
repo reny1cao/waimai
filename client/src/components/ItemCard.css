@@ -1,0 +1,46 @@
+.item-card {
+    flex: 0 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 150px;
+    display: inline-block;
+}
+
+.item-card .info {
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+
+.item-card img {
+    width: 30%;
+}
+
+.item-card h4, p, input, textarea{
+    padding: 0;
+    margin: 10px;
+    resize: none;
+}
+
+/* .item-card .menu-wrappe {
+    display: inline-block;
+} */
+.item-card button {
+    position: relative;
+    margin: 5px;
+    left: 50px;
+    bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 3px 3px;
+    border-radius: 4px;
+    border: none;
+    background-color: white;
+    border-radius: 100px;
+}
+
+.del-tab {
+    border-radius: 50%;
+    margin: 4px;
+}
