@@ -89,7 +89,6 @@ app.get('/customer/:id', (req, res) => {
 //Save newly created order to customer, order, restaurant
 app.post('/customer/:id/cart', (req, res) => {
     const customerId = req.params.id;
-    // const rest_id = req.params.rest_id;
     const { dishes, totalPrice, time, deliveryAddress, restaurantIdStr} = req.body;
 
     if (!ObjectID.isValid(customerId)) {
@@ -181,6 +180,172 @@ app.post('/restaurant/sign-up', (req, res) => {
     )
 })
 
+//add category
+app.patch('/restaurant/:id', (req, res) => {
+    const id = req.body.id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    const { name } = req.body;
+
+    Restaurant.findById(id).then((restarurant) => {
+        if (!restaurant) {
+            res.status(404).send();
+        } else {
+            restarurant.menu.push({ name: name });
+            restarurant.save().then((result) => {
+                res.send(result);
+            }, (error) => {
+                res.status(400).send(error);
+            });
+        }
+    })
+})
+
+//add item
+app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
+    const id = req.params.id;
+    const cateId = req.params.cate_id;
+    const itemId = req.params.item_id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(cateId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(itemId)) {
+		res.status(404).send("item id not valid")  
+		return;  
+    }
+
+    const { name, description, price, image } = req.body;
+
+    Restaurant.findById(id).then((restarurant) => {
+        if (!restarurant) {
+            res.status(404).send();
+        } else {
+            const category = restarurant.menu.id(cateId);
+
+            if (category) {
+                category.push({
+                    name: name,
+                    description: description,
+                    price: price,
+                    image: image
+                })
+                restarurant.save().then((result) => {
+                    res.send(result);
+                }, (error) => {
+                    res.status(400).send(error);
+                });
+            } else {
+                res.status(404).send()
+            }
+        }
+    })
+})
+
+//edit category name
+app.patch('/restaurant/:id/:cate_id', (req, res) => {
+
+    const id = req.params.id;
+    const cateId = req.params.cate_id;
+
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(cateId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+
+    const { name } = req.body;
+
+    Restaurant.findById(id).then((restarurant) => {
+        if (!restarurant) {
+            res.status(404).send();
+        } else {
+            const category = restarurant.menu.id(cateId);
+
+            if (category) {
+                category.name = name;
+                restarurant.save().then((result) => {
+					res.send(result);
+				}, (error) => {
+					res.status(400).send(error);
+				});
+            } else {
+                res.status(404).send()
+            }
+        }
+    })
+})
+
+//edit menu item
+app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
+
+    const id = req.params.id;
+    const cateId = req.params.cate_id;
+    const itemId = req.params.item_id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(cateId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(itemId)) {
+		res.status(404).send("item id not valid")  
+		return;  
+    }
+
+    const { name, description, price, image } = req.body;
+
+    Restaurant.findById(id).then((restarurant) => {
+        if (!restarurant) {
+            res.status(404).send();
+        } else {
+            const category = restarurant.menu.id(cateId);
+
+            if (category) {
+                const item = category.id(itemId);
+
+                if (item) {
+                    item.name = name;
+                    item.description = description;
+                    item.price = price;
+                    item.image = image;
+
+                    restarurant.save().then((result) => {
+                        res.send(result);
+                    }, (error) => {
+                        res.status(400).send(error);
+                    });
+                } else {
+                    res.status(404).send()
+                }
+
+            } else {
+                res.status(404).send()
+            }
+        }
+    })
+}) 
 
 
 

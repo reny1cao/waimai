@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const { OrderSchema } = require('./order');
 
+const ItemSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    price: Number,
+    //temporarily
+    image: String
+})
+const CategorySchema = new mongoose.Schema({
+    name: String,
+    items: [ItemSchema]
+})
 const RestaurantSchema = new mongoose.Schema({
     name: String,
     address: String,
@@ -9,7 +20,8 @@ const RestaurantSchema = new mongoose.Schema({
     username: String,
     password: String,
     activeOrders: [OrderSchema],
-    orderHistory: [OrderSchema]
+    orderHistory: [OrderSchema],
+    menu: [CategorySchema]
 })
 
 const Restaurant = new mongoose.model('Restaurant', RestaurantSchema);
