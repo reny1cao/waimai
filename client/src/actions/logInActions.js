@@ -1,3 +1,47 @@
+export const readCookie = (app) => {
+    const url = "/customer/check-session";
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then( json => {
+            if (json && json.currentUser) {
+                app.setState({currentUser: json.currentUser});
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+export const login = (loginComp, app) => {
+    const request = new Request("/login", {
+        method:"post",
+        body: JSON.stringify(loginComp.state),
+        headers: {
+            Accept:"application/json, text/plain, */*", 
+            "Content-Type": "application/json"
+        }
+    });
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            console.log(res.json())
+            return res.json();
+        }
+    })
+    .then(json => {
+        if (json.currentUser !== undefined) {
+            app.setState({currentUser: json.currentUser});
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
 
 export const logInAdmin = page => {
     const account = {
