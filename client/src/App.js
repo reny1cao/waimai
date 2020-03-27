@@ -14,9 +14,15 @@ import FeedBack from './components/FeedBack'
 import UserEdit from './components/UserEdit'
 import './App.css';
 import UserMenu from './components/UserMenu';
+import {readCookie} from "./actions/logInActions";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    readCookie(this);
+  }
   state = {
+    currentUser: null,
     ActionAvailable: "Log In",
     Customer:[],
     Restaurant:[],
@@ -117,6 +123,75 @@ class App extends React.Component {
   }
 
   render() {
+    const { currentUser, userType } = this.state;
+
+    // return (
+    //   <BrowserRouter>
+    //   <Switch>
+    //       <Route path={["/Home", "/logInPage"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <Home history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/Cart"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <Cart history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/Restaurant/OrderRecord"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <OrderRecord history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/RestaurantHome"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <RestaurantHome history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/menu"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <UserMenu history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["UserEdit"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <UserEdit history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/AdminView"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <AdminView history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path={["/FeedBack"]}
+    //        render = {({history}) => (
+    //          <div className="app">
+    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
+    //            <FeedBack history={history} app={this} />}
+    //           }
+    //     </div>)} />
+    //     <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
+    //     <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />
+    //     <Route path = "/SignUpPage" component = {SignUpPage} /> 
+    //     <Route render={() => <div> 404 Not Found</div>} />
+    //     </Switch>
+    //   </BrowserRouter>
+    // )
+
     return (
       <Router>
         <div>
@@ -130,7 +205,6 @@ class App extends React.Component {
             <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
             <Route path = "/SignUpPage" component = {SignUpPage} />    
             <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />   
-            <Route path="/UserEdit" component={UserEdit} />
             <Route path="/AdminView" component={AdminView} />
             <Route path="/FeedBack" component={FeedBack} />
             <Route path="/UserEdit" component={UserEdit} />

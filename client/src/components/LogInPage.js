@@ -4,10 +4,14 @@ import Header from "./Header";
 import LogInForm from "./LogInForm";
 import SelectUser from "./SelectUser";
 
-import { logInAdmin, logInRestaurant, logInUser, backTrack } from "./../actions/logInActions";
+import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "./../actions/logInActions";
 import "./LogInPage.css";
 
 class LogInPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props.history.push("/LogInPage")
+    }
     state = {
         username: "",
         password: "",
@@ -42,6 +46,7 @@ class LogInPage extends React.Component {
 
 
     render() {
+        const {app} = this.props
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
