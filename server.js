@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 /* Customer resource routes */
 
-app.post('/customer/signUp', (req, res) => {
+app.post('/customer/sign-up', (req, res) => {
     
     const {name, address, contactNumber, deliveryArea, preference, username, password} = req.body;
     const customer = new Customer({
@@ -87,17 +87,19 @@ app.get('/customer/:id', (req, res) => {
 })
 
 //Save newly created order to customer, order, restaurant
-app.post('/customer/:id/:rest_id/cart', (req, res) => {
-    const id = req.params.id;
-    const rest_id = req.params.rest_id;
-    const { dishes, totalPrice, time, deliveryAddress} = req.body;
+app.post('/customer/:id/cart', (req, res) => {
+    const customerId = req.params.id;
+    // const rest_id = req.params.rest_id;
+    const { dishes, totalPrice, time, deliveryAddress, restaurantIdStr} = req.body;
 
-    if (!ObjectID.isValid(id)) {
+    if (!ObjectID.isValid(customerId)) {
 		res.status(404).send("customer id not valid")  
 		return;  
     }
 
-    if (!ObjectID.isValid(rest_id)) {
+const restaurantId = ObjectID(restaurantIdStr);
+
+    if (!ObjectID.isValid(restaurantId)) {
 		res.status(404).send("restaurant id not valid")  
 		return;  
     }
@@ -107,37 +109,51 @@ app.post('/customer/:id/:rest_id/cart', (req, res) => {
         totalPrice: totalPrice,
         time: time,
         deliveryAddress: deliveryAddress,
-        deliverTo: id,
-        deliverFrom: rest_id
+        customerId: customerId,
+        restarurantId: restaurantId
     }
 
-    const order = new Order(orderInfo);
-
-    order.save();
-
-    Customer.findById(id).then((customer) => {
+    Customer.findById(customerId).then((customer) => {
 		if (!customer) {
 			res.status(404).send("customer not found")  
 		} else {
             customer.activeOrders.push(orderInfo);
             customer.save();
-			res.send(customer)
 		}
 	}).catch((error) => {
 		res.status(500).send() 
     })
 
-    Restaurant.findById(rest_id).then((restaurant) => {
+    //Cannot set headers after they are sent to the client
+    Restaurant.findById(restaurantId).then((restaurant) => {
+
 		if (!restaurant) {
 			res.status(404).send("restaurant not found")  
 		} else {
             restaurant.activeOrders.push(orderInfo);
-            restaurant.save();
-			res.send(restaurant)
+            restaurant.save().then(
+                result => {
+                    res.send(result);
+                },
+                error => {
+                    res.status(400).send(error);
+                }
+            )
 		}
 	}).catch((error) => {
 		res.status(500).send() 
     })
+
+    const order = new Order(orderInfo);
+
+    order.save().then(
+        result => {
+            res.send(result);
+        },
+        error => {
+            res.status(400).send(error);
+        }
+    );
 })
 
 

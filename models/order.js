@@ -13,8 +13,8 @@ const OrderSchema = new mongoose.Schema({
     //TODO change to date object
     time: String,
     deliveryAddress: String,
-    deliverTo: ObjectID,
-    deliverFrom: ObjectID
+    customerId: ObjectID,
+    restarurantId: ObjectID
 })
 
 const Order = mongoose.model('Order', OrderSchema);
