@@ -32,7 +32,8 @@ app.post('/customer/sign-up', (req, res) => {
         deliveryArea: deliveryArea,
         preference: preference,
         username: username,
-        password: password
+        password: password,
+        order:[]
     });
 
     customer.save().then(
@@ -65,6 +66,15 @@ app.get('/login-page', (req, res) => {
             }
         }
     })
+})
+ 
+//get all the customers
+app.get('/customer', (req,res) => {
+    Customer.find().then((customers) => {
+        res.send(customers)
+    }),(error) => {
+        res.status(500).send()
+    }
 })
 
 app.get('/customer/:id', (req, res) => {
@@ -109,7 +119,7 @@ const restaurantId = ObjectID(restaurantIdStr);
         time: time,
         deliveryAddress: deliveryAddress,
         customerId: customerId,
-        restarurantId: restaurantId
+        restaurantId: restaurantId
     }
 
     Customer.findById(customerId).then((customer) => {
@@ -130,6 +140,7 @@ const restaurantId = ObjectID(restaurantIdStr);
 			res.status(404).send("restaurant not found")  
 		} else {
             restaurant.activeOrders.push(orderInfo);
+            restaurant.orderHistory.push(orderInfo);
             restaurant.save().then(
                 result => {
                     res.send(result);
@@ -153,6 +164,25 @@ const restaurantId = ObjectID(restaurantIdStr);
             res.status(400).send(error);
         }
     );
+})
+
+app.delete('/customer/:id', (req, res) => {
+	const id = req.params.id
+
+	if (!ObjectID.isValid(id)) {
+		res.status(404).send()
+		return;
+	}
+
+	Restaurant.findByIdAndRemove(id).then((customer) => {
+		if (!customer) {
+			res.status(404).send()
+		} else {   
+			res.send(customer)
+		}
+	}).catch((error) => {
+		res.status(500).send() 
+	})
 })
 
 
@@ -180,6 +210,86 @@ app.post('/restaurant/sign-up', (req, res) => {
     )
 })
 
+//get one restaurant
+app.get('/restaurant/:id',(req,res) => {
+    const id = req.params.id
+
+    if(!ObjectID.isValid(id)){
+		res.status(404).send()
+		return;
+    }
+
+    Restaurant.findById(id).then((restaurant)=>{
+		if(!restaurant){
+			res.status(404).send()
+		}
+		else{
+			res.send(restaurant)
+		}
+	}).catch((error)=>{
+		res.status(500).send()
+	})
+})
+
+//get all the orders for the restaurant
+app.get('/restaurant/:id/order', (req,res) => {
+    const id = req.params.id
+
+	if(!ObjectID.isValid(id)){
+		res.status(404).send()
+		return;
+	}
+
+	Restaurant.findById(id).then((restaurant)=>{
+		if(!restaurant){
+			res.status(404).send()
+		}
+		else{
+			res.send(restaurant.activeOrders)
+		}
+	}).catch((error)=>{
+		res.status(500).send()
+	})
+})
+
+//get all the restaurant
+app.get('/restaurant',(req,res) => {
+    Restaurant.find().then((restaurants) => {
+        res.send(restaurants)
+    },(error) => {
+        res.status(500).send()
+    })
+})
+
+
+//get the specific order
+app.get('/restaurant/:id/order/:order_id', (req,res) => {
+    const id = req.params.id
+    const oid = req.params.order_id
+
+	if(!ObjectID.isValid(id)){
+		res.status(404).send()
+		return;
+    }
+    
+    if(!ObjectID.isValid(oid)){
+        res.status(404).send()
+        return;
+    }
+
+	Restaurant.findById(id).then((restaurant)=>{
+		if(!restaurant){
+			res.status(404).send()
+		}
+		else{
+			res.send(restaurant.activeOrders.id(oid))
+		}
+	}).catch((error)=>{
+		res.status(500).send()
+	})
+})
+
+
 //add category
 app.patch('/restaurant/:id', (req, res) => {
     const id = req.body.id;
@@ -191,12 +301,12 @@ app.patch('/restaurant/:id', (req, res) => {
 
     const { name } = req.body;
 
-    Restaurant.findById(id).then((restarurant) => {
+    Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
             res.status(404).send();
         } else {
-            restarurant.menu.push({ name: name });
-            restarurant.save().then((result) => {
+            restaurant.menu.push({ name: name });
+            restaurant.save().then((result) => {
                 res.send(result);
             }, (error) => {
                 res.status(400).send(error);
@@ -228,11 +338,11 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
 
     const { name, description, price, image } = req.body;
 
-    Restaurant.findById(id).then((restarurant) => {
-        if (!restarurant) {
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
             res.status(404).send();
         } else {
-            const category = restarurant.menu.id(cateId);
+            const category = restaurant.menu.id(cateId);
 
             if (category) {
                 category.push({
@@ -241,7 +351,7 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
                     price: price,
                     image: image
                 })
-                restarurant.save().then((result) => {
+                restaurant.save().then((result) => {
                     res.send(result);
                 }, (error) => {
                     res.status(400).send(error);
@@ -272,15 +382,15 @@ app.patch('/restaurant/:id/:cate_id', (req, res) => {
 
     const { name } = req.body;
 
-    Restaurant.findById(id).then((restarurant) => {
-        if (!restarurant) {
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
             res.status(404).send();
         } else {
-            const category = restarurant.menu.id(cateId);
+            const category = restaurant.menu.id(cateId);
 
             if (category) {
                 category.name = name;
-                restarurant.save().then((result) => {
+                restaurant.save().then((result) => {
 					res.send(result);
 				}, (error) => {
 					res.status(400).send(error);
@@ -316,11 +426,11 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
 
     const { name, description, price, image } = req.body;
 
-    Restaurant.findById(id).then((restarurant) => {
-        if (!restarurant) {
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
             res.status(404).send();
         } else {
-            const category = restarurant.menu.id(cateId);
+            const category = restaurant.menu.id(cateId);
 
             if (category) {
                 const item = category.id(itemId);
@@ -331,7 +441,7 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
                     item.price = price;
                     item.image = image;
 
-                    restarurant.save().then((result) => {
+                    restaurant.save().then((result) => {
                         res.send(result);
                     }, (error) => {
                         res.status(400).send(error);
@@ -345,7 +455,56 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
             }
         }
     })
-}) 
+})
+
+app.delete('/restuarants/:id', (req, res) => {
+	const id = req.params.id
+
+	if (!ObjectID.isValid(id)) {
+		res.status(404).send()
+		return;
+	}
+
+	Restaurant.findByIdAndRemove(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {   
+			res.send(restaurant)
+		}
+	}).catch((error) => {
+		res.status(500).send()
+	})
+})
+
+app.delete('/restaurant/:id/order/:order_id',(req,res) => {
+    const id = req.params.id
+    const oid = req.params.order_id
+
+	if (!ObjectID.isValid(id)) {
+		res.status(404).send()
+		return;
+    }
+    
+    if (!ObjectID.isValid(oid)) {
+		res.status(404).send()
+		return;
+	}
+
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {   
+            restaurant.activeOrders.remove(restaurant.activeOrders.id(oid))
+            restaurant.save().then((result) => {
+				res.send(result)
+			}, (error) => {
+				res.status(400).send(error) 
+            })
+		}
+	}).catch((error) => {
+		res.status(500).send()
+	})
+})
 
 
 

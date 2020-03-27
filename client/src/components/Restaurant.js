@@ -3,7 +3,7 @@ export class Restaurant {
         this.name = name;
         this.address = address;
         this.deliveryArea = deliveryArea;
-        this.catorgory = {};
+        this.category = {};
         this.username = username;
         this.password = password;
         this.menu = {
