@@ -3,17 +3,34 @@ const log = console.log;
 // Express
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+
 
 // Mongo and Mongoose
 const { ObjectID } = require('mongodb');
 const { mongoose } = require('./db/mongoose');
+mongoose.set('useFindAndModify', false);
 
 const { Customer } = require('./models/customer');
 const { Order } = require('./models/order');
 const { Restaurant } = require('./models/restaurant');
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
+const session = require("express-session");
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(
+    session({
+        secret: "oursecret",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            expires: 60000,
+            httpOnly: true
+        }
+    })
+);
 
 app.get('/', (req, res) => {
     res.send("Api is working");
@@ -47,23 +64,49 @@ app.post('/customer/sign-up', (req, res) => {
 })
 
 
-app.get('/login-page', (req, res) => {
-    const {username, password} = req.body;
+// app.get('/login-page', (req, res) => {
+//     const {username, password} = req.body;
 
-    Customer.findOne({username:username}, (err, customer) => {
-        if (err) {
-            res.status(400).send(err);
+//     Customer.findOne({username:username}, (err, customer) => {
+//         if (err) {
+//             res.status(400).send(err);
+//         } else {
+//             if (customer) {
+//                 if (password === customer.password) {
+//                     //TODO render loged in view
+//                     res.send(customer);
+//                     req.session.user = 
+//                 } else {
+//                     res.send("Wrong Password");
+//                 }
+//             } else {
+//                 res.status(404).send();
+//             }
+//         }
+//     })
+// })
+
+app.get('/login-page', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    
+    User.findByUserPassword(username, password)
+        .then(user => {
+            req.session.user = user._id;
+            req.session.username = user.username;
+            res.send({ currentUser: user.username});
+        })
+        .catch(error => {
+            res.status(400).send()
+        })
+})
+
+app.get("/logout", (req, res) => {
+    req.session.destroy(error => {
+        if (error) {
+            res.status(500).send(error);
         } else {
-            if (customer) {
-                if (password === customer.password) {
-                    //TODO render loged in view
-                    res.send(customer);
-                } else {
-                    res.send("Wrong Password");
-                }
-            } else {
-                res.status(404).send();
-            }
+            res.send()
         }
     })
 })
@@ -95,6 +138,14 @@ app.get('/customer/:id', (req, res) => {
 		res.status(500).send() 
 	})
 })
+
+app.get("/customer/check-session", (req, res) => {
+    if (req.session.user) {
+        res.send({currentUser: req.session.username});
+    } else {
+        res.status(401).send();
+    }
+});
 
 //Save newly created order to customer, order, restaurant
 app.post('/customer/:id/cart', (req, res) => {
