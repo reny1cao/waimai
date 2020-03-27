@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const { OrderSchema } = require('./order');
 
 const ItemSchema = new mongoose.Schema({
-    name: String,
+    itemName: String,
     description: String,
     price: Number,
     //temporarily
     image: String
 })
 const CategorySchema = new mongoose.Schema({
-    name: String,
+    categoryName: String,
     items: [ItemSchema]
 })
 const RestaurantSchema = new mongoose.Schema({

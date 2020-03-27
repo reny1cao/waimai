@@ -49,8 +49,7 @@ app.post('/customer/sign-up', (req, res) => {
         deliveryArea: deliveryArea,
         preference: preference,
         username: username,
-        password: password,
-        order:[]
+        password: password
     });
 
     customer.save().then(
@@ -148,6 +147,7 @@ app.get("/customer/check-session", (req, res) => {
 });
 
 //Save newly created order to customer, order, restaurant
+//bug if we cant find restaurant, order will still be added to customer
 app.post('/customer/:id/cart', (req, res) => {
     const customerId = req.params.id;
     const { dishes, totalPrice, time, deliveryAddress, restaurantIdStr} = req.body;
@@ -343,21 +343,21 @@ app.get('/restaurant/:id/order/:order_id', (req,res) => {
 
 
 //add category
-app.patch('/restaurant/:id', (req, res) => {
-    const id = req.body.id;
-
+app.patch('/restaurant/:id/add-category', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
     if (!ObjectID.isValid(id)) {
 		res.status(404).send("restaurant id not valid")  
 		return;  
     }
 
-    const { name } = req.body;
+    const { categoryName } = req.body;
 
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
             res.status(404).send();
         } else {
-            restaurant.menu.push({ name: name });
+            restaurant.menu.push({ categoryName: categoryName });
             restaurant.save().then((result) => {
                 res.send(result);
             }, (error) => {
@@ -368,10 +368,9 @@ app.patch('/restaurant/:id', (req, res) => {
 })
 
 //add item
-app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
+app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
     const id = req.params.id;
     const cateId = req.params.cate_id;
-    const itemId = req.params.item_id;
 
     if (!ObjectID.isValid(id)) {
 		res.status(404).send("restaurant id not valid")  
@@ -383,12 +382,7 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
 		return;  
     }
 
-    if (!ObjectID.isValid(itemId)) {
-		res.status(404).send("item id not valid")  
-		return;  
-    }
-
-    const { name, description, price, image } = req.body;
+    const { itemName, description, price, image } = req.body;
 
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
@@ -397,8 +391,8 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
             const category = restaurant.menu.id(cateId);
 
             if (category) {
-                category.push({
-                    name: name,
+                category.items.push({
+                    itemName: itemName,
                     description: description,
                     price: price,
                     image: image
@@ -432,7 +426,7 @@ app.patch('/restaurant/:id/:cate_id', (req, res) => {
 		return;  
     }
 
-    const { name } = req.body;
+    const { categoryName } = req.body;
 
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
@@ -441,7 +435,7 @@ app.patch('/restaurant/:id/:cate_id', (req, res) => {
             const category = restaurant.menu.id(cateId);
 
             if (category) {
-                category.name = name;
+                category.categoryName = categoryName;
                 restaurant.save().then((result) => {
 					res.send(result);
 				}, (error) => {
@@ -476,19 +470,19 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
 		return;  
     }
 
-    const { name, description, price, image } = req.body;
+    const { itemName, description, price, image } = req.body;
 
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
             res.status(404).send();
         } else {
             const category = restaurant.menu.id(cateId);
-
+            console.log(category);
             if (category) {
-                const item = category.id(itemId);
+                const item = category.items.id(itemId);
 
                 if (item) {
-                    item.name = name;
+                    item.itemName = itemName;
                     item.description = description;
                     item.price = price;
                     item.image = image;
@@ -509,7 +503,7 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
     })
 })
 
-app.delete('/restuarants/:id', (req, res) => {
+app.delete('/restaurant/:id', (req, res) => {
 	const id = req.params.id
 
 	if (!ObjectID.isValid(id)) {

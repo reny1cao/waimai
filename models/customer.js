@@ -1,6 +1,6 @@
 const { OrderSchema } = require('./order') ;
 const mongoose = require('mongoose');
-const bcrypt = require('bcrpytjs');
+const bcrypt = require('bcryptjs');
 
 const CustomerSchema = new mongoose.Schema({
     name: String,
@@ -28,8 +28,8 @@ CustomerSchema.pre('save', function(next) {
 
     if (customer.isModified('password')) {
         bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(user.password, salt, (err, hash) => {
-                user.password = hash
+            bcrypt.hash(customer.password, salt, (err, hash) => {
+                customer.password = hash
                 next()
             })
         })
