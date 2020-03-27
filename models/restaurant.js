@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { OrderSchema } = require('./order');
-const bcrypt = require('bcrpytjs');
+const bcrypt = require('bcryptjs');
 
 const ItemSchema = new mongoose.Schema({
     itemName: String,
