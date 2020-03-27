@@ -1,0 +1,43 @@
+//Customer Sign up
+//http://localhost:5000/customer/sign-up
+{
+	"name": "bobs",
+	"address": "386 yonge",
+	"contactNumber": 3455,
+	"deliveryArea": "SG",
+	"preference": "Chinese",
+	"username": "a@gmail.com",
+	"password":"123456"
+}
+
+//restaurant sign up
+//http://localhost:5000/restaurant/sign-up
+{
+	"name": "bobs's res",
+	"address": "396 yonge",
+	"deliveryArea": "SG",
+	"category": "Chinese",
+	"username": "a@gmail.com",
+	"password":"123456"
+}
+
+//add order
+//http://localhost:5000/customer/5e7d5a605b206637efc87f7a/cart
+{
+	"dishes":[
+		{
+			"name": "not fried Rices",
+			"price": 23.99,
+			"amount": 1
+		},
+		{
+			"name": "coke",
+			"price": 1,
+			"amount": 1
+		}
+		],
+	"totalPrice": 24.99,
+	"time": "12:33",
+	"deliveryAddress": "386 Yonge",
+	"restaurantIdStr": "5e7d5a715b206637efc87f7b"
+}
