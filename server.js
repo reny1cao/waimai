@@ -140,7 +140,8 @@ const restaurantId = ObjectID(restaurantIdStr);
 			res.status(404).send("restaurant not found")  
 		} else {
             restaurant.activeOrders.push(orderInfo);
-            restaurant.orderHistory.push(orderInfo);
+            //maybe when order is completed and then add to order history
+            // restaurant.orderHistory.push(orderInfo);
             restaurant.save().then(
                 result => {
                     res.send(result);
