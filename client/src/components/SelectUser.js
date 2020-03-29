@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
 import "./SelectUser.css";
 
 class SelectUser extends React.Component{
@@ -12,20 +12,20 @@ class SelectUser extends React.Component{
         
         return (
         <div className="login-form__container">
-        <div className="login__bg-image" >
+        {/* <div className="login__bg-image" >
           <img id="img" src={require("./../img/login-background.jpg")}>
           </img>
             
-        </div>
+        </div> */}
 
         <div
         className="select-user__grid">
+                <i class="fas fa-users"></i>
                 <div id="header">
-                    <h3 id="title">{title}</h3>
+                    <h4 id="title">{title}</h4>
                     <Button
                     value="Customer"
-                    variant="contained"
-                    color="primary"
+                    variant="outline-secondary"
                     onClick={handleClick}
                     className="select__submit-button"
                     >
@@ -33,8 +33,7 @@ class SelectUser extends React.Component{
                     </Button>
                     <Button
                     value="Restaurant"
-                    variant="contained"
-                    color="primary"
+                    variant="outline-secondary"
                     onClick={handleClick}
                     className="select__submit-button"
                     >
@@ -42,8 +41,7 @@ class SelectUser extends React.Component{
                     </Button>
                     <Button
                     value="Admin"
-                    variant="contained"
-                    color="primary"
+                    variant="outline-secondary"
                     onClick={handleClick}
                     className="select__submit-button"
                     >

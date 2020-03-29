@@ -7,15 +7,15 @@ import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
 import RestaurantSignUp from './components/RestaurantSignUp'
 import CustomerSignUp from './components/CustomerSignUp'
-import { SignUpPage } from './components/SignUpPage';
-import LogInPage from './components/LogInPage'
+import { SignUpPage } from './components/SignupPage/SignUpPage';
+import LogInPage from './components/LogInPage/LogInPage'
 import AdminView from './components/AdminView'
 import FeedBack from './components/FeedBack'
 import UserEdit from './components/UserEdit'
 import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
-import NavBar from './components/NavBar/index';
+import NavBar from './components/NavBar/NavBar';
 
 class App extends React.Component {
   constructor(props) {

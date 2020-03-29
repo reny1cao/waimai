@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Header from "./Header";
-import LogInForm from "./LogInForm";
-import SelectUser from "./SelectUser";
+import Header from "../Header";
+import LogInForm from "../LogInForm/LogInForm";
+import SelectUser from "../SelectUser";
 
-import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "./../actions/logInActions";
+import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "../../actions/logInActions";
 import "./LogInPage.css";
 
 class LogInPage extends React.Component {
@@ -50,11 +50,11 @@ class LogInPage extends React.Component {
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
-                    <Header
+                    {/* <Header
                         title="Log In"
                         userState="Log In"
                         userState1="Sign Up"
-                    />
+                    /> */}
 
                     <SelectUser
                         title='I would like to log in as:'
@@ -68,11 +68,11 @@ class LogInPage extends React.Component {
         else if (this.state.userType === "Customer") {
             return (
                     <div className="LogInPage">
-                        <Header
+                        {/* <Header
                             title="Log In"
                             userState="Log In"
                             userState1="Sign Up"
-                        />
+                        /> */}
 
                         <LogInForm
                         pageTitle={this.state.userType}
@@ -90,11 +90,11 @@ class LogInPage extends React.Component {
         else if (this.state.userType === "Restaurant") {
             return (
                     <div className="LogInPage">
-                        <Header
+                        {/* <Header
                             title="Log In"
                             userState="Log In"
                             userState1="Sign Up"
-                        />
+                        /> */}
 
                         <LogInForm
                         pageTitle={this.state.userType}
@@ -113,11 +113,11 @@ class LogInPage extends React.Component {
         else if (this.state.userType === "Admin") {
             return (
                 <div className="LogInPage">
-                    <Header
+                    {/* <Header
                         title="Log In"
                         userState="Log In"
                         userState1="Sign Up"
-                    />
+                    /> */}
                     <LogInForm
                         pageTitle={this.state.userType}
                         username={this.state.username}

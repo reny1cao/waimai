@@ -8,14 +8,13 @@ class Input extends React.Component {
         return (
             <div>
               <TextField
+                id="standard-basic"
                 name={name}
                 label={label}
-                id="margin-normal"
                 defaultValue={value || ""}
                 className="input"
                 margin="normal"
                 onChange={onChange}
-                variant="outlined"
               />
             </div>
           );
