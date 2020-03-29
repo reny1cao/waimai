@@ -18,11 +18,12 @@ class Home extends Component{
     render(){
         return (
             <div id="home">
-                <Header 
+                {/* <Header 
                     title="WAIMAI"
                     userState="Log In"
                     userState1="Sign Up"
-                />
+                /> */}
+                <img id="hero-img" src={require("./../img/hero.jpg")} alt="hero image"></img>
                 <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
                 <h2>Popular</h2>
                 <div className="flex-container">
