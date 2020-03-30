@@ -20,3 +20,25 @@
     margin: 20px;
     color: #ee8572;
 }
+
+.sign-up-container {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    left: 50%;
+    top: 15%;
+    margin-left: -300px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+    padding: 20px;
+    
+}
+
+.sign-up {
+    float: left;
+    margin: 20px;
+}
+
+.typeBar {
+    width: 200px;
+    margin-right: 20px;
+}

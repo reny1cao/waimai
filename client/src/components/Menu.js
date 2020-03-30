@@ -33,11 +33,11 @@ class Menu extends Component {
     render() {
         return (
             <div>
-                <Header 
+                {/* <Header 
                 title="Mission Chinese Food"
                 // userState="Log In"
                 // userState1="Sign Up"
-            />
+            /> */}
                 <Tabs>
                     <TabList id="tabList">
                         {this.props.menu.map(this.createCategorys)}

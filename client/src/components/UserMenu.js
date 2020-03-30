@@ -42,11 +42,11 @@ export default class UserMenu extends Component {
     render() {
         return (
             <div>
-                <Header 
+                {/* <Header 
                     title="WAIMAI"
                     userState="Log In"
                     userState1="Sign Up"
-                />
+                /> */}
                 <Link to={{pathname:"/Cart", state:{cart:this.state.orders}}}><button id="cartButton">Cart</button></Link>
                 <Tabs>
                     <TabList id="tabList">

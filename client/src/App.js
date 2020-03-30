@@ -5,8 +5,8 @@ import Menu from './components/Menu'
 import Cart from './components/Cart'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
-import RestaurantSignUp from './components/RestaurantSignUp'
-import CustomerSignUp from './components/CustomerSignUp'
+import RestaurantSignUp from './components/SignupPage/RestaurantSignUp'
+import CustomerSignUp from './components/SignupPage/CustomerSignUp'
 import { SignUpPage } from './components/SignupPage/SignUpPage';
 import LogInPage from './components/LogInPage/LogInPage'
 import AdminView from './components/AdminView'
@@ -197,7 +197,7 @@ class App extends React.Component {
       <React.Fragment>
           <Router>
           <NavBar user={false}/>
-            <switch>
+            
                 <Route path="/loginPage" component={LogInPage} />
                 <Route path="/" exact component={Home} />
                 <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
@@ -211,7 +211,7 @@ class App extends React.Component {
                 <Route path="/AdminView" component={AdminView} />
                 <Route path="/FeedBack" component={FeedBack} />
                 <Route path="/UserEdit" component={UserEdit} />
-            </switch>
+           
         </Router>
       </React.Fragment>
   );

@@ -1,17 +1,17 @@
 
-#typeBar{
+/* #typeBar{
     margin-top:10px;
     margin-left:10px;
     width: 80%;
     padding: 10px;
     position: relative;
     height: 30px;
-}
+} */
 
 #signUpDelivreyArea{
     margin-top:10px;
     margin-left:10px;
-    width: 80%;
+    /* width: 80%; */
     padding: 10px;
     position: relative;
     height: 30px;
@@ -109,7 +109,7 @@ input[type=text] {
 .restaurant-home a{
     text-decoration: none;
 }
-
+/* 
 #sign-up{
     height:100px;
     position:relative;
@@ -139,7 +139,7 @@ input[type=text] {
     color:black;
     height:30px;
     margin-top:20px;
-}
+} */
 
 .sign-up-preference{
     margin-top:10px;
