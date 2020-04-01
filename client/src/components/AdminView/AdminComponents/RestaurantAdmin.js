@@ -1,14 +1,15 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import Button from 'react-bootstrap/Button';
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import Input from './Input';
+import Input from './../../Input';
+import "./AdminComponents.css"
 
-import { removeRestaurant, editRestaurant, setChange } from "./../actions/AdminActions";
+import { removeRestaurant, editRestaurant, setChange } from "./../../../actions/AdminActions";
 
 
 class RestaurantAdmin extends React.Component {
@@ -54,20 +55,21 @@ class RestaurantAdmin extends React.Component {
 
         <TableCell component="th" scope="row">
           <Button
-            variant="contained"
-            color="secondary"
+            variant="btn btn-secondary"
             onClick={
               removeRestaurant.bind(this, AdminComponent, restaurant)
             }
+            className="button"
           >
             Delete Restaurant
           </Button>
           <Button
-        variant="contained"
+        variant="btn btn-secondary"
         color="secondary"
         onClick={ () => {
             this.setState({editing:true})
             }}
+            className="button"
     >
         Edit Restaurant
     </Button>
@@ -134,8 +136,8 @@ class RestaurantAdmin extends React.Component {
     
             <TableCell component="th" scope="row">
               <Button
-                variant="contained"
-                color="secondary"
+                variant="btn btn-secondary"
+                className="button"
                 onClick={
                   removeRestaurant.bind(this, AdminComponent, restaurant)
                 }
@@ -143,8 +145,8 @@ class RestaurantAdmin extends React.Component {
                 Delete Restaurant
               </Button>
               <Button
-            variant="contained"
-            color="secondary"
+            variant="btn btn-secondary"
+            className="button"
             onClick={
             
                 editRestaurant.bind(this, AdminComponent, restaurant, this)

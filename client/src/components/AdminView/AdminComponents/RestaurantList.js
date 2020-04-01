@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow"
 import TableContainer from "@material-ui/core/TableContainer"
 
 import RestaurantAdmin from "./RestaurantAdmin";
+
 class RestaurantList extends React.Component {
   render() {
     const { restaurants, AdminComponent, handleChangeEdit} = this.props;
@@ -19,12 +20,12 @@ class RestaurantList extends React.Component {
             <Table className="restaurant-list" size="small">
                 <TableHead>
                         <TableRow>
-                            <TableCell > Name </TableCell>
-                            <TableCell > Address </TableCell>
-                            <TableCell > Delivery Area </TableCell>
-                            <TableCell > Category </TableCell>
-                            <TableCell > Username </TableCell>
-                            <TableCell > Password </TableCell>
+                            <TableCell > <strong>Name </strong></TableCell>
+                            <TableCell > <strong>Address </strong></TableCell>
+                            <TableCell > <strong>Delivery Area </strong></TableCell>
+                            <TableCell > <strong>Category </strong></TableCell>
+                            <TableCell > <strong>Username </strong></TableCell>
+                            <TableCell > <strong>Password </strong></TableCell>
                         </TableRow>
                     </TableHead>
         <TableBody>
