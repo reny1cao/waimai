@@ -15,25 +15,25 @@ class CustomerSignUp extends Component{
             <div className="sign-up-container">
                 <div className = "sign-up">
                     <span>Name</span>
-                    <form className = "signUpName">
+                    <form id = "signUpName">
                         <input className='typeBar' type="text" placeholder="Enter Name" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Address</span>
-                    <form className = "signUpAddress">
+                    <form id = "signUpAddress">
                         <input className="typeBar" type="text" placeholder="Enter Adress" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Contact Number</span>
-                    <form className = "signUpContact">
+                    <form id = "signUpContact">
                         <input className="typeBar" type="text" placeholder="Enter Contact Number" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Delivery Area</span>
-                    <p><select className="signUpDelivreyArea">
+                    <p><select id="signUpDelivreyArea">
                         <option value = "0">UTSG</option>
                         <option value = "1">UTM</option>
                         <option value = "2">UTSC</option>
@@ -60,19 +60,19 @@ class CustomerSignUp extends Component{
                         </label></p>
                     </div>
                 </div>
-                <div className = "sign-up-info">
+                <div className = "sign-up">
                     <span>username</span>
-                    <form className = "signUpUsername">
+                    <form id = "signUpUsername">
                         <input className="typeBar" type="text" placeholder="Enter username" />
                     </form>
                 </div>
-                <div className = "sign-up-info">
+                <div className = "sign-up">
                     <span>password</span>
-                    <form className = "signUpPassword">
+                    <form id = "signUpPassword">
                         <input className="typeBar" type="text" placeholder="Enter password"/>
                     </form>
                 </div>
-                <div className="signup-submit">
+                <div className="sign-up">
                     <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>this.props.addCustomer(submitFunction(this.state.preference))}>Submit</Button></Link>
                 </div>
             </div>
