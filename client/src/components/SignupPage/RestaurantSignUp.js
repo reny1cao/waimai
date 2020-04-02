@@ -16,19 +16,19 @@ class RestaurantSignUp extends Component{
             <div className="sign-up-container">
                 <div className = "sign-up">
                     <span>Restaurant Name</span>
-                    <form className = "signUpName">
+                    <form id = "signUpName">
                         <input className='typeBar' type="text" placeholder="Enter Restaurant Name" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Restaurant Address</span>
-                    <form className = "signUpAddress">
-                        <input className="typeBar" type="text" placeholder="Enter Restaurant Adress" />
+                    <form id = "signUpAddress">
+                        <input className="typeBar" type="text" placeholder="Enter Restaurant Address" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Restaurant Delivery Area</span>
-                    <p><select className="signUpDelivreyArea">
+                    <p><select id="signUpDelivreyArea">
                         <option value = "0">UTSG</option>
                         <option value = "1">UTM</option>
                         <option value = "2">UTSC</option>
@@ -55,19 +55,19 @@ class RestaurantSignUp extends Component{
                         </label></p>
                     </div>
                 </div>
-                <div className = "sign-up-info">
+                <div className = "sign-up">
                     <span>username</span>
-                    <form className = "signUpUsername">
+                    <form id = "signUpUsername">
                         <input className="typeBar" type="text" placeholder="Enter username" />
                     </form>
                 </div>
-                <div className = "sign-up-info">
+                <div className = "sign-up">
                     <span>password</span>
-                    <form className = "signUpPassword">
+                    <form id = "signUpPassword">
                         <input className="typeBar" type="text" placeholder="Enter password"/>
                     </form>
                 </div>
-                <div className="signup-submit">
+                <div className="sign-up">
                     <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>this.props.addRestaurant(submitFunction(this.state.category))}>Submit</Button></Link>
                 </div>
             </div>
