@@ -11,6 +11,7 @@ const { mongoose } = require('./db/mongoose');
 mongoose.set('useFindAndModify', false);
 
 const { Customer } = require('./models/customer');
+const { Admin } = require('./models/admin');
 const { Order } = require('./models/order');
 const { Restaurant } = require('./models/restaurant');
 
@@ -38,6 +39,23 @@ app.get('/', (req, res) => {
 
 
 /* Customer resource routes */
+
+app.post('/admin', (req, res) => {
+    const {username, password} = req.body;
+    const admin = new Admin({
+        username: username,
+        password: password
+    })
+
+    admin.save().then(
+        result => {
+            res.send(result);
+        },
+        error => {
+            res.status(400).send(error);
+        }
+    )
+})
 
 app.post('/customer/sign-up', (req, res) => {
     
@@ -218,6 +236,38 @@ const restaurantId = ObjectID(restaurantIdStr);
     );
 })
 
+app.patch('/customer/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("customer id not valid")  
+		return;  
+    }
+
+    const {name, address, contactNumber, deliveryArea, preference, username, password} = req.body;
+
+    Customer.findById(id).then((customer) => {
+        if (!customer) {
+            res.status(404).send();
+        } else {
+            customer.menu.push({ 
+                name: name,
+                address: address,
+                contactNumber: contactNumber,
+                deliveryArea: deliveryArea,
+                preference: preference,
+                username: username,
+                password: password });
+            customer.save().then((result) => {
+                res.send(result);
+            }, (error) => {
+                res.status(400).send(error);
+            });
+        }
+    })
+})
+
+
 app.delete('/customer/:id', (req, res) => {
 	const id = req.params.id
 
@@ -341,6 +391,36 @@ app.get('/restaurant/:id/order/:order_id', (req,res) => {
 	})
 })
 
+// change restaurant admin info
+app.patch('/restaurant/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    const {name, address, deliveryArea, category, username, password} = req.body;
+
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
+            res.status(404).send();
+        } else {
+            restaurant.menu.push({ 
+                name: name,
+                address: address,
+                deliveryArea: deliveryArea,
+                category: category,
+                username: username,
+                password: password });
+            restaurant.save().then((result) => {
+                res.send(result);
+            }, (error) => {
+                res.status(400).send(error);
+            });
+        }
+    })
+})
 
 //add category
 app.patch('/restaurant/:id/add-category', (req, res) => {

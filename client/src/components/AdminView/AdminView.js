@@ -24,31 +24,8 @@ class AdminView extends React.Component {
         editPref:"",
         editCategory:"",
         // Users and Restaurant data here is hardcoded, would be fetched from server when signed up
-        users: [
-            {name: "Allen Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"all", preference:"Pizza", username:"user", password:"user"},
-            {name: "Alice Hsiao",address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTSC", preference:"Chinese", username:"user3", password:"user3"},
-            {name: "Allen Chen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"all", preference:"Chinese",username:"user4", password:"user4"},
-            {name: "Steven Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTSG", preference:"Chinese", username:"user5", password:"user5"},
-            {name: "Mary Hsiao", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTM", preference:"Chinese", username:"user6", password:"user6"},
-            {name: "Alfred Nyugen", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTM", preference:"Chinese", username:"user7", password:"user7"},
-            {name: "Steven Lee", address: "205 E Houston St, New York, NY 10002", number:"647-8683416", area:"UTM", preference:"Chinese", username:"user8", password:"user8"},
-
-
-        ],
-        restaurants: [
-            {name: "Mission Chinese Food", address:"171 E Broadway, New York, NY 10002", 
-            area: "UTM", category: "Chinese", username:"user2", password:"user2"},
-            {name: "Emily", address:"919 Fulton St, Brooklyn, NY 11238", 
-            area: "UTSC", category: "Pizza", username:"user13", password:"user13"},
-            {name: "Kang Ho Dong Baekjeong", address:"1 E 32nd St, New York, NY 10016", 
-            area: "all", category: "Asian", username:"user14", password:"user14"},
-            {name: "Lee's Chinese Food", address:"172 E Broadway, New York, NY 10002", 
-            area: "all", category: "Chinese", username:"user12", password:"user12"},
-            {name: "Miss Foodie", address:"1 E Broadway, New York, NY 10002", 
-            area: "UTSG", category: "Chinese", username:"user15", password:"user15"},
-        
-
-        ]
+        users: [],
+        restaurants: []
 
     };
 
