@@ -1,0 +1,20 @@
+
+  .search-button {
+    margin: 30px 15px 30px 15px;
+    text-align: center;
+  } 
+  
+  .back-button {
+    margin: 30px 15px 30px 15px;
+    text-align: center;
+  }
+  
+  .errMsg{
+    color: red;
+  }
+  
+  .fa-user {
+    font-size: 40px;
+    margin: 20px;
+    color: #ee8572;
+  }

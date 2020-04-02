@@ -9,7 +9,7 @@ import RestaurantSignUp from './components/SignupPage/RestaurantSignUp'
 import CustomerSignUp from './components/SignupPage/CustomerSignUp'
 import { SignUpPage } from './components/SignupPage/SignUpPage';
 import LogInPage from './components/LogInPage/LogInPage'
-import AdminView from './components/AdminView'
+import AdminView from './components/AdminView/AdminView'
 import FeedBack from './components/FeedBack'
 import UserEdit from './components/UserEdit'
 import './App.css';

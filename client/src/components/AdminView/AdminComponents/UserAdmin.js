@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import Button from 'react-bootstrap/Button';
 
 
 import TableCell from "@material-ui/core/TableCell";
@@ -7,11 +7,11 @@ import TableRow from "@material-ui/core/TableRow";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from "@material-ui/core/MenuItem";
-import Input from './Input';
-import { removeUser, editUser, setChange } from "./../actions/AdminActions";
+import Input from './../../Input';
+import { removeUser, editUser, setChange } from "./../../../actions/AdminActions";
+import "./AdminComponents.css"
 
-
-class User extends React.Component {
+class UserAdmin extends React.Component {
 
   constructor(props) {
     super(props);
@@ -62,8 +62,8 @@ class User extends React.Component {
 
                 <TableCell component="th" scope="row">
                 <Button
-                    variant="contained"
-                    color="secondary"
+                    variant="btn btn-secondary"
+                    className="button"
                     onClick={
                     removeUser.bind(this, AdminComponent, user)
                     }
@@ -71,8 +71,8 @@ class User extends React.Component {
                     Delete User
                 </Button>
                 <Button
-                    variant="contained"
-                    color="secondary"
+                    variant="btn btn-secondary"
+                    className="button"
                     onClick={ () => {
                     this.setState({editing:true})
                     }}
@@ -153,8 +153,8 @@ class User extends React.Component {
 
     <TableCell component="th" scope="row">
     <Button
-        variant="contained"
-        color="secondary"
+        variant="btn btn-secondary"
+        className="button"
         onClick={
         removeUser.bind(this, AdminComponent, user)
         }
@@ -162,11 +162,11 @@ class User extends React.Component {
         Delete User
     </Button>
     <Button
-        variant="contained"
-        color="secondary"
+        variant="btn btn-secondary"
         onClick={
             editUser.bind(this, AdminComponent, user, this)
             }
+            className="button"
     >
         Save User
     </Button>
@@ -178,4 +178,4 @@ class User extends React.Component {
   }
 
 
-export default User;
+export default UserAdmin;

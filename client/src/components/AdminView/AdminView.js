@@ -1,14 +1,14 @@
 import React from 'react'
 
-import Header from "./Header";
-import UserList from "./UserList";
-import NameSearchBar from "./NameSearchBar";
-import RestaurantList from "./RestaurantList";
-import Button from '@material-ui/core/Button';
+import Header from "./../Header";
+import UserList from "./AdminComponents/UserList";
+import NameSearchBar from "./AdminComponents/NameSearchBar";
+import RestaurantList from "./AdminComponents/RestaurantList";
+import Button from 'react-bootstrap/Button';
 
 import "./AdminView.css";
 
-import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../actions/AdminActions";
+import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../../actions/AdminActions";
 
 
 class AdminView extends React.Component {
@@ -126,6 +126,7 @@ class AdminView extends React.Component {
     render() {
         if (this.state.view === "restaurants"){
             return (
+                <div className="admin__container">
             <div className="AdminPage">
             {/* <Header
                 title="Admin"
@@ -134,16 +135,14 @@ class AdminView extends React.Component {
             /> */}
             <div className="toggleContainer">
             <Button
-            variant="outlined"
-            color="primary"
+            variant="outlined-secondary"
             onClick={() => switchToUsers(this)}
             className="admin-form__user-button"
             >
             Users
             </Button>
             <Button
-            variant="contained"
-            color="primary"
+            variant="btn btn-secondary"
             className="admin-form__restaurant-button"
             >
             Restaurants
@@ -162,11 +161,12 @@ class AdminView extends React.Component {
             restaurants={this.state.restaurants} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
             />
             </div>
-
+            </div>
             )
         }
         else {
         return (
+            <div className="admin__container">
             <div className="AdminPage">
                 {/* <Header
                     title="Admin"
@@ -175,15 +175,13 @@ class AdminView extends React.Component {
                 /> */}
                 <div className="toggleContainer">
                 <Button
-                variant="contained"
-                color="primary"
+                variant="btn btn-secondary"
                 className="admin-form__user-button"
                 >
                 Users
                 </Button>
                 <Button
-                variant="outlined"
-                color="primary"
+                variant="outlined-secondary"
                 onClick={() => switchToRestaurants(this)}
                 className="admin-form__restaurant-button"
                 >
@@ -204,6 +202,7 @@ class AdminView extends React.Component {
                 handleChangeEdit={this.handleChangeEdit}
                 />
                 
+            </div>
             </div>
 
         );

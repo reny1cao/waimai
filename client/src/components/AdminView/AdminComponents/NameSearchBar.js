@@ -1,9 +1,10 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
-import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
 
 
-import Input from './Input';
+import Input from './../../Input';
+import "./NameSearchBar.css";
 
 class NameSearchBar extends React.Component {
     render() {
@@ -24,14 +25,14 @@ class NameSearchBar extends React.Component {
         label="Search by name:"
         />
         <Button
-            color="primary"
+            variant="outlined-secondary"
             onClick={searchForName}
             className="search-button"
         >
         Search
         </Button>
         <Button
-            color="secondary"
+            variant="outlined-secondary"
             onClick={resetState}
             className="back-button"
         >

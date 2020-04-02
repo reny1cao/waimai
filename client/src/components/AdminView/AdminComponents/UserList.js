@@ -7,7 +7,8 @@ import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import TableContainer from "@material-ui/core/TableContainer"
 
-import User from "./User";
+import UserAdmin from "./UserAdmin";
+
 class UserList extends React.Component {
   render() {
     const { users, AdminComponent, handleChangeEdit} = this.props;
@@ -19,18 +20,18 @@ class UserList extends React.Component {
             <Table className="user-list" size="small">
                 <TableHead>
                         <TableRow>
-                            <TableCell > Name </TableCell>
-                            <TableCell > Address </TableCell>
-                            <TableCell > Contact Number </TableCell>
-                            <TableCell > Area </TableCell>
-                            <TableCell > Preference </TableCell>
-                            <TableCell > Username </TableCell>
-                            <TableCell > Password </TableCell>
+                            <TableCell > <strong> Name </strong></TableCell>
+                            <TableCell > <strong> Address </strong></TableCell>
+                            <TableCell >  <strong>Contact Number </strong></TableCell>
+                            <TableCell >  <strong>Area </strong></TableCell>
+                            <TableCell >  <strong>Preference </strong></TableCell>
+                            <TableCell >  <strong>Username </strong></TableCell>
+                            <TableCell >  <strong>Password</strong> </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                     {users.map(user => (
-                        <User
+                        <UserAdmin
                         key={uid(
                             user
                         )} /* unique id required to help React render more efficiently when we modify the students list. */
