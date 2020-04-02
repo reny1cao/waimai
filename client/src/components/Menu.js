@@ -8,6 +8,34 @@ import 'react-tabs/style/react-tabs.css';
 
 class Menu extends Component {
 
+    state = {
+        category: [
+            {
+                id: "",
+                categoryName:"",
+                items:[{
+                    id:"",
+                    itemName:"",
+                    description:"",
+                    price:0,
+                    image:""
+                }]
+            }
+        ]
+    }
+
+    componentDidMount() {
+        const url = 'http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e';
+        fetch(url)
+        .then((res) => {
+            console.log(res);
+        })
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components
+        }
+    
+
     createCategorys = (props) => {
         return ( 
             <Tab key={props.id}>
@@ -44,6 +72,7 @@ class Menu extends Component {
                         {/* <button className="add-tab" onClick={this.addTab}>add</button> */}
                     </TabList>
                     {this.props.menu.map(this.createItems)}
+
                 </Tabs>
             </div>
         )

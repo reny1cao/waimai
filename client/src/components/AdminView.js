@@ -127,11 +127,11 @@ class AdminView extends React.Component {
         if (this.state.view === "restaurants"){
             return (
             <div className="AdminPage">
-            <Header
+            {/* <Header
                 title="Admin"
                 userState="Log In"
                 userState1="Sign Up"
-            />
+            /> */}
             <div className="toggleContainer">
             <Button
             variant="outlined"
@@ -168,11 +168,11 @@ class AdminView extends React.Component {
         else {
         return (
             <div className="AdminPage">
-                <Header
+                {/* <Header
                     title="Admin"
                     userState="Log In"
                     userState1="Sign Up"
-                />
+                /> */}
                 <div className="toggleContainer">
                 <Button
                 variant="contained"

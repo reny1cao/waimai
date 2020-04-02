@@ -62,7 +62,7 @@ class App extends React.Component {
           id: 3,
           name: "Pork fried rice",
           description: "Tender, Spicy and Juicy.",
-          images: "../FoodImg/1.jpg",
+          images: "../FoodImg/3.jpg",
           price: 12
         }]
       },
@@ -73,7 +73,7 @@ class App extends React.Component {
           id: 8,
           name: "Green Coconut Curry",
           description: "Creamy green curry cooked with coconut milk, squash, kaffir lime leaves",
-          images: "../FoodImg/1.jpg",
+          images: "../FoodImg/4.jpg",
           price: 16
         }]
       }
