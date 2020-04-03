@@ -50,19 +50,20 @@ RestaurantSchema.pre('save', function(next) {
 })
 
 RestaurantSchema.statics.findByUserPassword = function(username, password) {
-	const User = this // binds this to the User model
+	const Restaurant = this // binds this to the User model
 
 	// First find the user by their email
-	return User.findOne({ username: username }).then((user) => {
-		if (!user) {
+	return Restaurant.findOne({ username: username }).then((restaurant) => {
+		if (!restaurant) {
 			return Promise.reject()  // a rejected promise
 		}
 		// if the user exists, make sure their password is correct
 		return new Promise((resolve, reject) => {
-			bcrypt.compare(password, user.password, (err, result) => {
+			bcrypt.compare(password, restaurant.password, (err, result) => {
 				if (result) {
-					resolve(user)
+					resolve(restaurant)
 				} else {
+                    console.log(err);
 					reject()
 				}
 			})

@@ -1,21 +1,58 @@
+// A function to send a GET request to the web server,
+// and then loop through them and add a list element for each restaurant
+export const getRestaurant = (studentList) => {
+    // the URL for the request
+    const url = "/";
 
-const apiEndPoint = "http://localhost:5000/restaurant"
+    // Since this is a GET request, simply call fetch on the URL
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                // return a promise that resolves with the JSON body
+                return res.json();
+            } else {
+                alert("Could not get students");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            studentList.setState({ restaurantList: json.restaurants });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
 
-export function register(formComp, dashboardComp) {
-    const url = apiEndPoint + "/sign-up";
+// A function to update the student form state
+export const updateRestaurantForm = (formComp, field) => {
+    const value = field.value;
+    const name = field.name;
 
-    const newRestaurant = formComp.state;
+    formComp.setState({
+        [name]: value
+    });
+};
+
+export const addRestaurant = (formComp, dashboardComp) => {
+    // the URL for the request
+    const url = "/restaurant/sign-up";
+
+    // The data we are going to send in our request
+
+    const restaurant = formComp.state
+    console.log(formComp.state)
+
+    // Create our request constructor with all the parameters we need
     const request = new Request(url, {
-        method:"POST",
-        body: JSON.stringify(newRestaurant),
+        method: "post",
+        body: JSON.stringify(restaurant),
         headers: {
-            Accept:"application/json, text/plain, */*", 
+            Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
-        } 
-        
-        
+        }
     });
 
+    // Send the request with fetch()
     fetch(request)
         .then(function (res) {
             // Handle response we get from the API.
@@ -24,7 +61,7 @@ export function register(formComp, dashboardComp) {
                 // If student was added successfully, tell the user.
                 dashboardComp.setState({
                     message: {
-                        body: "Success: Added a restaurant.",
+                        body: "Success: Added a Restaurant.",
                         type: "success"
                     }
                 });
@@ -42,56 +79,4 @@ export function register(formComp, dashboardComp) {
         .catch(error => {
             console.log(error);
         });
-}
-
-export function getRestaurant(id) {
-    const url = apiEndPoint + "/5e841a3c56bb8007170cab0e";
-    fetch(url)
-        .then(res => {
-            if (res.status === 200) {
-                // return a promise that resolves with the JSON body
-                return res.json();
-            } else {
-                alert("Could not get students");
-            }
-        })
-        .then(json => {
-            // the resolved promise with the JSON body
-            // studentList.setState({ studentList: json.students });
-            console.log(json)
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
-    }
-
-export function editMenuItem(id, newItem) {
-    const url = apiEndPoint + '/5e841a3c56bb8007170cab0e/5e841a6e56bb8007170cab0f/5e841aa156bb8007170cab10'
-    const request = new Request(url, {
-        method:"PATCH",
-        body: JSON.stringify({
-            "itemName": "Beef soup",
-            "description": "no.2",
-            "price": 20,
-            "image": "not available"
-        }),
-        headers: {
-            Accept:"application/json, text/plain, */*", 
-            "Content-Type": "application/json"
-        } 
-    });
-
-    fetch(request)
-    .then(res => {
-        if (res.status === 200) {
-            return res.json();
-        }
-    })
-    .then(json => {
-        console.log(json)
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
+};

@@ -17,9 +17,17 @@ export const readCookie = (app) => {
         })
 }
 
-export const login = (loginComp, app) => {
+export const login = (loginComp, app, type) => {
+    //temp url
+    let url = "http://localhost:5000/login";
+
+    if (type === "Restaurant") {
+        url += "/restaurant";
+    } else if (type === "Amin") {
+        url += "/admin"
+    }
     
-    const request = new Request("http://localhost:5000/login", {
+    const request = new Request(url, {
         method:"post",
         body: JSON.stringify(loginComp.state),
         headers: {
@@ -86,23 +94,27 @@ export const logInUser = page => {
 }
 
 
-export const logInRestaurant = page => {
-    const account = {
-        name: page.state.username,
-        pass: page.state.password
-    }
+// export const logInRestaurant = page => {
+//     const account = {
+//         name: page.state.username,
+//         pass: page.state.password
+//     }
 
-    if (account.name === 'user2' && account.pass === 'user2') {
-        page.setState({
-            errMsg:"successfully log in"
-        })
-        window.location.replace("./../RestaurantHome");
-    }
-    else {
-        page.setState({
-            errMsg: "Wrong UserName/ Password"
-        })
-    }
+//     if (account.name === 'user2' && account.pass === 'user2') {
+//         page.setState({
+//             errMsg:"successfully log in"
+//         })
+//         window.location.replace("./../RestaurantHome");
+//     }
+//     else {
+//         page.setState({
+//             errMsg: "Wrong UserName/ Password"
+//         })
+//     }
+// }
+
+export const logInRestaurant = (loginComp, app) => {
+    
 }
 
 export const backTrack = page => {
