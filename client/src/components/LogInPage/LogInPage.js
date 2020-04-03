@@ -47,6 +47,7 @@ class LogInPage extends React.Component {
 
     render() {
         const {app} = this.props
+        console.log(app)
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
@@ -80,7 +81,7 @@ class LogInPage extends React.Component {
                             password={this.state.password}
                             handleChange={this.handleInputChange}
                             errMsg={this.state.errMsg}
-                            logIn={() => logInUser(this)}
+                            logIn={() => login(this, app)}
                             backTrack={() =>backTrack(this)}
                         />
                     </div>

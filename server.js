@@ -104,15 +104,17 @@ app.post('/customer/sign-up', (req, res) => {
 //     })
 // })
 
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    
-    User.findByUserPassword(username, password)
-        .then(user => {
-            req.session.user = user._id;
-            req.session.username = user.username;
-            res.send({ currentUser: user.username});
+
+    console.log(req.body)
+
+    Customer.findByUserPassword(username, password)
+        .then(customer => {
+            req.session.customer = customer._id;
+            req.session.username = customer.username;
+            res.send({ currentUser: customer.username});
         })
         .catch(error => {
             res.status(400).send()

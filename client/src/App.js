@@ -22,63 +22,11 @@ class App extends React.Component {
     super(props);
     readCookie(this);
   }
+
   state = {
-    currentUser: null,
-    ActionAvailable: "Log In",
-    Customer:[],
-    Restaurant:[],
-    menu: [{
-        id: 5,
-        category: "Most Popular",
-        menuItems: [{
-          id: 6,
-          name: "Cream Corn Soup with Crab Meat",
-          description: "Sweet and testy",
-          images: "../FoodImg/1.jpg",
-          price: 15.95
-        }]
-      },
-      {
-        id: 0,
-        category: "Appeteasers",
-        menuItems: [{
-          id: 4,
-          name: "3 Chicken Wings",
-          description: "Tender, Spicy and Juicy. Original or Peri-Crusted",
-          images: "../FoodImg/1.jpg",
-          price: 12,
-        }, {
-          id: 1,
-          name: "Chicken Livers and Portuguese Roll",
-          description: "Chicken Livers Topped with PERi-PERi Sauce.",
-          images: "../FoodImg/2.jpg",
-          price: 13.99,
-        }]
-      },
-      {
-        id: 2,
-        category: "Pork",
-        menuItems: [{
-          id: 3,
-          name: "Pork fried rice",
-          description: "Tender, Spicy and Juicy.",
-          images: "../FoodImg/3.jpg",
-          price: 12
-        }]
-      },
-      {
-        id: 7,
-        category: "Curries",
-        menuItems: [{
-          id: 8,
-          name: "Green Coconut Curry",
-          description: "Creamy green curry cooked with coconut milk, squash, kaffir lime leaves",
-          images: "../FoodImg/4.jpg",
-          price: 16
-        }]
-      }
-    ]
+    currentUser: null
   }
+
   editCategory = (id, newValue) => {
     console.log(id);
     this.setState({
@@ -196,9 +144,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
           <Router>
-          <NavBar user={false}/>
+          <NavBar user={this.state.currentUser}/>
             
-                <Route path="/loginPage" component={LogInPage} />
+                <Route path="/loginPage" render={props => (<LogInPage {...props} app={this}/>)} />
                 <Route path="/" exact component={Home} />
                 <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
                 <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />

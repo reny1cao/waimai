@@ -23,7 +23,7 @@ class NavBar extends Component {
                         :
                         <div className="logged-in-nav">
                             <Avatar className="avatar" alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                            <NavDropdown title="username" id="nav-dropdown">
+                            <NavDropdown title={this.props.user} id="nav-dropdown">
                                 <NavDropdown.Item href="#">Orders</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Account Info</NavDropdown.Item>
                                 <NavDropdown.Divider />
