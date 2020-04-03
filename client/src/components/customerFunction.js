@@ -9,7 +9,7 @@ import { Customer } from './Customer'
 //     RestaurantList.push(newRestaurant)
 // }
 
-const getCheckBox = (preference) => {
+export const getCheckBox = (preference) => {
     const signUpPreference = document.getElementsByClassName("sign-up-preference")
     let preferenceList = signUpPreference[0].firstElementChild;
 
@@ -27,22 +27,3 @@ const getCheckBox = (preference) => {
 
 }
 
-export const submitFunction = (preference) => {
-    const nameElement = document.querySelector('#signUpName')
-    const name = nameElement.elements[0].value
-    const addressElement = document.querySelector('#signUpAddress')
-    const address = addressElement.elements[0].value
-    const contactElement = document.querySelector('#signUpContact')
-    const contactNumber = contactElement.elements[0].value
-    const usernameElement = document.querySelector('#signUpUsername')
-    const username = usernameElement.elements[0].value
-    const passwordElement = document.querySelector('#signUpPassword')
-    const password = passwordElement.elements[0].value
-    const deliveryAreaElement = document.getElementById('signUpDelivreyArea');
-    const deliveryArea = deliveryAreaElement.options[deliveryAreaElement.selectedIndex].text;
-
-
-    const customer = new Customer(name, address, deliveryArea, contactNumber, username, password)
-    customer.preference = getCheckBox(preference)
-    return customer
-}

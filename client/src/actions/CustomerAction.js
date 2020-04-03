@@ -1,6 +1,6 @@
 // A function to send a GET request to the web server,
 // and then loop through them and add a list element for each restaurant
-export const getRestaurant = (studentList) => {
+export const getCustomer = (customerList) => {
     // the URL for the request
     const url = "/";
 
@@ -11,12 +11,12 @@ export const getRestaurant = (studentList) => {
                 // return a promise that resolves with the JSON body
                 return res.json();
             } else {
-                alert("Could not get students");
+                alert("Could not get customer");
             }
         })
         .then(json => {
             // the resolved promise with the JSON body
-            studentList.setState({ restaurantList: json.restaurants });
+            customerList.setState({ customerList: json.customers });
         })
         .catch(error => {
             console.log(error);
@@ -24,7 +24,7 @@ export const getRestaurant = (studentList) => {
 };
 
 // A function to update the student form state
-export const updateRestaurantForm = (formComp, field) => {
+export const updateCustomerForm = (formComp, field) => {
     const value = field.value;
     const name = field.name;
 
@@ -33,19 +33,19 @@ export const updateRestaurantForm = (formComp, field) => {
     });
 };
 
-export const addRestaurant = (formComp, dashboardComp) => {
+export const addCustomer = (formComp, dashboardComp) => {
     // the URL for the request
-    const url = "/restaurant/sign-up";
+    const url = "/customer/sign-up";
 
     // The data we are going to send in our request
 
-    const restaurant = formComp.state
+    const customer = formComp.state
     console.log(formComp.state)
 
     // Create our request constructor with all the parameters we need
     const request = new Request(url, {
         method: "post",
-        body: JSON.stringify(restaurant),
+        body: JSON.stringify(customer),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"
@@ -61,7 +61,7 @@ export const addRestaurant = (formComp, dashboardComp) => {
                 // If student was added successfully, tell the user.
                 dashboardComp.setState({
                     message: {
-                        body: "Success: Added a Restaurant.",
+                        body: "Success: Added a customer.",
                         type: "success"
                     }
                 });
@@ -70,7 +70,7 @@ export const addRestaurant = (formComp, dashboardComp) => {
                 // Here we are adding a generic message, but you could be more specific in your app.
                 dashboardComp.setState({
                     message: {
-                        body: "Error: Could not add restaurant.",
+                        body: "Error: Could not add customer.",
                         type: "error"
                     }
                 });

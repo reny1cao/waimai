@@ -10,7 +10,7 @@ class RestaurantSignUp extends Component{
     state={
         name:"",
         address:"",
-        deliveryArea:"",
+        deliveryArea:"UTSG",
         category:[],
         username:"",
         password:""
@@ -88,7 +88,7 @@ class RestaurantSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>addRestaurant(this, dashboard, getCheckBox(this.state.category))}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(this.state.category);addRestaurant(this, dashboard)}}>Submit</Button></Link>
                 </div>
             </div>
         )

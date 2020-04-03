@@ -1,39 +1,59 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { submitFunction } from '../customerFunction'
+import { getCheckBox } from '../customerFunction'
 import Button from 'react-bootstrap/Button';
 import "./SignUpPage.css";
+import { updateCustomerForm, addCustomer } from '../../actions/CustomerAction';
 
 
 class CustomerSignUp extends Component{
     state={
-        preference : [],
+        name:"",
+        address:"",
+        number:"",
+        deliveryArea:"UTSG",
+        preference:[],
+        username:"",
+        password:""
     }
 
     render(){
+
+        const { dashboard } = this.props;
+
+        const { name, address, deliveryArea, number, preference, username, password } = this.state;
+
         return (
             <div className="sign-up-container">
                 <div className = "sign-up">
                     <span>Name</span>
                     <form id = "signUpName">
-                        <input className='typeBar' type="text" placeholder="Enter Name" />
+                        <input 
+                        name = "name" value = {name} onChange={e => updateCustomerForm(this, e.target)}
+                        className='typeBar' type="text" placeholder="Enter Name" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Address</span>
                     <form id = "signUpAddress">
-                        <input className="typeBar" type="text" placeholder="Enter Adress" />
+                        <input 
+                        name = "address" value = {address} onChange={e => updateCustomerForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter Adress" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Contact Number</span>
                     <form id = "signUpContact">
-                        <input className="typeBar" type="text" placeholder="Enter Contact Number" />
+                        <input 
+                        name = "number" value = {number} onChange={e => updateCustomerForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter Contact Number" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Delivery Area</span>
-                    <p><select id="signUpDelivreyArea">
+                    <p><select 
+                    name = "deliveryArea" value = {deliveryArea} onChange={e => updateCustomerForm(this, e.target)}
+                    id="signUpDelivreyArea">
                         <option value = "0">UTSG</option>
                         <option value = "1">UTM</option>
                         <option value = "2">UTSC</option>
@@ -63,17 +83,21 @@ class CustomerSignUp extends Component{
                 <div className = "sign-up">
                     <span>username</span>
                     <form id = "signUpUsername">
-                        <input className="typeBar" type="text" placeholder="Enter username" />
+                        <input 
+                        name = "username" value = {username} onChange={e => updateCustomerForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter username" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>password</span>
                     <form id = "signUpPassword">
-                        <input className="typeBar" type="text" placeholder="Enter password"/>
+                        <input 
+                        name = "password" value = {password} onChange={e => updateCustomerForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter password"/>
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>this.props.addCustomer(submitFunction(this.state.preference))}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>{getCheckBox(this.state.preference); addCustomer(this, dashboard)}}>Submit</Button></Link>
                 </div>
             </div>
         )

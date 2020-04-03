@@ -200,14 +200,16 @@ class App extends React.Component {
             
                 <Route path="/loginPage" component={LogInPage} />
                 <Route path="/" exact component={Home} />
-                <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
+                {/* <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} /> */}
+                <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
                 <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
                 <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
                 <Route path="/Cart" component={Cart} />
                 <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
                 <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
                 <Route path = "/SignUpPage" component = {SignUpPage} />    
-                <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />   
+                {/* <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />    */}
+                <Route path = "/customer/sign-up" component = {CustomerSignUp} />   
                 <Route path="/AdminView" component={AdminView} />
                 <Route path="/FeedBack" component={FeedBack} />
                 <Route path="/UserEdit" component={UserEdit} />
