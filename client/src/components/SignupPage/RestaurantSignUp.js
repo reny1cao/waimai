@@ -1,34 +1,50 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import { submitFunction } from '../restaurantFunction'
+import { getCheckBox } from '../restaurantFunction'
 import Button from 'react-bootstrap/Button';
 import "./SignUpPage.css";
+import { updateRestaurantForm,addRestaurant } from '../../actions/RestaurantActions'
 
 
 class RestaurantSignUp extends Component{
     state={
-        category : [],
-        deliveryArea:[],
+        name:"",
+        address:"",
+        deliveryArea:"",
+        category:[],
+        username:"",
+        password:""
     }
 
     render(){
+
+        const { dashboard } = this.props;
+
+        const { name, address, deliveryArea, category, username, password } = this.state;
+
         return (
             <div className="sign-up-container">
                 <div className = "sign-up">
                     <span>Restaurant Name</span>
                     <form id = "signUpName">
-                        <input className='typeBar' type="text" placeholder="Enter Restaurant Name" />
+                        <input 
+                        name = "name" value = {name} onChange={e => updateRestaurantForm(this, e.target)}
+                        className='typeBar' type="text" placeholder="Enter Restaurant Name" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Restaurant Address</span>
                     <form id = "signUpAddress">
-                        <input className="typeBar" type="text" placeholder="Enter Restaurant Address" />
+                        <input 
+                        name = "address" value = {address} onChange={e => updateRestaurantForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter Restaurant Address" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>Restaurant Delivery Area</span>
-                    <p><select id="signUpDelivreyArea">
+                    <p><select 
+                    name = "deliveryArea" value = {deliveryArea} onChange={e => updateRestaurantForm(this, e.target)}
+                    id="signUpDelivreyArea">
                         <option value = "0">UTSG</option>
                         <option value = "1">UTM</option>
                         <option value = "2">UTSC</option>
@@ -58,17 +74,21 @@ class RestaurantSignUp extends Component{
                 <div className = "sign-up">
                     <span>username</span>
                     <form id = "signUpUsername">
-                        <input className="typeBar" type="text" placeholder="Enter username" />
+                        <input 
+                        name = "username" value = {username} onChange={e => updateRestaurantForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter username" />
                     </form>
                 </div>
                 <div className = "sign-up">
                     <span>password</span>
                     <form id = "signUpPassword">
-                        <input className="typeBar" type="text" placeholder="Enter password"/>
+                        <input 
+                        name = "password" value = {password} onChange={e => updateRestaurantForm(this, e.target)}
+                        className="typeBar" type="text" placeholder="Enter password"/>
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>this.props.addRestaurant(submitFunction(this.state.category))}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>addRestaurant(this, dashboard, getCheckBox(this.state.category))}>Submit</Button></Link>
                 </div>
             </div>
         )

@@ -1,7 +1,7 @@
 import { Restaurant } from './Restaurant'
 import React from 'react'
 
-const getCheckBox = (category) => {
+export const getCheckBox = (category) => {
     const signUpCategory = document.getElementsByClassName("sign-up-category")
     let categoryList = signUpCategory[0].firstElementChild;
 
@@ -20,20 +20,20 @@ const getCheckBox = (category) => {
 
 }
 
-export const submitFunction = (category) => {
-    const nameElement = document.querySelector('#signUpName')
-    const name = nameElement.elements[0].value
-    const addressElement = document.querySelector('#signUpAddress')
-    const address = addressElement.elements[0].value
-    const usernameElement = document.querySelector('#signUpUsername')
-    const username = usernameElement.elements[0].value
-    const passwordElement = document.querySelector('#signUpPassword')
-    const password = passwordElement.elements[0].value
-    const deliveryAreaElement = document.getElementById('signUpDelivreyArea');
-    const deliveryArea = deliveryAreaElement.options[deliveryAreaElement.selectedIndex].text;
+// export const submitFunction = (category) => {
+//     const nameElement = document.querySelector('#signUpName')
+//     const name = nameElement.elements[0].value
+//     const addressElement = document.querySelector('#signUpAddress')
+//     const address = addressElement.elements[0].value
+//     const usernameElement = document.querySelector('#signUpUsername')
+//     const username = usernameElement.elements[0].value
+//     const passwordElement = document.querySelector('#signUpPassword')
+//     const password = passwordElement.elements[0].value
+//     const deliveryAreaElement = document.getElementById('signUpDelivreyArea');
+//     const deliveryArea = deliveryAreaElement.options[deliveryAreaElement.selectedIndex].text;
 
-    const restaurant = new Restaurant(name, address, deliveryArea, username, password)
-    restaurant.catorgory = getCheckBox(category);
+//     const restaurant = new Restaurant(name, address, deliveryArea, username, password)
+//     restaurant.catorgory = getCheckBox(category);
 
-    return restaurant
-}
+//     return restaurant
+// }
