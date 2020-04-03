@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
-import Header from './Header';
 import ItemCard from './ItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TabCard from './TabCard'
-import Restaurant from './Restaurant'
+import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
 import 'react-tabs/style/react-tabs.css';
 
 class Menu extends Component {
+
+    state = {
+        category: [
+            {
+                id: "",
+                categoryName:"",
+                items:[{
+                    id:"",
+                    itemName:"",
+                    description:"",
+                    price:0,
+                    image:""
+                }]
+            }
+        ]
+    }
+
+    async componentDidMount() {
+        getRestaurant()
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components
+        }
+    
 
     createCategorys = (props) => {
         return ( 

@@ -39,18 +39,18 @@ CustomerSchema.pre('save', function(next) {
 })
 
 CustomerSchema.statics.findByUserPassword = function(username, password) {
-	const User = this // binds this to the User model
-
-	// First find the user by their email
-	return User.findOne({ username: username }).then((user) => {
-		if (!user) {
+	const Customer = this // binds this to the User model
+    console.log("in findByUserPassword")
+    // First find the user by their email
+	return Customer.findOne({ username: username }).then((customer) => {
+		if (!customer) {
 			return Promise.reject()  // a rejected promise
 		}
 		// if the user exists, make sure their password is correct
 		return new Promise((resolve, reject) => {
-			bcrypt.compare(password, user.password, (err, result) => {
+			bcrypt.compare(password, customer.password, (err, result) => {
 				if (result) {
-					resolve(user)
+					resolve(customer)
 				} else {
 					reject()
 				}

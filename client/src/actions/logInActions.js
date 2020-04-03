@@ -18,7 +18,8 @@ export const readCookie = (app) => {
 }
 
 export const login = (loginComp, app) => {
-    const request = new Request("/login", {
+    
+    const request = new Request("http://localhost:5000/login", {
         method:"post",
         body: JSON.stringify(loginComp.state),
         headers: {
@@ -29,13 +30,14 @@ export const login = (loginComp, app) => {
     fetch(request)
     .then(res => {
         if (res.status === 200) {
-            console.log(res.json())
+
             return res.json();
         }
     })
     .then(json => {
         if (json.currentUser !== undefined) {
-            app.setState({currentUser: json.currentUser});
+            app.setState({ currentUser: json.currentUser });
+            app.history.push("/");
         }
     })
     .catch(error => {
@@ -73,7 +75,7 @@ export const logInUser = page => {
         page.setState({
             errMsg:"successfully log in"
         })
-        window.location.replace("./../");
+        
     }
     else {
         page.setState({

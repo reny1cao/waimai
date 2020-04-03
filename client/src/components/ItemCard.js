@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
 import './ItemCard.css';
 
 class ItemCard extends Component {
@@ -10,6 +12,7 @@ class ItemCard extends Component {
     }
 
     changeEditMode = () => {
+        editMenuItem()
         this.setState({ editable: !this.state.editable });
     }
 
@@ -36,7 +39,7 @@ class ItemCard extends Component {
                     <input name="description" type="text" value={this.state.description} onChange={this.handleDescriptionChange}></input>
                     <input name="price" type="text" value={this.state.price} onChange={this.handlePriceChange}></input>
                 </div>
-                <button onClick={this.changeEditMode}>Add</button>
+                <Button size="small" onClick={this.changeEditMode}>Add</Button>
             </div>
         )
     }
@@ -49,7 +52,7 @@ class ItemCard extends Component {
                     <p>{this.state.description}</p>
                     <p>{this.state.price}</p>
                 </div>
-                <button onClick={this.changeEditMode}>Edit</button>
+                <Button size="small" onClick={this.changeEditMode}>Edit</Button>
             </div>
         )
     }
