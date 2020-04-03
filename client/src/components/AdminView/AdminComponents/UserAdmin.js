@@ -62,7 +62,7 @@ class UserAdmin extends React.Component {
 
                 <TableCell component="th" scope="row">
                 <Button
-                    variant="btn btn-secondary"
+                    variant="btn btn-secondary btn-sm"
                     className="button"
                     onClick={
                     removeUser.bind(this, AdminComponent, user)
@@ -71,7 +71,7 @@ class UserAdmin extends React.Component {
                     Delete User
                 </Button>
                 <Button
-                    variant="btn btn-secondary"
+                    variant="btn btn-secondary btn-sm"
                     className="button"
                     onClick={ () => {
                     this.setState({editing:true})
@@ -153,7 +153,7 @@ class UserAdmin extends React.Component {
 
     <TableCell component="th" scope="row">
     <Button
-        variant="btn btn-secondary"
+        variant="btn btn-secondary btn-sm"
         className="button"
         onClick={
         removeUser.bind(this, AdminComponent, user)
@@ -162,7 +162,7 @@ class UserAdmin extends React.Component {
         Delete User
     </Button>
     <Button
-        variant="btn btn-secondary"
+        variant="btn btn-secondary btn-sm"
         onClick={
             editUser.bind(this, AdminComponent, user, this)
             }

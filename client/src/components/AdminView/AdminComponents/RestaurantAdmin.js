@@ -55,7 +55,7 @@ class RestaurantAdmin extends React.Component {
 
         <TableCell component="th" scope="row">
           <Button
-            variant="btn btn-secondary"
+            variant="btn btn-secondary btn-sm"
             onClick={
               removeRestaurant.bind(this, AdminComponent, restaurant)
             }
@@ -64,7 +64,7 @@ class RestaurantAdmin extends React.Component {
             Delete Restaurant
           </Button>
           <Button
-        variant="btn btn-secondary"
+        variant="btn btn-secondary btn-sm" 
         color="secondary"
         onClick={ () => {
             this.setState({editing:true})
@@ -136,7 +136,7 @@ class RestaurantAdmin extends React.Component {
     
             <TableCell component="th" scope="row">
               <Button
-                variant="btn btn-secondary"
+                variant="btn btn-secondary btn-sm"
                 className="button"
                 onClick={
                   removeRestaurant.bind(this, AdminComponent, restaurant)
@@ -145,7 +145,7 @@ class RestaurantAdmin extends React.Component {
                 Delete Restaurant
               </Button>
               <Button
-            variant="btn btn-secondary"
+            variant="btn btn-secondary btn-sm"
             className="button"
             onClick={
             
