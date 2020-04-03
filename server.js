@@ -3,7 +3,8 @@ const log = console.log;
 // Express
 const express = require('express');
 const app = express();
-
+const cors = require('cors');
+app.use(cors());
 
 // Mongo and Mongoose
 const { ObjectID } = require('mongodb');
