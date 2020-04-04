@@ -20,6 +20,8 @@ class RestaurantSignUp extends Component{
 
         const { name, address, deliveryArea, category, username, password } = this.state;
 
+        const { dashboard } = this.props;
+
         return (
             <div className="sign-up-container">
                 <div className = "sign-up">
@@ -43,10 +45,10 @@ class RestaurantSignUp extends Component{
                     <p><select 
                     name = "deliveryArea" value = {deliveryArea} onChange={e => updateRestaurantForm(this, e.target)}
                     id="signUpDelivreyArea">
-                        <option value = "0">UTSG</option>
-                        <option value = "1">UTM</option>
-                        <option value = "2">UTSC</option>
-                        <option value = "3">ALL DOWNTOWN AREA</option>
+                        <option value = "UTSG">UTSG</option>
+                        <option value = "UTM">UTM</option>
+                        <option value = "UTSC">UTSC</option>
+                        <option value = "ALL DOWNTOWN AREA">ALL DOWNTOWN AREA</option>
                     </select></p>
                 </div>
                 <div className = "sign-up">
@@ -86,7 +88,7 @@ class RestaurantSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(category);addRestaurant(this)}}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(category,dashboard);addRestaurant(this)}}>Submit</Button></Link>
                 </div>
             </div>
         )

@@ -10,7 +10,7 @@ class CustomerSignUp extends Component{
     state={
         name:"",
         address:"",
-        number:"",
+        contactNumber:"",
         deliveryArea:"UTSG",
         preference:[],
         username:"",
@@ -21,7 +21,7 @@ class CustomerSignUp extends Component{
 
         const { dashboard } = this.props;
 
-        const { name, address, deliveryArea, number, preference, username, password } = this.state;
+        const { name, address, deliveryArea, contactNumber, preference, username, password } = this.state;
 
         return (
             <div className="sign-up-container">
@@ -45,7 +45,7 @@ class CustomerSignUp extends Component{
                     <span>Contact Number</span>
                     <form id = "signUpContact">
                         <input 
-                        name = "number" value = {number} onChange={e => updateCustomerForm(this, e.target)}
+                        name = "contactNumber" value = {contactNumber} onChange={e => updateCustomerForm(this, e.target)}
                         className="typeBar" type="text" placeholder="Enter Contact Number" />
                     </form>
                 </div>
@@ -54,10 +54,10 @@ class CustomerSignUp extends Component{
                     <p><select 
                     name = "deliveryArea" value = {deliveryArea} onChange={e => updateCustomerForm(this, e.target)}
                     id="signUpDelivreyArea">
-                        <option value = "0">UTSG</option>
-                        <option value = "1">UTM</option>
-                        <option value = "2">UTSC</option>
-                        <option value = "3">ALL DOWNTOWN AREA</option>
+                        <option value = "UTSG">UTSG</option>
+                        <option value = "UTM">UTM</option>
+                        <option value = "UTSC">UTSC</option>
+                        <option value = "ALL DOWNTOWN AREA">ALL DOWNTOWN AREA</option>
                     </select></p>
                 </div>
                 <div className = "sign-up">
@@ -97,7 +97,7 @@ class CustomerSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>{getCheckBox(this.state.preference); addCustomer(this, dashboard)}}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>{getCheckBox(preference); addCustomer(this, dashboard)}}>Submit</Button></Link>
                 </div>
             </div>
         )

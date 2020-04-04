@@ -134,8 +134,8 @@ class App extends React.Component {
                <FeedBack history={history} app={this} />}
               }
         </div>)} />
-        <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
-        <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />
+        <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
+        <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>

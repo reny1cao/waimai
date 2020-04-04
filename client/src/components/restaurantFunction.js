@@ -1,5 +1,3 @@
-import { Restaurant } from './Restaurant'
-import React from 'react'
 
 export const getCheckBox = (category) => {
     const signUpCategory = document.getElementsByClassName("sign-up-category")
