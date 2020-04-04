@@ -392,7 +392,7 @@ app.get('/restaurant/:id',(req,res) => {
 			res.status(404).send()
 		}
 		else{
-			res.send(restaurant)
+			res.send({currRestaurant : restaurant});
 		}
 	}).catch((error)=>{
 		res.status(500).send()

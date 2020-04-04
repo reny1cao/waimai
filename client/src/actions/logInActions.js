@@ -19,7 +19,7 @@ export const readCookie = (app) => {
 
 export const login = (loginComp, app, type) => {
     //temp url
-    let url = "/login";
+    let url = "http://localhost:5000/login";
 
     if (type === "Restaurant") {
         url += "/restaurant";
@@ -44,8 +44,8 @@ export const login = (loginComp, app, type) => {
     })
     .then(json => {
         if (json.currentUser !== undefined) {
-            app.setState({ currentUser: json.currentUser, userType: type});
-            // app.history.push("/");
+            app.setState({ currentUser: json.currentUser, userType: type})
+            loginComp.props.history.push("/"+type.toLowerCase()+"/"+loginComp.state.restaurant[0]._id);
         }
     })
     .catch(error => {

@@ -27,6 +27,7 @@ export const getRestaurant = (home) => {
         });
 };
 
+
 // A function to update the student form state
 export const updateRestaurantForm = (formComp, field) => {
     const value = field.value;
@@ -87,4 +88,27 @@ export const addRestaurant = (formComp) => {
 
 export const createRestaurant = (restaurant) => {
     return <Link to={"/menu"}  key={restaurant.id}> <RestaurantCard name={restaurant.name} type={restaurant.category} /> </Link>
+}
+
+export const getOneRestaurant = (app) => {
+
+    const url = "http://localhost:5000/restaurant/:id";
+
+    // Since this is a GET request, simply call fetch on the URL
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                // return a promise that resolves with the JSON body
+                return res.json();
+            } else {
+                alert("Could not get restaurant");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            app.setState({ currentRestaurant: json.currentRestaurant });
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
