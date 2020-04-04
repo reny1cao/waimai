@@ -40,8 +40,13 @@ class Home extends Component{
     }
 
     handleClickChange =() => {
-        console.log("a")
-        this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
+        try{
+            this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
+        }
+        catch{
+            console.log("error")
+        }
+        // this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
     }
 
 
