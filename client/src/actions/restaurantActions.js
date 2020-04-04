@@ -37,7 +37,7 @@ export const updateRestaurantForm = (formComp, field) => {
     });
 };
 
-export const addRestaurant = (formComp,dashboardComp) => {
+export const addRestaurant = (formComp) => {
     // the URL for the request
     const url = "http://localhost:5000/restaurant/sign-up";
 
@@ -59,26 +59,28 @@ export const addRestaurant = (formComp,dashboardComp) => {
 
     // Send the request with fetch()
     fetch(request)
-        .then(function (res) {
-            // Handle response we get from the API.
-            // Usually check the error codes to see what happened.
-            if (res.status === 200) {
-                dashboardComp.setState({
-                    message: {
-                        body: "Success: Added a Restaurant.",
-                        type: "success"
-                    }
-                });
-            } else {
-                dashboardComp.setState({
-                    message: {
-                        body: "Error: Could not add restaurant.",
-                        type: "error"
-                    }
-                });
-            }
-        })
+        // .then(function (res) {
+        //     // Handle response we get from the API.
+        //     // Usually check the error codes to see what happened.
+        //     if (res.status === 200) {
+        //         // If student was added successfully, tell the user.
+        //         // dashboardComp.setState({
+        //         //     message: {
+        //         //         body: "Success: Added a Restaurant.",
+        //         //         type: "success"
+        //         //     }
+        //         // });
+        //     } else {
+        //         // dashboardComp.setState({
+        //         //     message: {
+        //         //         body: "Error: Could not add restaurant.",
+        //         //         type: "error"
+        //         //     }
+        //         // });
+        //     }
+        // })
         .catch(error => {
+            restaurant.setState({ errMsg: "Wrong Log In Information" })
             console.log(error);
         });
 };

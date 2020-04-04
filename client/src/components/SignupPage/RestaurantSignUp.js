@@ -20,8 +20,6 @@ class RestaurantSignUp extends Component{
 
         const { name, address, deliveryArea, category, username, password } = this.state;
 
-        const { dashboard } = this.props;
-
         return (
             <div className="sign-up-container">
                 <div className = "sign-up">
@@ -88,7 +86,7 @@ class RestaurantSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(category,dashboard);addRestaurant(this)}}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(category);addRestaurant(this)}}>Submit</Button></Link>
                 </div>
             </div>
         )
