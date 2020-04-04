@@ -27,6 +27,7 @@ export const getRestaurant = (home) => {
         });
 };
 
+
 // A function to update the student form state
 export const updateRestaurantForm = (formComp, field) => {
     const value = field.value;
@@ -91,7 +92,7 @@ export const createRestaurant = (restaurant) => {
 
 export const getOneRestaurant = (app) => {
 
-    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e";
+    const url = "http://localhost:5000/restaurant/:id";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
