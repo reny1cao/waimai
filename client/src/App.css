@@ -41,6 +41,16 @@ input[type=text] {
     position: relative;
     bottom: 250px;
 }
+
+#searchButton{
+    position: relative;
+    bottom: 250px;
+    border-radius: 4px;
+    left: 480px;
+    padding: 8px;
+    margin: 0 5px 0 5px;
+}
+
 .flex-container {
     display: flex;
     flex-wrap: nowrap;

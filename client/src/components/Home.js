@@ -22,18 +22,63 @@ class Home extends Component{
     }
 
     state = {
+        search:"",
+        filteredData:[],
         restaurantList:[]
     }
 
-    componentDidMount() {
+
+    handleInputChange = e =>{
+        console.log(e.target.value)
+        this.setState({
+            search: e.target.value
+        })
+        this.filterArray();
+        console.log(this.state.filteredData[0])
+    }
+
+    handleClickChange =() => {
+        console.log("a")
+        return <Link to={"/menu"}  key={this.state.filteredData[0].id} />
+    }
+
+
+    filterArray = () => {
+        if(this.state.search.length > 0){
+            // console.log(responseData[i].name);
+            this.state.filteredData = this.state.restaurantList.filter(l => {
+                return l.name.toLowerCase().includes(this.state.search);
+            })
+        }
+    }
+
+    // getRestaurant = () => {
+    //     const url = "http://localhost:5000/restaurant";
+
+    //     fetch(url)
+    //         .then(res => {
+    //             if (res.status === 200) {
+    //                 return res.json();
+    //             } else {
+    //                 alert("Could not get restaurant");
+    //             }
+    //         })
+    //         .then(data => {
+    //             this.setState({
+    //                     data,
+    //                     filteredData
+    //             });
+    //         });
+    // }
+
+    componentDidMount = () => {
         getRestaurant(this)
         console.log(this.state.restaurantList)
     }
 
-    
-
     render(){
-        const { restaurantList } = this.state;
+        const { restaurantList, restaurant } = this.state;
+
         return (
             <div id="home">
                 {/* <Header 
@@ -42,7 +87,12 @@ class Home extends Component{
                     userState1="Sign Up"
                 /> */}
                 <img id="hero-img" src={require("./../img/hero.jpg")} alt="hero image"></img>
-                <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
+                <input 
+                onChange = {this.handleInputChange}
+                id="searchBar" type="text" placeholder="Find food or Restaurant" />
+                <button 
+                onClick = {this.handleClickChange}
+                type="button" id="searchButton">search</button>
                 <h2>Popular</h2>
                 <div className="flex-container">
                     {restaurantList.map(createRestaurant)}
