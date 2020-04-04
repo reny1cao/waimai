@@ -106,6 +106,7 @@ class AdminView extends React.Component {
     componentDidMount = () => {
         getRestaurant(this)
         getCustomer(this)
+        this.baseState = this.state;
     }
 
     render() {
