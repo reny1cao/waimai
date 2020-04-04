@@ -25,7 +25,27 @@ export const removeRestaurant = (page, restaurant) => {
     });
 
     page.baseState.restaurants = filteredRestaurants
-    
+    // const url = "http://localhost:5000/restaurant";
+
+    // const request = new Request(url, {
+    //     method: "delete"
+    // })
+
+
+
+    // fetch(url)
+    //     .then(res => {
+    //         if (res.status === 200) {
+    //             return res.json();
+    //         } else {
+    //             alert("could not get restaurants")
+    //         }
+    //     })
+    //     .then(json => {
+    //         page.setState({restaurants: json.restaurants, view: "restaurants"});
+    //     }).catch(error => {
+    //         console.log(error);
+    //     });
 };
 
 export const editUser = (page, user, usercomp) => {
@@ -86,7 +106,7 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
 }
 
 export const switchToRestaurants = page => {
-    const url = "/restaurant";
+    const url = "http://localhost:5000/restaurant";
 
     fetch(url)
         .then(res => {
@@ -104,7 +124,7 @@ export const switchToRestaurants = page => {
 }
 
 export const switchToUsers = page => {
-    const url = "/customer";
+    const url = "http://localhost:5000/customer";
 
     fetch(url)
         .then(res => {
@@ -116,7 +136,7 @@ export const switchToUsers = page => {
             }
         })
         .then(json => {
-            page.setState({users: json.users, view: "users"})
+            page.setState({users: json.customers, view: "users"})
         }).catch(error => {
             console.log(error);
         });

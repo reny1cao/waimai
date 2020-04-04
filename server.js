@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 })
 
 
-/* Customer resource routes */
+// Posting an admin
 
 app.post('/admin', (req, res) => {
     const {username, password} = req.body;
@@ -57,6 +57,8 @@ app.post('/admin', (req, res) => {
         }
     )
 })
+
+/* Customer resource routes */
 
 app.post('/customer/sign-up', (req, res) => {
     
@@ -104,32 +106,7 @@ app.post('/customer/sign-up', (req, res) => {
 //     })
 // })
 
-app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
 
-    console.log(req.body)
-
-    Customer.findByUserPassword(username, password)
-        .then(customer => {
-            req.session.customer = customer._id;
-            req.session.username = customer.username;
-            res.send({ currentUser: customer.username});
-        })
-        .catch(error => {
-            res.status(400).send()
-        })
-})
-
-app.get("/logout", (req, res) => {
-    req.session.destroy(error => {
-        if (error) {
-            res.status(500).send(error);
-        } else {
-            res.send()
-        }
-    })
-})
  
 //get all the customers
 app.get('/customer', (req,res) => {
@@ -159,13 +136,7 @@ app.get('/customer/:id', (req, res) => {
 	})
 })
 
-app.get("/customer/check-session", (req, res) => {
-    if (req.session.user) {
-        res.send({currentUser: req.session.username});
-    } else {
-        res.status(401).send();
-    }
-});
+
 
 //Save newly created order to customer, order, restaurant
 //bug if we cant find restaurant, order will still be added to customer
@@ -290,6 +261,81 @@ app.delete('/customer/:id', (req, res) => {
 	})
 })
 
+// Route to log in and create session
+app.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    console.log(username, password, "C")
+
+    Customer.findByUserPassword(username, password)
+        .then(customer => {
+            req.session.customer = customer._id;
+            req.session.username = customer.username;
+            res.send({ currentUser: customer.username, userType: "Customer"});
+        })
+        .catch(error => {
+            res.status(400).send()
+        })
+})
+
+app.post('/login/restaurant', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    console.log(username, password, "R")
+
+    Restaurant.findByUserPassword(username, password)
+        .then(restaurant => {
+            req.session.restaurant= restaurant._id;
+            req.session.username = restaurant.username;
+            res.send({ currentUser: restaurant.username, userType: "Restaurnt"});
+        })
+        .catch(error => {
+            res.status(400).send()
+        })
+})
+
+app.post('/login/admin', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    console.log(username, password, "A")
+
+    Admin.findByUserPassword(username, password)
+        .then(admin => {
+            req.session.admin= admin._id;
+            req.session.username = admin.username;
+            res.send({ currentUser: admin.username, userType: "Admin"});
+        })
+        .catch(error => {
+            res.status(400).send()
+        })
+})
+
+//Route to log out a customer
+app.get("/logout", (req, res) => {
+    req.session.destroy(error => {
+        if (error) {
+            res.status(500).send(error);
+        } else {
+            res.send()
+        }
+    })
+})
+
+// Route to check if logged in as customer
+app.get("/check-session", (req, res) => {
+    if (req.session.admin) {
+        res.send({currentUser: req.session.username, userType : "Admin"});
+    } else if (req.session.customer) {
+        res.send({currentUser: req.session.username, userType : "Customer"});
+    } else if (req.session.restaurant) {
+        res.send({currentUser: req.session.username, userType : "Restaurant"});
+    }{
+        res.status(401).send();
+    }
+});
 
 /* Restaurant resource routes */
 
@@ -315,22 +361,7 @@ app.post('/restaurant/sign-up', (req, res) => {
     )
 })
 
-app.post('/login/restaurant', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
 
-    console.log(req.body)
-
-    Restaurant.findByUserPassword(username, password)
-        .then(restaurant => {
-            req.session.restaurant= restaurant._id;
-            req.session.username = restaurant.username;
-            res.send({ currentUser: restaurant.username});
-        })
-        .catch(error => {
-            res.status(400).send()
-        })
-})
 //get one restaurant
 app.get('/restaurant/:id',(req,res) => {
     const id = req.params.id
