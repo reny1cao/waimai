@@ -19,6 +19,8 @@ import NavBar from './components/NavBar/NavBar'
 import customerCart from './components/customerCart'
 // import NavBar from './components/NavBar/NavBar';
 import ProductList from './components/ProductList'
+import ShoppingCart from './components/ShoppingCart'
+import Checkout from './components/Checkout'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -105,8 +107,11 @@ class App extends React.Component {
                     <Link className="nav-item nav-link" to="/ProductList">
                       Products
                     </Link>
-                    <Link className="nav-item nav-link" to="/ProductList">
-                      Cart
+                    <Link className="nav-item nav-link" to="/ShoppingCart">
+                      ShoppingCart
+                    </Link>
+                    <Link className="nav-item nav-link" to="/Checkout">
+                      Checkout
                     </Link>
                   </div>
                 </div>
@@ -168,6 +173,8 @@ class App extends React.Component {
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
         <Route path = "/customer/:id/cart" component = {customerCart} /> 
         <Route path = "/ProductList" component = {ProductList} /> 
+        <Route path = "/ShoppingCart" component = {ShoppingCart}/>
+        <Route path = "/Checkout" component = {Checkout}/>
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>
       </BrowserRouter>
