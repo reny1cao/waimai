@@ -105,7 +105,7 @@ export const getOneRestaurant = (app) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            home.setState({ currentRestaurant: json.currentRestaurant });
+            app.setState({ currentRestaurant: json.currentRestaurant });
         })
         .catch(error => {
             console.log(error);
