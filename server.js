@@ -126,14 +126,14 @@ app.post('/login', (req, res) => {
 //get all the customers
 
 app.get('/customer',(req,res) => {
-    Restaurant.find().then((customers) => {
+    Customer.find().then((customers) => {
         res.send({customerList : customers});
     },(error) => {
         res.status(500).send()
     })
 })
 
-app.get('/customer/:id', (req, res) => {
+app.get('/customer/:id/cart', (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -145,7 +145,7 @@ app.get('/customer/:id', (req, res) => {
 		if (!customer) {
 			res.status(404).send()  
 		} else {
-			res.send(customer)
+			res.send({customerCart: customer.activeOrders})
 		}
 	}).catch((error) => {
 		res.status(500).send() 

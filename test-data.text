@@ -22,7 +22,6 @@
 }
 
 //add order
-//http://localhost:5000/customer/5e7d5a605b206637efc87f7a/cart
 {
 	"dishes":[
 		{
@@ -36,7 +35,8 @@
 			"amount": 1
 		}
 		],
-	"totalPrice": 24.99,
+	"totalPrice": 24//http://localhost:5000/customer/5e7d5a605b206637efc87f7a/cart
+.99,
 	"time": "12:33",
 	"deliveryAddress": "386 Yonge",
 	"restaurantIdStr": "5e7d5a715b206637efc87f7b"
