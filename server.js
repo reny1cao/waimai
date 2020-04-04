@@ -376,7 +376,7 @@ app.get('/restaurant/:id/order', (req,res) => {
 //get all the restaurant
 app.get('/restaurant',(req,res) => {
     Restaurant.find().then((restaurants) => {
-        res.send(restaurants)
+        res.send({restaurantList : restaurants});
     },(error) => {
         res.status(500).send()
     })

@@ -1,8 +1,12 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { RestaurantCard } from '../components/RestaurantCard';
+
 // A function to send a GET request to the web server,
 // and then loop through them and add a list element for each restaurant
-export const getRestaurant = (studentList) => {
+export const getRestaurant = (home) => {
     // the URL for the request
-    const url = "/";
+    const url = "http://localhost:5000/restaurant";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -11,12 +15,12 @@ export const getRestaurant = (studentList) => {
                 // return a promise that resolves with the JSON body
                 return res.json();
             } else {
-                alert("Could not get students");
+                alert("Could not get restaurant");
             }
         })
         .then(json => {
             // the resolved promise with the JSON body
-            studentList.setState({ restaurantList: json.restaurants });
+            home.setState({ restaurantList: json.restaurantList });
         })
         .catch(error => {
             console.log(error);
@@ -80,3 +84,7 @@ export const addRestaurant = (formComp, dashboardComp) => {
             console.log(error);
         });
 };
+
+export const createRestaurant = (restaurant) => {
+    return <Link to={"/menu"}  key={restaurant.id}> <RestaurantCard name={restaurant.name} type={restaurant.category} /> </Link>
+}

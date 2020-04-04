@@ -13,11 +13,18 @@ const CategorySchema = new mongoose.Schema({
     categoryName: String,
     items: [ItemSchema]
 })
+// const ReviewSchema = new mongoose.Schema({
+//     name: String,
+//     date: String,
+//     rating: 4,
+//     comments: String
+// })
 const RestaurantSchema = new mongoose.Schema({
     name: String,
     address: String,
     deliveryArea: String,
     category: String,
+    rating: Number,
     username: {
         type: String,
         required: true,
@@ -32,6 +39,7 @@ const RestaurantSchema = new mongoose.Schema({
     activeOrders: [OrderSchema],
     orderHistory: [OrderSchema],
     menu: [CategorySchema]
+    // reviews: [ReviewSchema]
 })
 
 RestaurantSchema.pre('save', function(next) {
