@@ -1,5 +1,6 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
+import {Confirm} from 'semantic-ui-react';
 
 
 import TableCell from "@material-ui/core/TableCell";
@@ -19,7 +20,7 @@ class UserAdmin extends React.Component {
           editing: false
     };
   }
-  
+
 
   render() {
       
@@ -61,8 +62,12 @@ class UserAdmin extends React.Component {
                     variant="btn btn-secondary btn-sm"
                     className="button"
                     onClick={
-                    removeUser.bind(this, AdminComponent, user)
+                        () => {
+                            if (window.confirm("Confirm to delete this user?")) {
+                            removeUser.call(this, AdminComponent, user);
+                        }
                     }
+                }
                 >
                     Delete User
                 </Button>
