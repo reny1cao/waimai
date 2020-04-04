@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ItemCard from './ItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TabCard from './TabCard'
-import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
+import { editMenuItem, getRestaurant } from '../actions/RestaurantActions'
 import 'react-tabs/style/react-tabs.css';
 
 class Menu extends Component {

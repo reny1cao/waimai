@@ -65,74 +65,94 @@ class LogInPage extends React.Component {
                 </div>
 
             )
-        }
-        else if (this.state.userType === "Customer") {
-            return (
-                    <div className="LogInPage">
-                        {/* <Header
-                            title="Log In"
-                            userState="Log In"
-                            userState1="Sign Up"
-                        /> */}
-
-                        <LogInForm
-                        pageTitle={this.state.userType}
-                            username={this.state.username}
-                            password={this.state.password}
-                            handleChange={this.handleInputChange}
-                            errMsg={this.state.errMsg}
-                            logIn={() => login(this, app)}
-                            backTrack={() =>backTrack(this)}
-                        />
-                    </div>
-
-                );
-        }
-        else if (this.state.userType === "Restaurant") {
-            return (
-                    <div className="LogInPage">
-                        {/* <Header
-                            title="Log In"
-                            userState="Log In"
-                            userState1="Sign Up"
-                        /> */}
-
-                        <LogInForm
-                        pageTitle={this.state.userType}
-                            username={this.state.username}
-                            password={this.state.password}
-                            handleChange={this.handleInputChange}
-                            errMsg={this.state.errMsg}
-                            logIn={() => logInRestaurant(this)}
-                            backTrack={() =>backTrack(this)}
-                        />
-                    </div>
-
-            );
-            
-        }
-        else if (this.state.userType === "Admin") {
+        } else {
             return (
                 <div className="LogInPage">
-                    {/* <Header
-                        title="Log In"
-                        userState="Log In"
-                        userState1="Sign Up"
-                    /> */}
-                    <LogInForm
-                        pageTitle={this.state.userType}
-                        username={this.state.username}
-                        password={this.state.password}
-                        handleChange={this.handleInputChange}
-                        errMsg={this.state.errMsg}
-                        logIn={() => logInAdmin(this)}
-                        backTrack={() =>backTrack(this)}
-                            
-                    />
-                </div>
+                        {/* <Header
+                            title="Log In"
+                            userState="Log In"
+                            userState1="Sign Up"
+                        /> */}
 
-            );
+                        <LogInForm
+                        pageTitle={this.state.userType}
+                            username={this.state.username}
+                            password={this.state.password}
+                            handleChange={this.handleInputChange}
+                            errMsg={this.state.errMsg}
+                            logIn={() => login(this, app, this.state.userType)}
+                            backTrack={() =>backTrack(this)}
+                        />
+                    </div>
+            )
         }
+        // else if (this.state.userType === "Customer") {
+        //     return (
+        //             <div className="LogInPage">
+        //                 {/* <Header
+        //                     title="Log In"
+        //                     userState="Log In"
+        //                     userState1="Sign Up"
+        //                 /> */}
+
+        //                 <LogInForm
+        //                 pageTitle={this.state.userType}
+        //                     username={this.state.username}
+        //                     password={this.state.password}
+        //                     handleChange={this.handleInputChange}
+        //                     errMsg={this.state.errMsg}
+        //                     logIn={() => login(this, app)}
+        //                     backTrack={() =>backTrack(this)}
+        //                 />
+        //             </div>
+
+        //         );
+        // }
+        // else if (this.state.userType === "Restaurant") {
+        //     return (
+        //             <div className="LogInPage">
+        //                 {/* <Header
+        //                     title="Log In"
+        //                     userState="Log In"
+        //                     userState1="Sign Up"
+        //                 /> */}
+
+        //                 <LogInForm
+        //                 pageTitle={this.state.userType}
+        //                     username={this.state.username}
+        //                     password={this.state.password}
+        //                     handleChange={this.handleInputChange}
+        //                     errMsg={this.state.errMsg}
+        //                     logIn={() => logInRestaurant(this, app)}
+        //                     backTrack={() =>backTrack(this)}
+        //                 />
+        //             </div>
+
+        //     );
+            
+        // }
+        // else if (this.state.userType === "Admin") {
+        //     return (
+        //         <div className="LogInPage">
+        //             {/* <Header
+        //                 title="Log In"
+        //                 userState="Log In"
+        //                 userState1="Sign Up"
+        //             /> */}
+        //             <LogInForm
+        //                 pageTitle={this.state.userType}
+        //                 username={this.state.username}
+        //                 password={this.state.password}
+        //                 handleChange={this.handleInputChange}
+        //                 errMsg={this.state.errMsg}
+        //                 logIn={() => logInAdmin(this)}
+        //                 backTrack={() =>backTrack(this)}
+                            
+        //             />
+        //         </div>
+
+        //     );
+        // }
     }
     
 }

@@ -315,6 +315,22 @@ app.post('/restaurant/sign-up', (req, res) => {
     )
 })
 
+app.post('/login/restaurant', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    console.log(req.body)
+
+    Restaurant.findByUserPassword(username, password)
+        .then(restaurant => {
+            req.session.restaurant= restaurant._id;
+            req.session.username = restaurant.username;
+            res.send({ currentUser: restaurant.username});
+        })
+        .catch(error => {
+            res.status(400).send()
+        })
+})
 //get one restaurant
 app.get('/restaurant/:id',(req,res) => {
     const id = req.params.id
@@ -360,7 +376,7 @@ app.get('/restaurant/:id/order', (req,res) => {
 //get all the restaurant
 app.get('/restaurant',(req,res) => {
     Restaurant.find().then((restaurants) => {
-        res.send(restaurants)
+        res.send({restaurantList : restaurants});
     },(error) => {
         res.status(500).send()
     })

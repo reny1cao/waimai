@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
+// import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
 import './ItemCard.css';
 
 class ItemCard extends Component {
@@ -12,7 +12,7 @@ class ItemCard extends Component {
     }
 
     changeEditMode = () => {
-        editMenuItem()
+        // editMenuItem()
         this.setState({ editable: !this.state.editable });
     }
 
