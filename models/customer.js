@@ -5,9 +5,9 @@ const bcrypt = require('bcryptjs');
 const CustomerSchema = new mongoose.Schema({
     name: String,
     address: String,
-    contactNumber: Number,
+    contactNumber: String,
     deliveryArea: String,
-    preference: String,
+    preference: Array,
     username: {
         type: String,
         required: true,
