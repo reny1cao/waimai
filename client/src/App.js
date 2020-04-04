@@ -83,7 +83,7 @@ class App extends React.Component {
           <Route path="/" exact component={Home} />
           {/* <Route path="/RestaurantHome" exact component={Menu} /> */}
 
-          <Route path={["/Home", "/LogInPage", "RestaurantHome", "AdminView"]}
+          <Route path={["/Home", "/LogInPage", "/RestaurantHome", "/AdminView"]}
            render = {({history}) => (
              <div className="app">
                {userType === "Customer" ? <Home history={history} app={this} /> : 

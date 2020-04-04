@@ -75,7 +75,6 @@ class Home extends Component{
 
     componentDidMount = () => {
         getRestaurant(this)
-        console.log(this.state.restaurantList)
     }
 
     render(){

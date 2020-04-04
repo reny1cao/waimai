@@ -4,7 +4,7 @@ import React from "react"
 
 export const getCustomer = (home) => {
     // the URL for the request
-    const url = "http://localhost:5000/customer";
+    const url = "/customer";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
