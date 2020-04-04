@@ -15,6 +15,7 @@ import UserEdit from './components/UserEdit'
 import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
+import NavBar from './components/NavBar/NavBar'
 // import NavBar from './components/NavBar/NavBar';
 
 class App extends React.Component {
@@ -77,16 +78,19 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
-      {/* <NavBar app={this}/> */}
+      {/* {<NavBar history={history} app={this}/> } */}
       <Switch>
           <Route path="/" exact component={Home} />
           {/* <Route path="/RestaurantHome" exact component={Menu} /> */}
 
-          <Route path={["/Home", "/LogInPage"]}
+          <Route path={["/Home", "/LogInPage", "RestaurantHome", "AdminView"]}
            render = {({history}) => (
              <div className="app">
-               {userType !== "Admin" ? <LogInPage history={history} app={this} /> : 
-               <Home history={history} app={this} />}
+               {userType === "Customer" ? <Home history={history} app={this} /> : 
+               userType === "Admin" ? <AdminView history={history} app={this} />:
+               userType === "Restaurant" ? <RestaurantHome history={history} app={this} /> :
+               <LogInPage history={history} app={this} />
+               }
               }
         </div>)} />
         <Route path={["/Cart"]}
@@ -99,15 +103,8 @@ class App extends React.Component {
         <Route path={["/Restaurant/OrderRecord"]}
            render = {({history}) => (
              <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               {userType !== "Restaurant" ? <LogInPage history={history} app={this} /> : 
                <OrderRecord history={history} app={this} />}
-              }
-        </div>)} />
-        <Route path={["/RestaurantHome"]}
-           render = {({history}) => (
-             <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
-               <RestaurantHome history={history} app={this} />}
               }
         </div>)} />
         <Route path={["/menu"]}
@@ -120,15 +117,8 @@ class App extends React.Component {
         <Route path={["UserEdit"]}
            render = {({history}) => (
              <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
                <UserEdit history={history} app={this} />}
-              }
-        </div>)} />
-        <Route path={["/AdminView"]}
-           render = {({history}) => (
-             <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
-               <AdminView history={history} app={this} />}
               }
         </div>)} />
         <Route path={["/FeedBack"]}
