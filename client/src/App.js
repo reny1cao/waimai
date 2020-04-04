@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from './components/Home'
 import Menu from './components/Menu'
 import Cart from './components/Cart'
@@ -24,7 +24,8 @@ class App extends React.Component {
   }
 
   state = {
-    currentUser: null
+    currentUser: null,
+    userType: null
   }
 
   editCategory = (id, newValue) => {
@@ -74,97 +75,97 @@ class App extends React.Component {
   render() {
     const { currentUser, userType } = this.state;
 
-    // return (
-    //   <BrowserRouter>
-    //   <Switch>
-    //       <Route path={["/Home", "/logInPage"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <Home history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/Cart"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <Cart history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/Restaurant/OrderRecord"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <OrderRecord history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/RestaurantHome"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <RestaurantHome history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/menu"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <UserMenu history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["UserEdit"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <UserEdit history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/AdminView"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <AdminView history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path={["/FeedBack"]}
-    //        render = {({history}) => (
-    //          <div className="app">
-    //            {!currentUser ? <LogInPage history={history} app={this} /> : 
-    //            <FeedBack history={history} app={this} />}
-    //           }
-    //     </div>)} />
-    //     <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
-    //     <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />
-    //     <Route path = "/SignUpPage" component = {SignUpPage} /> 
-    //     <Route render={() => <div> 404 Not Found</div>} />
-    //     </Switch>
-    //   </BrowserRouter>
-    // )
-
     return (
-      <React.Fragment>
-          <Router>
-          <NavBar user={this.state.currentUser}/>
+      <BrowserRouter>
+      <Switch>
+          <Route path={["/Home", "/LogInPage"]}
+           render = {({history}) => (
+             <div className="app">
+               {userType !== "Admin" ? <LogInPage history={history} app={this} /> : 
+               <Home history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/Cart"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <Cart history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/Restaurant/OrderRecord"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <OrderRecord history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/RestaurantHome"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <RestaurantHome history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/menu"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <UserMenu history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["UserEdit"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <UserEdit history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/AdminView"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <AdminView history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/FeedBack"]}
+           render = {({history}) => (
+             <div className="app">
+               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               <FeedBack history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} />
+        <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />
+        <Route path = "/SignUpPage" component = {SignUpPage} /> 
+        <Route render={() => <div> 404 Not Found</div>} />
+        </Switch>
+      </BrowserRouter>
+    )
+
+  //   return (
+  //     <React.Fragment>
+  //         <Router>
+  //         <NavBar user={this.state.currentUser}/>
             
-                <Route path="/loginPage" render={props => (<LogInPage {...props} app={this}/>)} />
-                <Route path="/" exact component={Home} />
-                {/* <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} /> */}
-                <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
-                <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
-                <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
-                <Route path="/Cart" component={Cart} />
-                <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
-                <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
-                <Route path = "/SignUpPage" component = {SignUpPage} />    
-                {/* <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />    */}
-                <Route path = "/customer/sign-up" component = {CustomerSignUp} />   
-                <Route path="/AdminView" component={AdminView} />
-                <Route path="/FeedBack" component={FeedBack} />
-                <Route path="/UserEdit" component={UserEdit} />
+  //               <Route path="/loginPage" render={props => (<LogInPage {...props} app={this}/>)} />
+  //               <Route path="/" exact component={Home} />
+  //               {/* <Route path="/Restaurant/SignUp" render={props => (<RestaurantSignUp {...props} restaurant={this.state.Restaurant} addRestaurant={this.addRestaurant} />)} /> */}
+  //               <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
+  //               <Route path="/Restaurant/menu" render={props => (<Menu {...props} menu={this.state.menu} editCategory={this.editCategory} editMenuItems={this.editMenuItems}/>)} />
+  //               <Route path="/menu" render={props => (<UserMenu {...props} menu={this.state.menu} />)} />
+  //               <Route path="/Cart" component={Cart} />
+  //               <Route path="/Restaurant/OrderRecord" component = {OrderRecord} />
+  //               <Route path = "/RestaurantHome" exact component = {RestaurantHome} />
+  //               <Route path = "/SignUpPage" component = {SignUpPage} />    
+  //               {/* <Route path = "/Customer/SignUp" render={props => (<CustomerSignUp {...props} customer={this.state.Customer} addCustomer={this.addCustomer} />)} />    */}
+  //               <Route path = "/customer/sign-up" component = {CustomerSignUp} />   
+  //               <Route path="/AdminView" component={AdminView} />
+  //               <Route path="/FeedBack" component={FeedBack} />
+  //               <Route path="/UserEdit" component={UserEdit} />
            
-        </Router>
-      </React.Fragment>
-  );
+  //       </Router>
+  //     </React.Fragment>
+  // );
     }
 }
 

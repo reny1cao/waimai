@@ -1,5 +1,5 @@
 export const readCookie = (app) => {
-    const url = "/customer/check-session";
+    const url = "/check-session";
 
     fetch(url)
         .then(res => {
@@ -8,8 +8,8 @@ export const readCookie = (app) => {
             }
         })
         .then( json => {
-            if (json && json.currentUser) {
-                app.setState({currentUser: json.currentUser});
+            if (json && json.currentUser && json.userType) {
+                app.setState({currentUser: json.currentUser, userType: json.userType});
             }
         })
         .catch(error => {
@@ -19,11 +19,11 @@ export const readCookie = (app) => {
 
 export const login = (loginComp, app, type) => {
     //temp url
-    let url = "http://localhost:5000/login";
+    let url = "/login";
 
     if (type === "Restaurant") {
         url += "/restaurant";
-    } else if (type === "Amin") {
+    } else if (type === "Admin") {
         url += "/admin"
     }
     
@@ -44,54 +44,55 @@ export const login = (loginComp, app, type) => {
     })
     .then(json => {
         if (json.currentUser !== undefined) {
-            app.setState({ currentUser: json.currentUser });
-            app.history.push("/");
+            app.setState({ currentUser: json.currentUser, userType: type});
+            // app.history.push("/");
         }
     })
     .catch(error => {
+        loginComp.setState({ errMsg: "Wrong Log In Information" });
         console.log(error);
     });
 }
 
-export const logInAdmin = page => {
-    const account = {
-        name: page.state.username,
-        pass: page.state.password
-    }
+// export const logInAdmin = page => {
+//     const account = {
+//         name: page.state.username,
+//         pass: page.state.password
+//     }
 
-    if (account.name === 'admin' && account.pass === 'admin') {
-        page.setState({
-            errMsg: "successfully log in"
-        })
-        window.location.replace("./../AdminView");
-    }
-    else {
-        page.setState({
-            errMsg: "Wrong UserName/ Password"
-        })
-    }
-}
+//     if (account.name === 'admin' && account.pass === 'admin') {
+//         page.setState({
+//             errMsg: "successfully log in"
+//         })
+//         window.location.replace("./../AdminView");
+//     }
+//     else {
+//         page.setState({
+//             errMsg: "Wrong UserName/ Password"
+//         })
+//     }
+// }
 
 
-export const logInUser = page => {
-    const account = {
-        name: page.state.username,
-        pass: page.state.password
-    }
+// export const logInUser = page => {
+//     const account = {
+//         name: page.state.username,
+//         pass: page.state.password
+//     }
 
-    if (account.name === 'user' && account.pass === 'user') {
-        page.setState({
-            errMsg:"successfully log in"
-        })
+//     if (account.name === 'user' && account.pass === 'user') {
+//         page.setState({
+//             errMsg:"successfully log in"
+//         })
         
-    }
-    else {
-        page.setState({
-            errMsg: "Wrong UserName/ Password"
-        })
-    }
+//     }
+//     else {
+//         page.setState({
+//             errMsg: "Wrong UserName/ Password"
+//         })
+//     }
     
-}
+// }
 
 
 // export const logInRestaurant = page => {
@@ -113,9 +114,9 @@ export const logInUser = page => {
 //     }
 // }
 
-export const logInRestaurant = (loginComp, app) => {
+// export const logInRestaurant = (loginComp, app) => {
     
-}
+// }
 
 export const backTrack = page => {
 
