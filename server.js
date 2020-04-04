@@ -126,7 +126,7 @@ app.post('/login', (req, res) => {
 //get all the customers
 
 app.get('/customer',(req,res) => {
-    Restaurant.find().then((customers) => {
+    Customer.find().then((customers) => {
         res.send({customerList : customers});
     },(error) => {
         res.status(500).send()
@@ -266,7 +266,7 @@ app.delete('/customer/:id', (req, res) => {
 		return;
 	}
 
-	Restaurant.findByIdAndRemove(id).then((customer) => {
+	Customer.findByIdAndRemove(id).then((customer) => {
 		if (!customer) {
 			res.status(404).send()
 		} else {   

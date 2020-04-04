@@ -1,51 +1,69 @@
 
 export const removeUser = (page, user) => {
-    const filteredUsers = page.state.users.filter(s => {
+    const filteredUsers = page.state.customerList.filter(s => {
       return s !== user;
     });
   
   
     page.setState({
-      users: filteredUsers
+        customerList: filteredUsers
     });
 
-    page.baseState.users = filteredUsers
+    page.baseState.customerList = filteredUsers
+
+    const id = user._id
+    let url = "/customer";
+
+    url = url + "/" + id
+
+    const request = new Request(url, {
+        method: "delete"
+    })
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("could not get customers")
+            }
+        }).catch(error => {
+            console.log(error);
+        });
   };
 
 
 
 export const removeRestaurant = (page, restaurant) => {
-    const filteredRestaurants = page.state.restaurants.filter(s => {
+    const filteredRestaurants = page.state.restaurantList.filter(s => {
       return s !== restaurant;
     });
   
   
     page.setState({
-      restaurants: filteredRestaurants
+        restaurantList: filteredRestaurants
     });
 
     page.baseState.restaurants = filteredRestaurants
-    // const url = "http://localhost:5000/restaurant";
+    const id = restaurant._id
+    let url = "/restaurant";
 
-    // const request = new Request(url, {
-    //     method: "delete"
-    // })
+    url = url + "/" + id
 
+    const request = new Request(url, {
+        method: "delete"
+    })
 
-
-    // fetch(url)
-    //     .then(res => {
-    //         if (res.status === 200) {
-    //             return res.json();
-    //         } else {
-    //             alert("could not get restaurants")
-    //         }
-    //     })
-    //     .then(json => {
-    //         page.setState({restaurants: json.restaurants, view: "restaurants"});
-    //     }).catch(error => {
-    //         console.log(error);
-    //     });
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("could not get restaurants")
+            }
+        }).catch(error => {
+            console.log(error);
+        });
 };
 
 export const editUser = (page, user, usercomp) => {
