@@ -4,7 +4,7 @@ import React from "react"
 
 export const getCustomer = (customerList) => {
     // the URL for the request
-    const url = "/";
+    const url = "http://localhost:5000/customer";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -37,7 +37,7 @@ export const updateCustomerForm = (formComp, field) => {
 
 export const addCustomer = (formComp) => {
     // the URL for the request
-    const url = "/customer/sign-up";
+    const url = "http://localhost:5000/customer/sign-up";
 
     // The data we are going to send in our request
 
