@@ -37,14 +37,14 @@ export const updateRestaurantForm = (formComp, field) => {
     });
 };
 
-export const addRestaurant = (formComp, dashboardComp) => {
+export const addRestaurant = (formComp) => {
     // the URL for the request
-    const url = "/restaurant/sign-up";
+    const url = "http://localhost:5000/restaurant/sign-up";
 
     // The data we are going to send in our request
 
     const restaurant = formComp.state
-    console.log(formComp.state)
+    console.log(restaurant)
 
     // Create our request constructor with all the parameters we need
     const request = new Request(url, {
@@ -58,31 +58,29 @@ export const addRestaurant = (formComp, dashboardComp) => {
 
     // Send the request with fetch()
     fetch(request)
-        .then(function (res) {
-            // Handle response we get from the API.
-            // Usually check the error codes to see what happened.
-            if (res.status === 200) {
-                // If student was added successfully, tell the user.
-                dashboardComp.setState({
-                    message: {
-                        body: "Success: Added a Restaurant.",
-                        type: "success"
-                    }
-                });
-            } else {
-                // If server couldn't add the student, tell the user.
-                // Here we are adding a generic message, but you could be more specific in your app.
-                dashboardComp.setState({
-                    message: {
-                        body: "Error: Could not add restaurant.",
-                        type: "error"
-                    }
-                });
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        // .then(function (res) {
+        //     // Handle response we get from the API.
+        //     // Usually check the error codes to see what happened.
+        //     if (res.status === 200) {
+        //         // If student was added successfully, tell the user.
+        //         // dashboardComp.setState({
+        //         //     message: {
+        //         //         body: "Success: Added a Restaurant.",
+        //         //         type: "success"
+        //         //     }
+        //         // });
+        //     } else {
+        //         // dashboardComp.setState({
+        //         //     message: {
+        //         //         body: "Error: Could not add restaurant.",
+        //         //         type: "error"
+        //         //     }
+        //         // });
+        //     }
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // });
 };
 
 export const createRestaurant = (restaurant) => {
