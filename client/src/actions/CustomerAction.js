@@ -82,3 +82,26 @@ export const addCustomer = (formComp) => {
             console.log(error);
         });
 };
+
+export const getCart = (home) => {
+    // the URL for the request
+    const url = "http://localhost:5000/customer/:id/cart";
+
+    // Since this is a GET request, simply call fetch on the URL
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                // return a promise that resolves with the JSON body
+                return res.json();
+            } else {
+                alert("Could not get cart");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            home.setState({ customerCart: json.customerCart });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

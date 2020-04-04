@@ -16,6 +16,7 @@ import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
 import NavBar from './components/NavBar/NavBar'
+import customerCart from './components/customerCart'
 // import NavBar from './components/NavBar/NavBar';
 
 class App extends React.Component {
@@ -83,7 +84,7 @@ class App extends React.Component {
           <Route path="/" exact component={Home} />
           <Route path="/RestaurantHome" exact component={Menu} />
 
-          <Route path={["/Home", "/LogInPage", "/RestaurantHome", "/AdminView"]}
+          <Route path={["/Home", "/LogInPage", "/AdminView"]}
            render = {({history}) => (
              <div className="app">
                {userType === "Customer" ? <Home history={history} app={this} /> : 
@@ -131,6 +132,7 @@ class App extends React.Component {
         <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
         <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
+        <Route path = "/customer/:id/cart" component = {customerCart} /> 
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>
       </BrowserRouter>
