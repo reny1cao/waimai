@@ -1,5 +1,7 @@
 // A function to send a GET request to the web server,
 // and then loop through them and add a list element for each restaurant
+import React from "react"
+
 export const getCustomer = (customerList) => {
     // the URL for the request
     const url = "/";
@@ -33,7 +35,7 @@ export const updateCustomerForm = (formComp, field) => {
     });
 };
 
-export const addCustomer = (formComp,) => {
+export const addCustomer = (formComp) => {
     // the URL for the request
     const url = "/customer/sign-up";
 

@@ -77,7 +77,10 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
+      <NavBar user={this.state.currentUser}/>
       <Switch>
+          <Route path="/" exact component={Home} />
+
           <Route path={["/Home", "/LogInPage"]}
            render = {({history}) => (
              <div className="app">
