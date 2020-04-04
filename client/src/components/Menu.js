@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import ItemCard from './ItemCard';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TabCard from './TabCard'
-import { editMenuItem, getRestaurant } from '../actions/RestaurantActions'
+import { editMenuItem, getRestaurant } from '../actions/restaurantActions'
 import 'react-tabs/style/react-tabs.css';
 
 class Menu extends Component {
 
     state = {
-        category: [
-            {
-                id: "",
-                categoryName:"",
-                items:[{
-                    id:"",
-                    itemName:"",
-                    description:"",
-                    price:0,
-                    image:""
-                }]
-            }
-        ]
+        // category: [
+        //     {
+        //         id: "",
+        //         categoryName:"",
+        //         items:[{
+        //             id:"",
+        //             itemName:"",
+        //             description:"",
+        //             price:0,
+        //             image:""
+        //         }]
+        //     }
+        // ]
+        currentRestaurant:null
     }
 
     async componentDidMount() {
