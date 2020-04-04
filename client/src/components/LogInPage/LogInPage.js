@@ -48,12 +48,13 @@ class LogInPage extends React.Component {
 
 
     render() {
-        const {app} = this.props
+        const {app,history} = this.props
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
                     <NavBar
-                    userType = {app.state.userType}
+                    history = {history}
+                    app = {app}
                     />
 
                     <SelectUser
@@ -68,7 +69,8 @@ class LogInPage extends React.Component {
             return (
                 <div className="LogInPage">
                         <NavBar
-                    userType = {app.state.userType}
+                    history = {history}
+                    app = {app}
                     />
 
                         <LogInForm

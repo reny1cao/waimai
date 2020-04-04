@@ -35,12 +35,13 @@ class Home extends Component{
     
 
     render(){
-        const {app} = this.props
+        const {history, app} = this.props
         const { restaurantList } = this.state;
         return (
             <div id="home">
                 <NavBar
-                    userType = {app.state.userType}
+                    history = {history}
+                    app = {app}
                     />
 
                 <img id="hero-img" src={require("./../img/hero.jpg")} alt="hero image"></img>
