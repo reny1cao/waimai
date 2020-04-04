@@ -6,8 +6,8 @@
 	"contactNumber": 3455,
 	"deliveryArea": "SG",
 	"preference": "Chinese",
-	"username": "a@gmail.com",
-	"password":"123456"
+	"username": "user",
+	"password":"user"
 }
 
 //restaurant sign up
@@ -17,8 +17,15 @@
 	"address": "396 yonge",
 	"deliveryArea": "SG",
 	"category": "Chinese",
-	"username": "a@gmail.com",
-	"password":"123456"
+	"username": "user1",
+	"password":"user1"
+}
+
+//restaurant sign up
+//http://localhost:5000/admin/sign-up
+{
+	"username": "admin",
+	"password":"admin"
 }
 
 //add order
