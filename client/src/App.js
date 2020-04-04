@@ -77,9 +77,10 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
-      {/* <NavBar user={this.state.currentUser}/> */}
+      {/* <NavBar app={this}/> */}
       <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/RestaurantHome" exact component={Menu} />
 
           <Route path={["/Home", "/LogInPage"]}
            render = {({history}) => (

@@ -19,7 +19,7 @@ export const readCookie = (app) => {
 
 export const login = (loginComp, app, type) => {
     //temp url
-    let url = "/login";
+    let url = "http://localhost:5000/login";
 
     if (type === "Restaurant") {
         url += "/restaurant";
