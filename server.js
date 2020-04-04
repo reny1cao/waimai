@@ -229,7 +229,6 @@ const restaurantId = ObjectID(restaurantIdStr);
 
 app.patch('/customer/:id', (req, res) => {
     const id = req.params.id;
-    console.log(id);
     if (!ObjectID.isValid(id)) {
 		res.status(404).send("customer id not valid")  
 		return;  
@@ -241,14 +240,13 @@ app.patch('/customer/:id', (req, res) => {
         if (!customer) {
             res.status(404).send();
         } else {
-            customer.menu.push({ 
-                name: name,
-                address: address,
-                contactNumber: contactNumber,
-                deliveryArea: deliveryArea,
-                preference: preference,
-                username: username,
-                password: password });
+            customer.name = name;
+            customer.address = address;
+            customer.contactNumber = contactNumber;
+            customer.deliveryArea = deliveryArea;
+            customer.preference = preference;
+            customer.username = username;
+            customer.password = password;
             customer.save().then((result) => {
                 res.send(result);
             }, (error) => {
@@ -475,13 +473,12 @@ app.patch('/restaurant/:id', (req, res) => {
         if (!restaurant) {
             res.status(404).send();
         } else {
-            restaurant.menu.push({ 
-                name: name,
-                address: address,
-                deliveryArea: deliveryArea,
-                category: category,
-                username: username,
-                password: password });
+            restaurant.name = name;
+            restaurant.address = address;
+            restaurant.deliveryArea = deliveryArea;
+            restaurant.category = category;
+            restaurant.username = username;
+            restaurant.password = password;
             restaurant.save().then((result) => {
                 res.send(result);
             }, (error) => {

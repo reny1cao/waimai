@@ -67,9 +67,9 @@ export const removeRestaurant = (page, restaurant) => {
 };
 
 export const editUser = (page, user, usercomp) => {
+    const originalUser = user.username
     const name = page.state.editName
     const username = page.state.editUsername
-    const password = page.state.editPassword
     const address = page.state.editAddress
     const number = page.state.editNumber
     const preference = page.state.editPref
@@ -79,14 +79,11 @@ export const editUser = (page, user, usercomp) => {
     if (username !== '') {
     user.username = username
     }
-    if (password !== '') {
-    user.password = password
-    }
     if (address !== '') {
         user.address = address
         }
     if (number !== '') {
-        user.number = number
+        user.contactNumber = number
         }
         if (preference !== '') {
             user.preference = preference
@@ -95,13 +92,39 @@ export const editUser = (page, user, usercomp) => {
     usercomp.setState({
         editing: false
     })
+    const id = user._id
+    let url = "/customer";
+
+    url = url + "/" + id
+    console.log(JSON.stringify(user))
+    const request = new Request(url, {
+        method: "PATCH",
+        body: JSON.stringify(user),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+        
+    })
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("could not get customers")
+            }
+        }).catch(error => {
+            user.username = originalUser
+            console.log(error);
+        });
 }
 
 export const editRestaurant = (page, restaurant, restaurantcomp) => {
     const name = page.state.editName
+    const originalUser = user.username
     const address = page.state.editAddress
     const username = page.state.editUsername
-    const password = page.state.editPassword
     const category = page.state.editCategory
     if (name !== ''){
     restaurant.name = name
@@ -112,15 +135,38 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
     if (username !== '') {
     restaurant.username = username
     }
-    if (password !== '') {
-    restaurant.password = password
-    }
     if (category !== '') {
         restaurant.category = category
         }
     restaurantcomp.setState({
         editing: false
     })
+
+    const id = restaurant._id
+    let url = "/restaurant";
+
+    url = url + "/" + id
+    console.log(JSON.stringify(restaurant))
+    const request = new Request(url, {
+        method: "PATCH",
+        body: JSON.stringify(restaurant),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    })
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("could not get restaurants")
+            }
+        }).catch(error => {
+            restaurant.username = originalUser
+            console.log(error);
+        });
 }
 
 export const switchToRestaurants = page => {
