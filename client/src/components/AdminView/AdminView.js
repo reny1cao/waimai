@@ -40,6 +40,8 @@ class AdminView extends React.Component {
         const tempName = this.state.searchName
         const tempView = this.state.view
         this.setState(this.baseState)
+        getRestaurant(this)
+        getCustomer(this)
         this.setState({
             searchName: tempName,
             view: tempView
@@ -105,13 +107,12 @@ class AdminView extends React.Component {
     //user or restaurant profile pages.
     componentDidMount = () => {
         getRestaurant(this)
-        console.log(this.state.restaurantList)
         getCustomer(this)
-        console.log(this.state.customerList)
     }
 
     render() {
         const {history, app} = this.props
+        this.baseState = this.state;
         if (this.state.view === "restaurants"){
 
             

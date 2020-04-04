@@ -5,13 +5,17 @@ import Button from 'react-bootstrap/Button'
 import { Link,Redirect } from "react-router-dom";
 import {logout} from "./../../actions/logInActions";
 import './NavBar.css'
-import { getRestaurant } from './../../actions/restaurantActions';
+import { getRestaurant } from '../../actions/restaurantActions';
+import { getCustomer,getCart } from './../../actions/CustomerAction';
+
 
 class NavBar extends Component {
 
     state = {
         restaurantList:[],
-        restaurant:[]
+        restaurant:[],
+        customerList:[],
+        customer:[],
     }
     
 
@@ -21,17 +25,41 @@ class NavBar extends Component {
     }
 
     accountInfo = () => {
-        getRestaurant(this)
-        this.state.restaurant = this.state.restaurantList.filter(l => {
-            return l.username === this.props.app.state.currentUser;
-        })
-        console.log(this.state.restaurant[0]._id)
-        this.props.history.push("/restaurant/${this.state.restaurant[0]._id}")
+        console.log(this.props)
+        if(this.props.app.state.userType === "Customer"){
+            this.state.customer = this.state.customerList.filter(l => {
+                return l.username === this.props.app.state.currentUser;
+            })
+            this.props.history.push("/customer/"+this.state.customer[0]._id)
+        }
+        if(this.props.app.state.userType === "Restaurant"){
+            this.state.restaurant = this.state.restaurantList.filter(l => {
+                return l.username === this.props.app.state.currentUser;
+            })
+            this.props.history.push("/restaurant/"+this.state.restaurant[0]._id)
+        }
+    }
+
+    order = () => {
+        console.log(this.props.app.state.userType === "Customer")
+        if(this.props.app.state.userType === "Customer"){
+            this.state.customer = this.state.customerList.filter(l => {
+                return l.username === this.props.app.state.currentUser;
+            })
+            console.log(this.state.customerCart)
+            this.props.history.push("/customer/"+this.state.customer[0]._id+"/cart")
+        }
+        if(this.props.app.state.userType === "Restaurant"){
+            this.state.restaurant = this.state.restaurantList.filter(l => {
+                return l.username === this.props.app.state.currentUser;
+            })
+            this.props.history.push("/restaurant/"+this.state.restaurant[0]._id+"/order")
+        }
     }
 
     componentDidMount = () => {
+        getCustomer(this)
         getRestaurant(this)
-        console.log(this.state.restaurantList)
     }
 
     render() {
@@ -55,7 +83,7 @@ class NavBar extends Component {
                         <div className="logged-in-nav">
                             <Avatar className="avatar" alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                             <NavDropdown title={app.state.currentUser} id="nav-dropdown">
-                                <NavDropdown.Item href="#">Orders</NavDropdown.Item>
+                                <NavDropdown.Item href="#" onSelect={this.order}>Orders</NavDropdown.Item>
                                 <NavDropdown.Item href="#" onSelect={this.accountInfo}>Account Info</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#" onSelect={() => this.logoutUser(app)} >Log out</NavDropdown.Item>

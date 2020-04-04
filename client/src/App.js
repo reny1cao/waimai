@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
 import Home from './components/Home'
 import Menu from './components/Menu/Menu'
 import Cart from './components/Cart'
@@ -16,8 +16,11 @@ import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
 import NavBar from './components/NavBar/NavBar'
+import customerCart from './components/customerCart'
 // import NavBar from './components/NavBar/NavBar';
-
+import ProductList from './components/ProductList'
+import ShoppingCart from './components/ShoppingCart'
+import Checkout from './components/Checkout'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -78,12 +81,49 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
+      
+		   <div>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+              <div className="container">
+                <Link className="navbar-brand" to="/">
+                  ShoppingCart
+                </Link>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarNavAltMarkup"
+                  aria-controls="navbarNavAltMarkup"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavAltMarkup"
+                >
+                  <div className="navbar-nav">
+                    <Link className="nav-item nav-link" to="/ProductList">
+                      Products
+                    </Link>
+                    <Link className="nav-item nav-link" to="/ShoppingCart">
+                      ShoppingCart
+                    </Link>
+                    <Link className="nav-item nav-link" to="/Checkout">
+                      Checkout
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
       {/* {<NavBar history={history} app={this}/> } */}
       <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/RestaurantHome" exact component={Menu} />
 
-          <Route path={["/Home", "/LogInPage", "/RestaurantHome", "/AdminView"]}
+          <Route path={["/Home", "/LogInPage", "/AdminView"]}
            render = {({history}) => (
              <div className="app">
                {userType === "Customer" ? <Home history={history} app={this} /> : 
@@ -131,6 +171,10 @@ class App extends React.Component {
         <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
         <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
+        <Route path = "/customer/:id/cart" component = {customerCart} /> 
+        <Route path = "/ProductList" component = {ProductList} /> 
+        <Route path = "/ShoppingCart" component = {ShoppingCart}/>
+        <Route path = "/Checkout" component = {Checkout}/>
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>
       </BrowserRouter>

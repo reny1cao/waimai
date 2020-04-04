@@ -26,7 +26,7 @@ class UserList extends React.Component {
                             <TableCell >  <strong>Area </strong></TableCell>
                             <TableCell >  <strong>Preference </strong></TableCell>
                             <TableCell >  <strong>Username </strong></TableCell>
-                            <TableCell >  <strong>Password</strong> </TableCell>
+                            <TableCell >   </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

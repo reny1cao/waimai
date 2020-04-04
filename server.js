@@ -4,6 +4,7 @@ const log = console.log;
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const data = require('./data');
 app.use(cors());
 
 // Mongo and Mongoose
@@ -140,14 +141,14 @@ app.post('/login', (req, res) => {
 //get all the customers
 
 app.get('/customer',(req,res) => {
-    Restaurant.find().then((customers) => {
+    Customer.find().then((customers) => {
         res.send({customerList : customers});
     },(error) => {
         res.status(500).send()
     })
 })
 
-app.get('/customer/:id', (req, res) => {
+app.get('/customer/:id/cart', (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -159,7 +160,7 @@ app.get('/customer/:id', (req, res) => {
 		if (!customer) {
 			res.status(404).send()  
 		} else {
-			res.send(customer)
+			res.send({customerCart: customer.activeOrders})
 		}
 	}).catch((error) => {
 		res.status(500).send() 
@@ -242,7 +243,6 @@ const restaurantId = ObjectID(restaurantIdStr);
 
 app.patch('/customer/:id', (req, res) => {
     const id = req.params.id;
-    console.log(id);
     if (!ObjectID.isValid(id)) {
 		res.status(404).send("customer id not valid")  
 		return;  
@@ -254,14 +254,13 @@ app.patch('/customer/:id', (req, res) => {
         if (!customer) {
             res.status(404).send();
         } else {
-            customer.menu.push({ 
-                name: name,
-                address: address,
-                contactNumber: contactNumber,
-                deliveryArea: deliveryArea,
-                preference: preference,
-                username: username,
-                password: password });
+            customer.name = name;
+            customer.address = address;
+            customer.contactNumber = contactNumber;
+            customer.deliveryArea = deliveryArea;
+            customer.preference = preference;
+            customer.username = username;
+            customer.password = password;
             customer.save().then((result) => {
                 res.send(result);
             }, (error) => {
@@ -280,7 +279,7 @@ app.delete('/customer/:id', (req, res) => {
 		return;
 	}
 
-	Restaurant.findByIdAndRemove(id).then((customer) => {
+	Customer.findByIdAndRemove(id).then((customer) => {
 		if (!customer) {
 			res.status(404).send()
 		} else {   
@@ -488,13 +487,12 @@ app.patch('/restaurant/:id', (req, res) => {
         if (!restaurant) {
             res.status(404).send();
         } else {
-            restaurant.menu.push({ 
-                name: name,
-                address: address,
-                deliveryArea: deliveryArea,
-                category: category,
-                username: username,
-                password: password });
+            restaurant.name = name;
+            restaurant.address = address;
+            restaurant.deliveryArea = deliveryArea;
+            restaurant.category = category;
+            restaurant.username = username;
+            restaurant.password = password;
             restaurant.save().then((result) => {
                 res.send(result);
             }, (error) => {
@@ -714,6 +712,25 @@ app.delete('/restaurant/:id/order/:order_id',(req,res) => {
 		res.status(500).send()
 	})
 })
+
+app.get('/api/products', (req, res) => {
+    return res.json(data.products);
+  });
+  
+  app.post('/api/products', (req, res) => {
+    let products = [], id = null;
+    let cart = JSON.parse(req.body.cart);
+    if (!cart) return res.json(products)
+    for (var i = 0; i < data.products.length; i++) {
+      id = data.products[i].id.toString();
+      if (cart.hasOwnProperty(id)) {
+        data.products[i].qty = cart[id]
+        products.push(data.products[i]);
+      }
+    }
+    return res.json(products);
+  });
+  
 
 
 /*********************************************************/

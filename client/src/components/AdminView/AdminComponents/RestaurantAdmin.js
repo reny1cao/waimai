@@ -40,7 +40,7 @@ class RestaurantAdmin extends React.Component {
         </TableCell>
 
         <TableCell component="th" scope="row">
-          {restaurant.area}
+          {restaurant.deliveryArea}
         </TableCell>
         <TableCell component="th" scope="row">
           {restaurant.category}
@@ -48,10 +48,7 @@ class RestaurantAdmin extends React.Component {
         <TableCell component="th" scope="row">
           {restaurant.username}
         </TableCell>
-        <TableCell component="th" scope="row">
-          {restaurant.password}
-        </TableCell>
-
+        
 
         <TableCell component="th" scope="row">
           <Button
@@ -101,7 +98,7 @@ class RestaurantAdmin extends React.Component {
                 <FormControl>
                 <Select
                 onChange={onChangeDropdown}
-                value={restaurant.area}
+                value={restaurant.deliveryArea}
                 >
                 <MenuItem value={"UTM"}>UTM</MenuItem>
                 <MenuItem value={"UTSC"}>UTSC</MenuItem>
@@ -125,13 +122,7 @@ class RestaurantAdmin extends React.Component {
         onChange={handleChangeEdit}
         />
             </TableCell>
-            <TableCell component="th" scope="row">
-            <Input
-        name="password"
-        value={restaurant.password}
-        onChange={handleChangeEdit}
-        />
-            </TableCell>
+            
     
     
             <TableCell component="th" scope="row">
