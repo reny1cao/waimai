@@ -15,7 +15,7 @@ import UserEdit from './components/UserEdit'
 import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
-import NavBar from './components/NavBar/NavBar';
+// import NavBar from './components/NavBar/NavBar';
 
 class App extends React.Component {
   constructor(props) {
