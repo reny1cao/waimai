@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import { RestaurantCard } from './RestaurantCard';
-import { getRestaurant , createRestaurant } from '../actions/RestaurantActions';
+import { getRestaurant , createRestaurant } from '../actions/restaurantActions';
 import restaurantData from '../restaurantData';
 import { Link } from 'react-router-dom';
 import { get } from 'mongoose';
@@ -40,8 +40,13 @@ class Home extends Component{
     }
 
     handleClickChange =() => {
-        console.log("a")
-        return <Link to={"/menu"}  key={this.state.filteredData[0].id} />
+        try{
+            this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
+        }
+        catch{
+            console.log("error")
+        }
+        // this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
     }
 
 

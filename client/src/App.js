@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
 import Home from './components/Home'
-import Menu from './components/Menu'
+import Menu from './components/Menu/Menu'
 import Cart from './components/Cart'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
@@ -16,6 +16,7 @@ import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
 import NavBar from './components/NavBar/NavBar'
+import customerCart from './components/customerCart'
 // import NavBar from './components/NavBar/NavBar';
 import ProductList from './components/ProductList'
 import ShoppingCart from './components/ShoppingCart'
@@ -120,8 +121,9 @@ class App extends React.Component {
       {/* {<NavBar history={history} app={this}/> } */}
       <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/RestaurantHome" exact component={Menu} />
 
-          <Route path={["/Home", "/LogInPage", "/RestaurantHome", "/AdminView"]}
+          <Route path={["/Home", "/LogInPage", "/AdminView"]}
            render = {({history}) => (
              <div className="app">
                {userType === "Customer" ? <Home history={history} app={this} /> : 
@@ -169,6 +171,7 @@ class App extends React.Component {
         <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
         <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
+        <Route path = "/customer/:id/cart" component = {customerCart} /> 
         <Route path = "/ProductList" component = {ProductList} /> 
         <Route path = "/ShoppingCart" component = {ShoppingCart}/>
         <Route path = "/Checkout" component = {Checkout}/>

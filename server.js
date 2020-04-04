@@ -125,15 +125,16 @@ app.post('/login', (req, res) => {
 
  
 //get all the customers
-app.get('/customer', (req,res) => {
+
+app.get('/customer',(req,res) => {
     Customer.find().then((customers) => {
-        res.send({customerList : customers})
-    }),(error) => {
+        res.send({customerList : customers});
+    },(error) => {
         res.status(500).send()
-    }
+    })
 })
 
-app.get('/customer/:id', (req, res) => {
+app.get('/customer/:id/cart', (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -145,7 +146,7 @@ app.get('/customer/:id', (req, res) => {
 		if (!customer) {
 			res.status(404).send()  
 		} else {
-			res.send(customer)
+			res.send({customerCart: customer.activeOrders})
 		}
 	}).catch((error) => {
 		res.status(500).send() 
@@ -266,7 +267,7 @@ app.delete('/customer/:id', (req, res) => {
 		return;
 	}
 
-	Restaurant.findByIdAndRemove(id).then((customer) => {
+	Customer.findByIdAndRemove(id).then((customer) => {
 		if (!customer) {
 			res.status(404).send()
 		} else {   
@@ -393,7 +394,8 @@ app.get('/restaurant/:id',(req,res) => {
 			res.status(404).send()
 		}
 		else{
-			res.send(restaurant)
+            console.log("server", restaurant.menu);
+			res.send({currRestaurantMenu : restaurant.menu});
 		}
 	}).catch((error)=>{
 		res.status(500).send()
@@ -531,6 +533,7 @@ app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
 
     const { itemName, description, price, image } = req.body;
 
+    console.log("from server", req.body);
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
             res.status(404).send();

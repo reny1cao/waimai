@@ -6,7 +6,7 @@ import { RestaurantCard } from '../components/RestaurantCard';
 // and then loop through them and add a list element for each restaurant
 export const getRestaurant = (home) => {
     // the URL for the request
-    const url = "/restaurant";
+    const url = "http://localhost:5000/restaurant";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -26,6 +26,7 @@ export const getRestaurant = (home) => {
             console.log(error);
         });
 };
+
 
 // A function to update the student form state
 export const updateRestaurantForm = (formComp, field) => {
@@ -87,4 +88,59 @@ export const addRestaurant = (formComp) => {
 
 export const createRestaurant = (restaurant) => {
     return <Link to={"/menu"}  key={restaurant.id}> <RestaurantCard name={restaurant.name} type={restaurant.category} /> </Link>
+}
+
+export const getOneRestaurant = (app) => {
+
+    const url = "http://localhost:5000/restaurant/:id";
+
+    // Since this is a GET request, simply call fetch on the URL
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                // return a promise that resolves with the JSON body
+                return res.json();
+            } else {
+                alert("Could not get restaurant");
+            }
+        })
+        .then(json => {
+            console.log("from getOne ", json);
+            // the resolved promise with the JSON body
+            app.setState({ currRestaurantMenu: json.currRestaurantMenu });
+        })
+        .catch(error => {
+            console.log("from getOne", error);
+        });
+}
+
+
+export const addItem = (newItem) => {
+    //change the url
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/5e841a6e56bb8007170cab0f/add-item"
+
+    const request = new Request(url, {
+        method: "PATCH",
+        body: JSON.stringify(newItem),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not add item");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            console.log(json)
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }

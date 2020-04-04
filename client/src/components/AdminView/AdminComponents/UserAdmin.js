@@ -40,11 +40,11 @@ class UserAdmin extends React.Component {
                 </TableCell>
 
                 <TableCell component="th" scope="row">
-                {user.number}
+                {user.contactNumber}
                 </TableCell>
 
                 <TableCell component="th" scope="row">
-                {user.area}
+                {user.deliveryArea}
                 </TableCell>
 
                 <TableCell component="th" scope="row">
@@ -53,10 +53,6 @@ class UserAdmin extends React.Component {
 
                 <TableCell component="th" scope="row">
                 {user.username}
-                </TableCell>
-
-                <TableCell component="th" scope="row">
-                {user.password}
                 </TableCell>
 
 
@@ -105,7 +101,7 @@ class UserAdmin extends React.Component {
     <TableCell component="th" scope="row">
         <Input
         name="number"
-        value={user.number}
+        value={user.contactNumber}
         onChange={handleChangeEdit}
         />
     </TableCell>
@@ -114,7 +110,7 @@ class UserAdmin extends React.Component {
         <FormControl>
                 <Select
                 onChange={onChangeDropdown}
-                value={user.area}
+                value={user.deliveryArea}
                 >
                 <MenuItem value={"UTM"}>UTM</MenuItem>
                 <MenuItem value={"UTSC"}>UTSC</MenuItem>
@@ -138,14 +134,6 @@ class UserAdmin extends React.Component {
     <Input
         name="username"
         value={user.username}
-        onChange={handleChangeEdit}
-        />
-    </TableCell>
-
-    <TableCell component="th" scope="row">
-    <Input
-        name="password"
-        value={user.password}
         onChange={handleChangeEdit}
         />
     </TableCell>
