@@ -5,6 +5,7 @@ import { getRestaurant , createRestaurant } from '../actions/RestaurantActions';
 import restaurantData from '../restaurantData';
 import { Link } from 'react-router-dom';
 import { get } from 'mongoose';
+import NavBar from './NavBar/NavBar'
 
 // function createRestaurant(props) {
 //     const total = props.reviews.reduce((acc, curr) => {
@@ -19,6 +20,7 @@ class Home extends Component{
 
     constructor(props) {
         super(props);
+        this.props.history.push("/Home")
     }
 
     state = {
@@ -33,14 +35,14 @@ class Home extends Component{
     
 
     render(){
+        const {app} = this.props
         const { restaurantList } = this.state;
         return (
             <div id="home">
-                {/* <Header 
-                    title="WAIMAI"
-                    userState="Log In"
-                    userState1="Sign Up"
-                /> */}
+                <NavBar
+                    userType = {app.state.userType}
+                    />
+
                 <img id="hero-img" src={require("./../img/hero.jpg")} alt="hero image"></img>
                 <input id="searchBar" type="text" placeholder="Find food or Restaurant"></input>
                 <h2>Popular</h2>

@@ -3,6 +3,7 @@ import React from 'react'
 // import Header from "../Header";
 import LogInForm from "../LogInForm/LogInForm";
 import SelectUser from "../SelectUser";
+import NavBar from "../NavBar/NavBar"
 
 import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "../../actions/logInActions";
 import "./LogInPage.css";
@@ -12,7 +13,7 @@ class LogInPage extends React.Component {
         super(props);
         this.props.history.push("/LogInPage")
     }
-
+    
     state = {
         username: "",
         password: "",
@@ -47,15 +48,13 @@ class LogInPage extends React.Component {
 
 
     render() {
-        const { app} = this.props
+        const {app} = this.props
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
-                    {/* <Header
-                        title="Log In"
-                        userState="Log In"
-                        userState1="Sign Up"
-                    /> */}
+                    <NavBar
+                    userType = {app.state.userType}
+                    />
 
                     <SelectUser
                         title='I would like to log in as:'
@@ -68,11 +67,9 @@ class LogInPage extends React.Component {
         } else {
             return (
                 <div className="LogInPage">
-                        {/* <Header
-                            title="Log In"
-                            userState="Log In"
-                            userState1="Sign Up"
-                        /> */}
+                        <NavBar
+                    userType = {app.state.userType}
+                    />
 
                         <LogInForm
                         pageTitle={this.state.userType}

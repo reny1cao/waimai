@@ -3,15 +3,18 @@ import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
 import Avatar from '@material-ui/core/Avatar';
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
+import {readCookie} from "./../../actions/logInActions";
 import './NavBar.css'
 
 class NavBar extends Component {
+
     render() {
+        const {userType} = this.props
         return (
             <Navbar bg="light" expand="lg" variant="light">
                 <Navbar.Brand href="/">WAIMAI</Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
-                    {!this.props.user ? 
+                    {userType !== "Admin" ? 
                         <div>
                         <Link to={"/logInPage"}>
                             <Button href="" id="login-button" variant="outline-secondary">Log in</Button>
