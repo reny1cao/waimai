@@ -124,12 +124,13 @@ app.post('/login', (req, res) => {
 
  
 //get all the customers
-app.get('/customer', (req,res) => {
-    Customer.find().then((customers) => {
-        res.send(customers)
-    }),(error) => {
+
+app.get('/customer',(req,res) => {
+    Restaurant.find().then((customers) => {
+        res.send({customerList : customers});
+    },(error) => {
         res.status(500).send()
-    }
+    })
 })
 
 app.get('/customer/:id', (req, res) => {
