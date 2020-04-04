@@ -106,7 +106,7 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
 }
 
 export const switchToRestaurants = page => {
-    const url = "http://localhost:5000/restaurant";
+    const url = "/restaurant";
 
     fetch(url)
         .then(res => {
@@ -117,14 +117,14 @@ export const switchToRestaurants = page => {
             }
         })
         .then(json => {
-            page.setState({restaurants: json.restaurants, view: "restaurants"});
+            page.setState({restaurants: json.restaurant, view: "restaurants"});
         }).catch(error => {
             console.log(error);
         });
 }
 
 export const switchToUsers = page => {
-    const url = "http://localhost:5000/customer";
+    const url = "/customer";
 
     fetch(url)
         .then(res => {
@@ -136,7 +136,7 @@ export const switchToUsers = page => {
             }
         })
         .then(json => {
-            page.setState({users: json.customers, view: "users"})
+            page.setState({users: json.customer, view: "users"})
         }).catch(error => {
             console.log(error);
         });

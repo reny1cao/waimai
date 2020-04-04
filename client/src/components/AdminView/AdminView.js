@@ -1,17 +1,22 @@
 import React from 'react'
 
-import Header from "./../Header";
 import UserList from "./AdminComponents/UserList";
 import NameSearchBar from "./AdminComponents/NameSearchBar";
 import RestaurantList from "./AdminComponents/RestaurantList";
 import Button from 'react-bootstrap/Button';
-
+import {getRestaurant} from '../../actions/RestaurantActions'
+import {getCustomer} from '../../actions/CustomerAction'
+import NavBar from '../NavBar/NavBar'
 import "./AdminView.css";
 
 import { searchForName, searchForRestaurant, switchToRestaurants, switchToUsers } from "./../../actions/AdminActions";
 
 
 class AdminView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props.history.push("/AdminView")
+    }
 
     state = {
         view: "users",
@@ -24,8 +29,8 @@ class AdminView extends React.Component {
         editPref:"",
         editCategory:"",
         // Users and Restaurant data here is hardcoded, would be fetched from server when signed up
-        users: [],
-        restaurants: []
+        customerList: [],
+        restaurantList: []
 
     };
 
@@ -98,18 +103,26 @@ class AdminView extends React.Component {
     //When editing the information, this will also be sent to server to update proper 
     //username and password combination. Information will also update on corresponding
     //user or restaurant profile pages.
-
+    componentDidMount = () => {
+        getRestaurant(this)
+        console.log(this.state.restaurantList)
+        getCustomer(this)
+        console.log(this.state.customerList)
+    }
 
     render() {
+        const {history, app} = this.props
         if (this.state.view === "restaurants"){
+
+            
             return (
                 <div className="admin__container">
             <div className="AdminPage">
-            {/* <Header
-                title="Admin"
-                userState="Log In"
-                userState1="Sign Up"
-            /> */}
+            <NavBar
+                    history = {history}
+                    app = {app}
+                    />
+
             <div className="toggleContainer">
             <Button
             variant="outlined-secondary"
@@ -135,7 +148,7 @@ class AdminView extends React.Component {
             />
             </div>
             <RestaurantList
-            restaurants={this.state.restaurants} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
+            restaurants={this.state.restaurantList} AdminComponent={this} handleChangeEdit={this.handleChangeEdit}
             />
             </div>
             </div>
@@ -145,11 +158,11 @@ class AdminView extends React.Component {
         return (
             <div className="admin__container">
             <div className="AdminPage">
-                {/* <Header
-                    title="Admin"
-                    userState="Log In"
-                    userState1="Sign Up"
-                /> */}
+            <NavBar
+                    history = {history}
+                    app = {app}
+                    />
+
                 <div className="toggleContainer">
                 <Button
                 variant="btn btn-secondary"
@@ -175,7 +188,7 @@ class AdminView extends React.Component {
                 />
                 </div>
                 <UserList
-                users={this.state.users} AdminComponent={this}
+                users={this.state.customerList} AdminComponent={this}
                 handleChangeEdit={this.handleChangeEdit}
                 />
                 

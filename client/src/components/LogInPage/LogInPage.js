@@ -6,6 +6,8 @@ import SelectUser from "../SelectUser";
 import NavBar from "../NavBar/NavBar"
 
 import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "../../actions/logInActions";
+import { getRestaurant } from './../../actions/restaurantActions';
+import { getCustomer } from './../../actions/CustomerAction';
 import "./LogInPage.css";
 
 class LogInPage extends React.Component {
@@ -18,7 +20,9 @@ class LogInPage extends React.Component {
         username: "",
         password: "",
         userType: "",
-        errMsg: ""
+        errMsg: "",
+        restaurant:[],
+        restaurantList:[]
     };
 
     handleInputChange = event => {
@@ -30,25 +34,48 @@ class LogInPage extends React.Component {
         this.setState({
             [name]: value
         })
+
     }
 
     handleClick = event => {
         const target = event.target;
         const value = target.value;
+
         
         if (value===undefined) {
             this.setState({
                 userType: target.innerHTML
             })}
-            else {
+        else {
             this.setState({userType: value})
+        }
+    }
 
+    componentDidMount = () => {
+        getRestaurant(this)
+        getCustomer(this)
+        console.log(this.state.restaurantList)
+    }
+
+    findId = () => {
+        if (this.state.type === restaurant){
+            this.state.restaurant = this.state.restaurantList.filter(l=>{
+                return this.state.username === l.username}
+            )
+        }
+        if (this.state.type === customer){
+            this.state.customer = this.state.customerList.filter(l=>{
+                return this.state.username === l.username}
+            )
         }
     }
 
 
+
     render() {
+
         const {app,history} = this.props
+
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
@@ -79,7 +106,8 @@ class LogInPage extends React.Component {
                             password={this.state.password}
                             handleChange={this.handleInputChange}
                             errMsg={this.state.errMsg}
-                            logIn={() => login(this, app, this.state.userType)}
+                            id = {this.state.id}
+                            logIn={()=>{this.findId();login(this, app, this.state.userType)}}
                             backTrack={() =>backTrack(this)}
                         />
                     </div>

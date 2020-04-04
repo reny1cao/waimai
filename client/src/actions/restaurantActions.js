@@ -6,7 +6,7 @@ import { RestaurantCard } from '../components/RestaurantCard';
 // and then loop through them and add a list element for each restaurant
 export const getRestaurant = (home) => {
     // the URL for the request
-    const url = "http://localhost:5000/restaurant";
+    const url = "/restaurant";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -26,6 +26,7 @@ export const getRestaurant = (home) => {
             console.log(error);
         });
 };
+
 
 // A function to update the student form state
 export const updateRestaurantForm = (formComp, field) => {
@@ -90,8 +91,8 @@ export const createRestaurant = (restaurant) => {
 }
 
 export const getOneRestaurant = (app) => {
-    //todo change the url
-    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e";
+
+    const url = "http://localhost:5000/restaurant/:id";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
