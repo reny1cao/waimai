@@ -105,9 +105,7 @@ class AdminView extends React.Component {
     //user or restaurant profile pages.
     componentDidMount = () => {
         getRestaurant(this)
-        console.log(this.state.restaurantList)
         getCustomer(this)
-        console.log(this.state.customerList)
     }
 
     render() {

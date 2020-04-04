@@ -106,40 +106,11 @@ export const editRestaurant = (page, restaurant, restaurantcomp) => {
 }
 
 export const switchToRestaurants = page => {
-    const url = "/restaurant";
-
-    fetch(url)
-        .then(res => {
-            if (res.status === 200) {
-                return res.json();
-            } else {
-                alert("could not get restaurants")
-            }
-        })
-        .then(json => {
-            page.setState({restaurants: json.restaurant, view: "restaurants"});
-        }).catch(error => {
-            console.log(error);
-        });
+    page.setState({view:'restaurants'})
 }
 
 export const switchToUsers = page => {
-    const url = "/customer";
-
-    fetch(url)
-        .then(res => {
-            if (res.status === 200) {
-                console.log(res.json());
-                return res.json();
-            } else {
-                alert("could not get customers")
-            }
-        })
-        .then(json => {
-            page.setState({users: json.customer, view: "users"})
-        }).catch(error => {
-            console.log(error);
-        });
+    page.setState({view:"users"})
 }
 
 export const searchForName = page => {

@@ -25,7 +25,7 @@ class RestaurantList extends React.Component {
                             <TableCell > <strong>Delivery Area </strong></TableCell>
                             <TableCell > <strong>Category </strong></TableCell>
                             <TableCell > <strong>Username </strong></TableCell>
-                            <TableCell > <strong>Password </strong></TableCell>
+                            <TableCell > </TableCell>
                         </TableRow>
                     </TableHead>
         <TableBody>

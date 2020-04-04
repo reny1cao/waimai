@@ -58,12 +58,12 @@ class LogInPage extends React.Component {
     }
 
     findId = () => {
-        if (this.state.type === restaurant){
+        if (this.state.type === "restaurant"){
             this.state.restaurant = this.state.restaurantList.filter(l=>{
                 return this.state.username === l.username}
             )
         }
-        if (this.state.type === customer){
+        if (this.state.type === "customer"){
             this.state.customer = this.state.customerList.filter(l=>{
                 return this.state.username === l.username}
             )
