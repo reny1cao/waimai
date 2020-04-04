@@ -106,7 +106,6 @@ app.post('/customer/sign-up', (req, res) => {
 //     })
 // })
 
-<<<<<<< HEAD
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -122,8 +121,6 @@ app.post('/login', (req, res) => {
             res.status(400).send()
         })
 })
-=======
->>>>>>> 63752502136137bac65251e53cb47d03b179aaf3
 
  
 //get all the customers

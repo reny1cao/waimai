@@ -3,15 +3,23 @@ import { Navbar, NavItem, NavDropdown, MenuItem, Nav } from 'react-bootstrap'
 import Avatar from '@material-ui/core/Avatar';
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
+import {logout} from "./../../actions/logInActions";
 import './NavBar.css'
 
 class NavBar extends Component {
+    
+
+    logoutUser = (app) => {
+        this.props.history.push("/LogInPage");
+        logout(app)
+    }
     render() {
+        const {app} = this.props
         return (
             <Navbar bg="light" expand="lg" variant="light">
                 <Navbar.Brand href="/">WAIMAI</Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
-                    {!this.props.user ? 
+                    {!app.state.userType ? 
                         <div>
                         <Link to={"/logInPage"}>
                             <Button href="" id="login-button" variant="outline-secondary">Log in</Button>
@@ -27,7 +35,7 @@ class NavBar extends Component {
                                 <NavDropdown.Item href="#">Orders</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Account Info</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#">Log out</NavDropdown.Item>
+                                <NavDropdown.Item href="#" onSelect={() => this.logoutUser(app)} >Log out</NavDropdown.Item>
                             </NavDropdown>
                         </div>
                     }     

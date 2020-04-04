@@ -126,3 +126,16 @@ export const backTrack = page => {
     })
     
 }
+
+export const logout = (app) => {
+    const url = "/logout";
+    fetch(url)
+        .then(res => {
+            app.setState({
+            currentUser: null,
+            userType: null});
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
