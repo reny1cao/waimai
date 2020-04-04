@@ -19,7 +19,7 @@ class CustomerSignUp extends Component{
 
     render(){
 
-        const { dashboard } = this.props;
+        // const { dashboard } = this.props;
 
         const { name, address, deliveryArea, contactNumber, preference, username, password } = this.state;
 
@@ -97,7 +97,7 @@ class CustomerSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>{getCheckBox(preference); addCustomer(this, dashboard)}}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick = {()=>{getCheckBox(preference); addCustomer(this)}}>Submit</Button></Link>
                 </div>
             </div>
         )
