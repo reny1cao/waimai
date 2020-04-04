@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from './components/Home'
-import Menu from './components/Menu'
+import Menu from './components/Menu/Menu'
 import Cart from './components/Cart'
 import { OrderRecord } from './components/OrderRecord'
 import { RestaurantHome } from './components/RestaurantHome'
@@ -80,7 +80,7 @@ class App extends React.Component {
       {/* <NavBar app={this}/> */}
       <Switch>
           <Route path="/" exact component={Home} />
-          {/* <Route path="/RestaurantHome" exact component={Menu} /> */}
+          <Route path="/RestaurantHome" exact component={Menu} />
 
           <Route path={["/Home", "/LogInPage"]}
            render = {({history}) => (
