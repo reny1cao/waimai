@@ -6,7 +6,7 @@ import { RestaurantCard } from '../components/RestaurantCard';
 // and then loop through them and add a list element for each restaurant
 export const getRestaurant = (home) => {
     // the URL for the request
-    const url = "/restaurant";
+    const url = "http://localhost:5000/restaurant";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
