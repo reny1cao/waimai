@@ -2,7 +2,7 @@
 // and then loop through them and add a list element for each restaurant
 import React from "react"
 
-export const getCustomer = (comp) => {
+export const getCustomer = (home) => {
     // the URL for the request
     const url = "/customer";
 
@@ -18,7 +18,7 @@ export const getCustomer = (comp) => {
         })
         .then(json => {
             // the resolved promise with the JSON body
-            comp.setState({ customerList: json.customerList });
+            home.setState({ customerList: json.customerList });
         })
         .catch(error => {
             console.log(error);

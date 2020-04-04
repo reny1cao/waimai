@@ -124,7 +124,7 @@ export const switchToRestaurants = page => {
 }
 
 export const switchToUsers = page => {
-    const url = "/customer";
+    const url = "http://localhost:5000/customer";
 
     fetch(url)
         .then(res => {
