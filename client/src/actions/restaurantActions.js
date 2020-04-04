@@ -6,7 +6,7 @@ import { RestaurantCard } from '../components/RestaurantCard';
 // and then loop through them and add a list element for each restaurant
 export const getRestaurant = (home) => {
     // the URL for the request
-    const url = "http://localhost:5000/restaurant";
+    const url = "http://localhost:5000/restaurant/";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -92,7 +92,7 @@ export const createRestaurant = (restaurant) => {
 
 export const getOneRestaurant = (app) => {
 
-    const url = "http://localhost:5000/restaurant/:id";
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e";
 
     // Since this is a GET request, simply call fetch on the URL
     fetch(url)
@@ -122,6 +122,35 @@ export const addItem = (newItem) => {
     const request = new Request(url, {
         method: "PATCH",
         body: JSON.stringify(newItem),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not add item");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            console.log(json)
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+export const addCategory = (name) => {
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/add-category";
+
+    const request = new Request(url, {
+        method: "PATCH",
+        body: JSON.stringify({categoryName: name}),
         headers: {
             Accept: "application/json, text/plain, */*",
             "Content-Type": "application/json"

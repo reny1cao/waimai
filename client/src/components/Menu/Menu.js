@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import ItemCard from '../ItemCard';
+
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { Tabs, Button } from 'antd';
-import { Modal, Input, Upload, message } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { Tabs, Button, Form } from 'antd';
+import { Modal, Input } from 'antd';
 import TabCard from '../TabCard'
-import { editMenuItem, getOneRestaurant, addItem } from '../../actions/restaurantActions'
+import { getOneRestaurant, addItem, addCategory } from '../../actions/restaurantActions'
 import 'react-tabs/style/react-tabs.css';
+import ImageForm from '../ImageForm/ImageForm';
 
 const { TabPane } = Tabs;
-const { Dragger } = Upload;
-
-const props = {
-    name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
 
 
 class Menu extends Component {
@@ -102,7 +85,7 @@ class Menu extends Component {
             
             <TabPane tab={category.categoryName} key={category._id} >
                 {category.items.map(this.createItems)}
-                <Button id="addTab" size="large" type="dashed" onClick={this.showModal}>Add</Button>
+                <Button size="large" type="dashed" onClick={this.showModal}>Add</Button>
             </TabPane>
             
         )
@@ -117,6 +100,14 @@ class Menu extends Component {
             <ItemCard key={item._id} id={item._id} name={item.itemName} description={item.description} price={item.price} />
         )
     }
+
+    onFinish = values => {
+        console.log('Success:', values);
+    };
+    
+    onFinishFailed = errorInfo => {
+        console.log('Failed:', errorInfo);
+    };
     
     render() {
         const { currRestaurantMenu } = this.state;
@@ -138,17 +129,25 @@ class Menu extends Component {
                 <Input name="name" onChange={this.handleInputChange} placeholder="Name" />
                 <Input name = "description" onChange={this.handleInputChange} placeholder="Descriptiion" />
                 <Input name="price" onChange={this.handleInputChange}prefix="$" suffix="CND"/>
-                <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                    band files
-                    </p>
-                </Dragger>
+                <ImageForm />
                 </Modal>
+
+                <Form
+                    name="basic"
+                    initialValues={{
+                        remember: true,
+                    }}
+                    onFinish={this.onFinish}
+                    onFinishFailed={this.onFinishFailed}
+                    >
+                    <Form.Item
+                        label="Category"
+                        name="category"
+                    >
+                    <Input />
+                    <Button type="primary" htmlType="submit">Add Category</Button>
+                    </Form.Item>
+                    </Form>
             </React.Fragment>
         )
     }
