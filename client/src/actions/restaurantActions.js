@@ -105,8 +105,40 @@ export const getOneRestaurant = (app) => {
             }
         })
         .then(json => {
+            console.log("from getOne ", json);
             // the resolved promise with the JSON body
-            app.setState({ currentRestaurant: json.currentRestaurant });
+            app.setState({ currRestaurantMenu: json.currRestaurantMenu });
+        })
+        .catch(error => {
+            console.log("from getOne", error);
+        });
+}
+
+
+export const addItem = (newItem) => {
+    //change the url
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/5e841a6e56bb8007170cab0f/add-item"
+
+    const request = new Request(url, {
+        method: "PATCH",
+        body: JSON.stringify(newItem),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not add item");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            console.log(json)
         })
         .catch(error => {
             console.log(error);

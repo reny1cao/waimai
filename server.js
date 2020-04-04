@@ -393,7 +393,8 @@ app.get('/restaurant/:id',(req,res) => {
 			res.status(404).send()
 		}
 		else{
-			res.send({currRestaurant : restaurant});
+            console.log("server", restaurant.menu);
+			res.send({currRestaurantMenu : restaurant.menu});
 		}
 	}).catch((error)=>{
 		res.status(500).send()
@@ -531,6 +532,7 @@ app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
 
     const { itemName, description, price, image } = req.body;
 
+    console.log("from server", req.body);
     Restaurant.findById(id).then((restaurant) => {
         if (!restaurant) {
             res.status(404).send();
