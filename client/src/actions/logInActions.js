@@ -45,7 +45,12 @@ export const login = (loginComp, app, type) => {
     .then(json => {
         if (json.currentUser !== undefined) {
             app.setState({ currentUser: json.currentUser, userType: type})
-            loginComp.props.history.push("/"+type.toLowerCase()+"/"+loginComp.state.restaurant[0]._id);
+            if(type === "Restaurant"){
+                loginComp.props.history.push("/"+type.toLowerCase()+"/"+loginComp.state.restaurant[0]._id);
+            }
+            if(type === "Customer"){
+                loginComp.props.history.push("/Home");
+            }
         }
     })
     .catch(error => {

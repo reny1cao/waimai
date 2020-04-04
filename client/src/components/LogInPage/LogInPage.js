@@ -22,7 +22,9 @@ class LogInPage extends React.Component {
         userType: "",
         errMsg: "",
         restaurant:[],
-        restaurantList:[]
+        restaurantList:[],
+        customer:[],
+        customerList:[]
     };
 
     handleInputChange = event => {
@@ -58,12 +60,13 @@ class LogInPage extends React.Component {
     }
 
     findId = () => {
-        if (this.state.type === restaurant){
+        
+        if (this.state.userType === "Restaurant"){
             this.state.restaurant = this.state.restaurantList.filter(l=>{
                 return this.state.username === l.username}
             )
         }
-        if (this.state.type === customer){
+        else if (this.state.userType === "Customer"){
             this.state.customer = this.state.customerList.filter(l=>{
                 return this.state.username === l.username}
             )

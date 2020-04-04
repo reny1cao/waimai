@@ -41,7 +41,7 @@ class Home extends Component{
 
     handleClickChange =() => {
         console.log("a")
-        return <Link to={"/menu"}  key={this.state.filteredData[0].id} />
+        this.props.history.push("/"+"restaurant"+"/"+this.state.filteredData[0]._id);
     }
 
 
