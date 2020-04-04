@@ -4,6 +4,7 @@ const log = console.log;
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const data = require('./data');
 app.use(cors());
 
 // Mongo and Mongoose
@@ -133,7 +134,7 @@ app.get('/customer',(req,res) => {
     })
 })
 
-app.get('/customer/:id', (req, res) => {
+app.get('/customer/:id/cart', (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -145,7 +146,7 @@ app.get('/customer/:id', (req, res) => {
 		if (!customer) {
 			res.status(404).send()  
 		} else {
-			res.send(customer)
+			res.send({customerCart: customer.activeOrders})
 		}
 	}).catch((error) => {
 		res.status(500).send() 
@@ -700,6 +701,25 @@ app.delete('/restaurant/:id/order/:order_id',(req,res) => {
 		res.status(500).send()
 	})
 })
+
+app.get('/api/products', (req, res) => {
+    return res.json(data.products);
+  });
+  
+  app.post('/api/products', (req, res) => {
+    let products = [], id = null;
+    let cart = JSON.parse(req.body.cart);
+    if (!cart) return res.json(products)
+    for (var i = 0; i < data.products.length; i++) {
+      id = data.products[i].id.toString();
+      if (cart.hasOwnProperty(id)) {
+        data.products[i].qty = cart[id]
+        products.push(data.products[i]);
+      }
+    }
+    return res.json(products);
+  });
+  
 
 
 
