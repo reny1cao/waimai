@@ -23,7 +23,7 @@ const RestaurantSchema = new mongoose.Schema({
     name: String,
     address: String,
     deliveryArea: String,
-    category: String,
+    category: Array,
     rating: Number,
     username: {
         type: String,

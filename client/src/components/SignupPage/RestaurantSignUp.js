@@ -86,7 +86,7 @@ class RestaurantSignUp extends Component{
                     </form>
                 </div>
                 <div className="sign-up">
-                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(this.state.category);addRestaurant(this)}}>Submit</Button></Link>
+                    <Link to = "/loginPage"><Button variant="outline-secondary" onClick={()=>{getCheckBox(category);addRestaurant(this)}}>Submit</Button></Link>
                 </div>
             </div>
         )

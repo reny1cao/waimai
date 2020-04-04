@@ -56,6 +56,7 @@ export const addRestaurant = (formComp) => {
         }
     });
 
+
     // Send the request with fetch()
     fetch(request)
         // .then(function (res) {

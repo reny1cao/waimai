@@ -108,7 +108,6 @@ app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(req.body)
 
     Customer.findByUserPassword(username, password)
         .then(customer => {
@@ -304,6 +303,7 @@ app.post('/restaurant/sign-up', (req, res) => {
         username: username,
         password: password
     });
+    console.log(restaurant)
 
     restaurant.save().then(
         result => {
