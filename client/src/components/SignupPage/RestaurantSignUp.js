@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { getCheckBox } from '../restaurantFunction'
 import Button from 'react-bootstrap/Button';
 import "./SignUpPage.css";
-import { updateRestaurantForm,addRestaurant } from '../../actions/restaurantActions'
+import { updateRestaurantForm,addRestaurant } from '../../actions/RestaurantActions'
 
 
 class RestaurantSignUp extends Component{
