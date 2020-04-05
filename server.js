@@ -36,9 +36,60 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-    res.send("Api is working");
+    res.redirect('/Home');
 })
 
+// Middleware for authentication of resources
+const authenticateCustomer = (req, res, next) => {
+	if (req.session.customer) {
+		Customer.findById(req.session.customer).then((customer) => {
+			if (!customer) {
+				return Promise.reject()
+			} else {
+				req.customer = customer
+				next()
+			}
+		}).catch((error) => {
+			res.status(401).send("Unauthorized")
+		})
+	} else {
+		res.status(401).send("Unauthorized")
+	}
+}
+
+const authenticateAdmin = (req, res, next) => {
+	if (req.session.admin) {
+		Admin.findById(req.session.admin).then((admin) => {
+			if (!admin) {
+				return Promise.reject()
+			} else {
+				req.admin = admin
+				next()
+			}
+		}).catch((error) => {
+			res.status(401).send("Unauthorized")
+		})
+	} else {
+		res.status(401).send("Unauthorized")
+	}
+}
+
+const authenticateRestaurant = (req, res, next) => {
+	if (req.session.restaurant) {
+		Restaurant.findById(req.session.restaurant).then((restaurant) => {
+			if (!restaurant) {
+				return Promise.reject()
+			} else {
+				req.restaurant = restaurant
+				next()
+			}
+		}).catch((error) => {
+			res.status(401).send("Unauthorized")
+		})
+	} else {
+		res.status(401).send("Unauthorized")
+	}
+}
 
 // Posting an admin
 
@@ -126,7 +177,7 @@ app.post('/login', (req, res) => {
  
 //get all the customers
 
-app.get('/customer',(req,res) => {
+app.get('/customer', (req,res) => {
     Customer.find().then((customers) => {
         res.send({customerList : customers});
     },(error) => {
@@ -134,7 +185,7 @@ app.get('/customer',(req,res) => {
     })
 })
 
-app.get('/customer/:id/cart', (req, res) => {
+app.get('/customer/:id/cart', authenticateCustomer, (req, res) => {
     const id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -157,7 +208,7 @@ app.get('/customer/:id/cart', (req, res) => {
 
 //Save newly created order to customer, order, restaurant
 //bug if we cant find restaurant, order will still be added to customer
-app.post('/customer/:id/cart', (req, res) => {
+app.post('/customer/:id/cart', authenticateCustomer, (req, res) => {
     const customerId = req.params.id;
     const { dishes, totalPrice, time, deliveryAddress, restaurantIdStr} = req.body;
 
@@ -227,7 +278,7 @@ const restaurantId = ObjectID(restaurantIdStr);
     );
 })
 
-app.patch('/customer/:id', (req, res) => {
+app.patch('/customer/:id', authenticateAdmin, (req, res) => {
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {
 		res.status(404).send("customer id not valid")  
@@ -257,7 +308,7 @@ app.patch('/customer/:id', (req, res) => {
 })
 
 
-app.delete('/customer/:id', (req, res) => {
+app.delete('/customer/:id', authenticateAdmin ,(req, res) => {
 	const id = req.params.id
 
 	if (!ObjectID.isValid(id)) {
@@ -379,7 +430,7 @@ app.post('/restaurant/sign-up', (req, res) => {
 
 
 //get one restaurant
-app.get('/restaurant/:id',(req,res) => {
+app.get('/restaurant/:id', authenticateRestaurant, (req,res) => {
     const id = req.params.id
 
     if(!ObjectID.isValid(id)){
@@ -401,7 +452,7 @@ app.get('/restaurant/:id',(req,res) => {
 })
 
 //get all the orders for the restaurant
-app.get('/restaurant/:id/order', (req,res) => {
+app.get('/restaurant/:id/order', authenticateRestaurant, (req,res) => {
     const id = req.params.id
 
 	if(!ObjectID.isValid(id)){
@@ -422,7 +473,7 @@ app.get('/restaurant/:id/order', (req,res) => {
 })
 
 //get all the restaurant
-app.get('/restaurant',(req,res) => {
+app.get('/restaurant' ,(req,res) => {
     Restaurant.find().then((restaurants) => {
         res.send({restaurantList : restaurants});
     },(error) => {
@@ -432,7 +483,7 @@ app.get('/restaurant',(req,res) => {
 
 
 //get the specific order
-app.get('/restaurant/:id/order/:order_id', (req,res) => {
+app.get('/restaurant/:id/order/:order_id',(req,res) => {
     const id = req.params.id
     const oid = req.params.order_id
 
@@ -459,7 +510,7 @@ app.get('/restaurant/:id/order/:order_id', (req,res) => {
 })
 
 // change restaurant admin info
-app.patch('/restaurant/:id', (req, res) => {
+app.patch('/restaurant/:id',authenticateAdmin, (req, res) => {
     const id = req.params.id;
     console.log(id);
     if (!ObjectID.isValid(id)) {
@@ -489,7 +540,7 @@ app.patch('/restaurant/:id', (req, res) => {
 })
 
 //add category
-app.patch('/restaurant/:id/add-category', (req, res) => {
+app.patch('/restaurant/:id/add-category', authenticateRestaurant, (req, res) => {
     const id = req.params.id;
     console.log(id);
     if (!ObjectID.isValid(id)) {
@@ -514,7 +565,7 @@ app.patch('/restaurant/:id/add-category', (req, res) => {
 })
 
 //add item
-app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
+app.patch('/restaurant/:id/:cate_id/add-item', authenticateRestaurant,(req, res) => {
     const id = req.params.id;
     const cateId = req.params.cate_id;
 
@@ -557,7 +608,7 @@ app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
 })
 
 //edit category name
-app.patch('/restaurant/:id/:cate_id', (req, res) => {
+app.patch('/restaurant/:id/:cate_id', authenticateRestaurant,(req, res) => {
 
     const id = req.params.id;
     const cateId = req.params.cate_id;
@@ -596,7 +647,7 @@ app.patch('/restaurant/:id/:cate_id', (req, res) => {
 })
 
 //edit menu item
-app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
+app.patch('/restaurant/:id/:cate_id/:item_id', authenticateRestaurant,(req, res) => {
 
     const id = req.params.id;
     const cateId = req.params.cate_id;
@@ -650,7 +701,7 @@ app.patch('/restaurant/:id/:cate_id/:item_id', (req, res) => {
     })
 })
 
-app.delete('/restaurant/:id', (req, res) => {
+app.delete('/restaurant/:id',authenticateAdmin, (req, res) => {
 	const id = req.params.id
 
 	if (!ObjectID.isValid(id)) {
@@ -669,7 +720,7 @@ app.delete('/restaurant/:id', (req, res) => {
 	})
 })
 
-app.delete('/restaurant/:id/order/:order_id',(req,res) => {
+app.delete('/restaurant/:id/order/:order_id', authenticateRestaurant,(req,res) => {
     const id = req.params.id
     const oid = req.params.order_id
 
