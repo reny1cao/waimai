@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import { Link,Redirect } from "react-router-dom";
 import {logout} from "./../../actions/logInActions";
 import './NavBar.css'
-import { getRestaurant } from '../../actions/restaurantActions';
+import { getRestaurant } from '../../actions/RestaurantActions';
 import { getCustomer,getCart } from './../../actions/CustomerAction';
 
 
