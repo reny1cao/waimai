@@ -1,6 +1,5 @@
 Instruction on how to use the application
 
-deployment url:
 
 npm install
 - Start front-end : 
@@ -96,7 +95,3 @@ Delete /restaurant/:id Deleting a restaurant off the database, for admin use.
 Delete /restaurant/:id/order/:order_id Deleting an order from a restaurant.
 Get http://localhost:5000/api/products  You can get product data
 Post http://localhost:5000/api/products  You can post product data using data.js
-
--Deploy 
-we successfully deploy on https://boiling-retreat-64776.herokuapp.com/
-But due to some unknown reason it does not render properly
