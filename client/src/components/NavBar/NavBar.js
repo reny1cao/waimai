@@ -72,7 +72,7 @@ class NavBar extends Component {
                 <Navbar.Collapse className="justify-content-end">
                     {!app.state.userType ? 
                         <div>
-                        <Link to={"/logInPage"}>
+                        <Link to={"/LogInPage"}>
                             <Button href="" id="login-button" variant="outline-secondary">Log in</Button>
                         </Link>
                         <Link to={"/SignUpPage"} >

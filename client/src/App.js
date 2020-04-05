@@ -120,15 +120,20 @@ class App extends React.Component {
           </div>
       {/* {<NavBar history={history} app={this}/> } */}
       <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/RestaurantHome" exact component={Menu} />
+        <Route path = {["/Home"]}
+          render = {({history}) => (
+            <div className="app">
+               <Home history={history} app={this} /> 
+               }
+              }
+        </div>)} />
 
-          <Route path={["/Home", "/LogInPage", "/AdminView"]}
+          <Route path={["/LogInPage", "/AdminView", "/RestaurantHome"]}
            render = {({history}) => (
              <div className="app">
                {userType === "Customer" ? <Home history={history} app={this} /> : 
                userType === "Admin" ? <AdminView history={history} app={this} />:
-               userType === "Restaurant" ? <RestaurantHome history={history} app={this} /> :
+               userType === "Restaurant" ? <Menu history={history} app={this} /> :
                <LogInPage history={history} app={this} />
                }
               }
@@ -136,7 +141,7 @@ class App extends React.Component {
         <Route path={["/Cart"]}
            render = {({history}) => (
              <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
                <Cart history={history} app={this} />}
               }
         </div>)} />
@@ -150,7 +155,7 @@ class App extends React.Component {
         <Route path={["/menu"]}
            render = {({history}) => (
              <div className="app">
-               {!currentUser ? <LogInPage history={history} app={this} /> : 
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
                <UserMenu history={history} app={this} />}
               }
         </div>)} />
@@ -168,13 +173,38 @@ class App extends React.Component {
                <FeedBack history={history} app={this} />}
               }
         </div>)} />
+        <Route path={["/customer/:id/cart"]}
+           render = {({history}) => (
+             <div className="app">
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
+               <customerCart history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/ProductList"]}
+           render = {({history}) => (
+             <div className="app">
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
+               <ProductList history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/ShoppingCart"]}
+           render = {({history}) => (
+             <div className="app">
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
+               <ShoppingCart history={history} app={this} />}
+              }
+        </div>)} />
+        <Route path={["/Checkout"]}
+           render = {({history}) => (
+             <div className="app">
+               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
+               <Checkout history={history} app={this} />}
+              }
+        </div>)} />
+
         <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
         <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
-        <Route path = "/customer/:id/cart" component = {customerCart} /> 
-        <Route path = "/ProductList" component = {ProductList} /> 
-        <Route path = "/ShoppingCart" component = {ShoppingCart}/>
-        <Route path = "/Checkout" component = {Checkout}/>
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>
       </BrowserRouter>

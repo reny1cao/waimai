@@ -7,6 +7,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import TabCard from '../TabCard'
 import { editMenuItem, getOneRestaurant, addItem } from '../../actions/restaurantActions'
 import 'react-tabs/style/react-tabs.css';
+import NavBar from '../NavBar/NavBar'
 
 const { TabPane } = Tabs;
 const { Dragger } = Upload;
@@ -119,10 +120,17 @@ class Menu extends Component {
     }
     
     render() {
+        const {history, app} = this.props
         const { currRestaurantMenu } = this.state;
         const { visible, confirmLoading, ModalText } = this.state;
         console.log("from Menu", this.state);
         return (
+            
+            <div id="home">
+            <NavBar
+                    history = {history}
+                    app = {app}
+                    />
             <React.Fragment>
                 <Tabs defaultActiveKey="1" onChange={this.callback}>
                     {currRestaurantMenu.map(this.createCategorys)}
@@ -150,6 +158,7 @@ class Menu extends Component {
                 </Dragger>
                 </Modal>
             </React.Fragment>
+            </div>
         )
     }
 }
