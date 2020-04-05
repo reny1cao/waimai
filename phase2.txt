@@ -14,6 +14,7 @@ node server.js
 - /Home will lead you to the default home page showing the restaurants
 But accessing anything beyond that will take you to login screen
 
+http://localhost:3000/LogInPage
 -Log In page you will be asked to log in as customer, restaurant or admin
 
 Customer Login: username: user, password: user
