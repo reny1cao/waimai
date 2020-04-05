@@ -172,21 +172,7 @@ app.post('/customer/sign-up', (req, res) => {
 //     })
 // })
 
-app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
 
-
-    Customer.findByUserPassword(username, password)
-        .then(customer => {
-            req.session.customer = customer._id;
-            req.session.username = customer.username;
-            res.send({ currentUser: customer.username});
-        })
-        .catch(error => {
-            res.status(400).send()
-        })
-})
 
  
 //get all the customers
@@ -346,8 +332,6 @@ app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(username, password, "C")
-
     Customer.findByUserPassword(username, password)
         .then(customer => {
             req.session.customer = customer._id;
@@ -363,13 +347,12 @@ app.post('/login/restaurant', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(username, password, "R")
 
     Restaurant.findByUserPassword(username, password)
         .then(restaurant => {
             req.session.restaurant= restaurant._id;
             req.session.username = restaurant.username;
-            res.send({ currentUser: restaurant.username, userType: "Restaurnt"});
+            res.send({ currentUser: restaurant.username, userType: "Restaurant"});
         })
         .catch(error => {
             res.status(400).send()
@@ -380,7 +363,6 @@ app.post('/login/admin', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(username, password, "A")
 
     Admin.findByUserPassword(username, password)
         .then(admin => {

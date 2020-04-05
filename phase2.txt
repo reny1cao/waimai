@@ -60,5 +60,39 @@ Finally you checkout to pay and will direct you to the login page
 
 
 - Overview of the routes 
+Middlewares: authenticateCustomer, authenticateAdmin, authenticateRestaurant, will 
+authenticate the current user based on their usertype and id.
+Post  /admin Allows to create new admin, (this is not available for normal users)
+Post /customer/sign-up Allows to create new customer into the database, the customer is 
+based on a specific model with name, address, and other info.
+Get /customer Gets all the customers in the database, used for adminview.
+Get /customer/:id/cart Gets the customer's cart items, the food items they put in their cart
+(only accessable by the specific customer).
+Post /customer/:id/cart Create a new order to the customer, added to the customer (only
+accessed by the specific customer).
+Patch /customer/:id Change specific customer information within the database, used in adminview.
+Delete /customer/:id Delete the specific customer from the database, used in adminview.
+Post /login Allows customer users to log in by checking username and password in existing db.
+Post /login/restaurant Allows restaurant users to log in by checking username and password in existing db.
+Post /login/admin Allows admin users to log in by checking username and password in existing db.
+Post /logout Logs out the user (no matter the type) and destroy the current session.
+Get /check-session Check if a user is currently Logged in and which type of user, by setting the session
+username and session userType to the current user.
+Post /restaurant/sign-up Allows to create new restaurant into the database, the restaurant is 
+based on a specific model with name, address, and other info.
+Get /restaurant/:id Get information on the specific restaurant.
+Get /restaurant/:id/order Get all the orders from the specific restaurant.
+Get /restaurant Get all the restaurant to showcase the restaurant in the main menu and 
+for adminview
+Get /restaurant/:id/order/:order_id Get the specific order based on order id from a specific restaurant.
+Patch /restaurant/:id Edit restaurant information for admin use.
+Patch / restaurant/:id/add-category Add a category of cuisine to a restaurant.
+Delete /restaurant/:id/:cate_id Delete a specific category from the restaurant
+Patch /restaurant/:id/:cate_id/add-item Add an food item to the restaurant.
+Delete /restaurant/:id/:cate_id/:item_id Delete an food item from a restaurant
+Patch /restaurant/:id/:cate_id Edit the ecategory name from a restaurant
+Patch /restaurant/:id/:cate_id/:item_id Edit a menu item from the restaurant.
+Delete /restaurant/:id Deleting a restaurant off the database, for admin use.
+Delete /restaurant/:id/order/:order_id Deleting an order from a restaurant.
 Get http://localhost:5000/api/products  You can get product data
 Post http://localhost:5000/api/products  You can post product data using data.js
