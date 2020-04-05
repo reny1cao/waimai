@@ -5,9 +5,11 @@ import ItemCard from '../ItemCard';
 import { Tabs, Button, Form } from 'antd';
 import { Modal, Input } from 'antd';
 import TabCard from '../TabCard'
-import { getOneRestaurant, addItem, addCategory } from '../../actions/restaurantActions'
+import { getOneRestaurant, addItem, addCategory, removeCategory } from '../../actions/RestaurantActions'
 import 'react-tabs/style/react-tabs.css';
 import ImageForm from '../ImageForm/ImageForm';
+
+import './Menu.css'
 
 const { TabPane } = Tabs;
 
@@ -28,7 +30,10 @@ class Menu extends Component {
 
         ModalText: 'Content of the modal',
         visible: false,
+        addCateVisible: false,
         confirmLoading: false,
+
+        category:""
     }
 
     componentDidMount() {
@@ -50,7 +55,7 @@ class Menu extends Component {
         this.setState({
             visible: true,
         });
-        };
+    };
 
     handleOk = () => {
         this.setState({
@@ -68,7 +73,27 @@ class Menu extends Component {
             visible: false,
             confirmLoading: false,
         });
-    };
+        window.location.reload(false)
+    }
+
+    showCateModel = () => {
+        this.setState({
+            addCateVisible: true
+        })
+    }
+
+    handleAddCate = () => {
+        this.setState({
+            ModalText: 'The modal will be closed after two seconds',
+            confirmLoading: true,
+            });
+            addCategory(this.state.category)
+            this.setState({
+                addCateVisible: false,
+                confirmLoading: false,
+            });
+            window.location.reload(false)
+    }
 
     handleCancel = () => {
         console.log('Clicked cancel button');
@@ -76,14 +101,28 @@ class Menu extends Component {
             visible: false,
         });
     };
+
+    handleAddCateCancel = () => {
+        this.setState({
+            addCateVisible: false
+        });
+    }
     
+    handleEdit = (target, action) => {
+        if (action === "remove") {
+            removeCategory(target);
+            window.location.reload(false)
+        } else {
+            this.showCateModel();
+        }
+    }
     createCategorys = (category) => {
         return ( 
             // <Tab key={props.id}>
             //     <TabCard name={props.category} id={props.id} editCategory={this.props.editCategory}/>
             // </Tab>
             
-            <TabPane tab={category.categoryName} key={category._id} >
+            <TabPane tab={category.categoryName} key={category._id}>
                 {category.items.map(this.createItems)}
                 <Button size="large" type="dashed" onClick={this.showModal}>Add</Button>
             </TabPane>
@@ -100,22 +139,14 @@ class Menu extends Component {
             <ItemCard key={item._id} id={item._id} name={item.itemName} description={item.description} price={item.price} />
         )
     }
-
-    onFinish = values => {
-        console.log('Success:', values);
-    };
-    
-    onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
-    };
     
     render() {
         const { currRestaurantMenu } = this.state;
-        const { visible, confirmLoading, ModalText } = this.state;
+        const { visible, confirmLoading, addCateVisible } = this.state;
         console.log("from Menu", this.state);
         return (
             <React.Fragment>
-                <Tabs defaultActiveKey="1" onChange={this.callback}>
+                <Tabs defaultActiveKey="1" onChange={this.callback} type="editable-card" onEdit={(target, action) => this.handleEdit(target, action)} >
                     {currRestaurantMenu.map(this.createCategorys)}
                 </Tabs>
                 <Modal
@@ -126,28 +157,27 @@ class Menu extends Component {
                 onCancel={this.handleCancel}
                 centered="true"
                 >
-                <Input name="name" onChange={this.handleInputChange} placeholder="Name" />
-                <Input name = "description" onChange={this.handleInputChange} placeholder="Descriptiion" />
-                <Input name="price" onChange={this.handleInputChange}prefix="$" suffix="CND"/>
-                <ImageForm />
+                    <Input name="name" onChange={this.handleInputChange} placeholder="Name" />
+                    <Input name = "description" onChange={this.handleInputChange} placeholder="Descriptiion" />
+                    <Input name="price" onChange={this.handleInputChange}prefix="$" suffix="CND"/>
+                    <ImageForm />
                 </Modal>
 
-                <Form
-                    name="basic"
-                    initialValues={{
-                        remember: true,
-                    }}
-                    onFinish={this.onFinish}
-                    onFinishFailed={this.onFinishFailed}
-                    >
-                    <Form.Item
-                        label="Category"
-                        name="category"
-                    >
-                    <Input />
-                    <Button type="primary" htmlType="submit">Add Category</Button>
-                    </Form.Item>
-                    </Form>
+                <Modal
+                title="Add category"
+                visible={addCateVisible}
+                onOk={this.handleAddCate}
+                confirmLoading={confirmLoading}
+                onCancel={this.handleAddCateCancel}
+                centered="true"
+                >
+                    <Input name="category" onChange={this.handleInputChange} placeholder="Name" />
+                </Modal>
+
+                {/* <div className="add-category">
+                    <Input name="category" onChange={this.handleInputChange} placeholder="Category" />
+                    <Button onClick={addCategory(this.state.category)}>Add category</Button>
+                </div> */}
             </React.Fragment>
         )
     }

@@ -41,7 +41,8 @@
 } */
 
 .item-card button {
-    left: 20px;
+    margin-bottom: 5px;
+    left: 60px;
 }
 
 .del-tab {

@@ -527,6 +527,40 @@ app.patch('/restaurant/:id/add-category', (req, res) => {
     })
 })
 
+app.delete('/restaurant/:id/:cate_id', (req, res) => {
+    const id = req.params.id;
+    const cateId = req.params.cate_id;
+
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(cateId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+    console.log("From del cate", cateId)
+
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
+            res.status(404).send();
+        } else {
+            const category = restaurant.menu.id(cateId);
+            if (category) {
+                restaurant.menu.id(cateId).remove()
+                restaurant.save().then((result) => {
+					res.send(result);
+				}, (error) => {
+					res.status(400).send(error);
+				});
+            } else {
+                res.status(404).send()
+            }
+        }
+    })
+})
 //add item
 app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
     const id = req.params.id;
@@ -563,6 +597,51 @@ app.patch('/restaurant/:id/:cate_id/add-item', (req, res) => {
                 }, (error) => {
                     res.status(400).send(error);
                 });
+            } else {
+                res.status(404).send()
+            }
+        }
+    })
+})
+
+
+app.delete('/restaurant/:id/:cate_id/:item_id', (req, res) => {
+    const id = req.params.id;
+    const cateId = req.params.cate_id;
+    const itemId = req.params.item_id;
+
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send("restaurant id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(cateId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+
+    if (!ObjectID.isValid(itemId)) {
+		res.status(404).send("category id not valid")  
+		return;  
+    }
+
+    Restaurant.findById(id).then((restaurant) => {
+        if (!restaurant) {
+            res.status(404).send();
+        } else {
+            const category = restaurant.menu.id(cateId);
+            if (category) {
+                const item = category.items.id(itemId);
+
+                if (item) {
+                    category.items.id(itemId).remove()
+                    restaurant.save().then((result) => {
+                        res.send(result);
+                    }, (error) => {
+                        res.status(400).send(error);
+                    });
+                }
             } else {
                 res.status(404).send()
             }

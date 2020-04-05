@@ -122,7 +122,7 @@ export const editUser = (page, user, usercomp) => {
 
 export const editRestaurant = (page, restaurant, restaurantcomp) => {
     const name = page.state.editName
-    const originalUser = user.username
+    const originalUser = restaurant.username
     const address = page.state.editAddress
     const username = page.state.editUsername
     const category = page.state.editCategory

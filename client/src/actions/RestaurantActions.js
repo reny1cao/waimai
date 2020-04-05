@@ -145,6 +145,35 @@ export const addItem = (newItem) => {
         });
 }
 
+export const delItem = (itemId) => {
+    console.log("from delItem", itemId)
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/5e841a6e56bb8007170cab0f/"+itemId
+
+    const request = new Request(url, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not delete item");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            console.log(json)
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
 export const addCategory = (name) => {
     const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/add-category";
 
@@ -163,6 +192,34 @@ export const addCategory = (name) => {
                 return res.json();
             } else {
                 alert("Could not add item");
+            }
+        })
+        .then(json => {
+            // the resolved promise with the JSON body
+            console.log(json)
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+export const removeCategory = (id) => {
+    const url = "http://localhost:5000/restaurant/5e841a3c56bb8007170cab0e/" + id;
+
+    const request = new Request(url, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            } else {
+                alert("Could not delete category");
             }
         })
         .then(json => {

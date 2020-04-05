@@ -121,6 +121,7 @@ class App extends React.Component {
       {/* {<NavBar history={history} app={this}/> } */}
       <Switch>
           <Route path="/" exact component={Home} />
+          //Temp testing
           <Route path="/RestaurantHome" exact component={Menu} />
 
           <Route path={["/Home", "/LogInPage", "/AdminView"]}

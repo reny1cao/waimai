@@ -6,7 +6,7 @@ import SelectUser from "../SelectUser";
 import NavBar from "../NavBar/NavBar"
 
 import { login, logInAdmin, logInUser, logInRestaurant, backTrack } from "../../actions/logInActions";
-import { getRestaurant } from '../../actions/restaurantActions';
+import { getRestaurant } from '../../actions/RestaurantActions';
 import { getCustomer } from './../../actions/CustomerAction';
 import "./LogInPage.css";
 

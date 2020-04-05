@@ -1,0 +1,12 @@
+.add-category {
+    max-width: 200px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+}
+
+.add-category Button {
+    margin-top: 20px;
+    
+}

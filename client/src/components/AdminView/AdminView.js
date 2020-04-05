@@ -4,7 +4,7 @@ import UserList from "./AdminComponents/UserList";
 import NameSearchBar from "./AdminComponents/NameSearchBar";
 import RestaurantList from "./AdminComponents/RestaurantList";
 import Button from 'react-bootstrap/Button';
-import {getRestaurant} from '../../actions/restaurantActions'
+import {getRestaurant} from '../../actions/RestaurantActions'
 import {getCustomer} from '../../actions/CustomerAction'
 import NavBar from '../NavBar/NavBar'
 import "./AdminView.css";

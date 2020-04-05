@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import { RestaurantCard } from './RestaurantCard';
-import { getRestaurant , createRestaurant } from '../actions/restaurantActions';
+import { getRestaurant , createRestaurant } from '../actions/RestaurantActions';
 import restaurantData from '../restaurantData';
 import { Link } from 'react-router-dom';
 import { get } from 'mongoose';
