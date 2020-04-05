@@ -1,13 +1,53 @@
 Instruction on how to use the application
 
+deployment url:
+
 npm install
 - Start front-end : 
-yarn add semantic-ui-reactc
+yarn add semantic-ui-react
 cd client/src
-npm Start
+npm start
 
 - Start back-end
 node server.js
+
+- /Home will lead you to the default home page showing the restaurants
+But accessing anything beyond that will take you to login screen
+
+-Log In page you will be asked to log in as customer, restaurant or admin
+
+Customer Login: username: user, password: user
+Restaurant Login: username: user2, password: user2
+Admin Login: username: admin, password: admin
+
+Wrong username or password will have a popup red error message
+
+Once you log in as a user, the navigation bar (gray bar on the top) will change according
+to the session cookie, and the text on the top right will show the type of user currently logged
+in. Using the navigation bar can lead you to the login/signup page when not logged in, or 
+can allow you to log out when you are logged in.
+
+
+Logging in as Admin:
+Once you log in as admin you will be brought to adminview.
+As an admin you can toggle between looking at all restaurants and all user data within the database.
+You can also search for restaurant or user by their names.
+
+Once you click search you will need to hit back to get back all the user/ restaurant data.
+
+The data can be deleted or editted by the admin. When deleting there will be a window pop-up
+warning to delete the user/restaurant. Once confirmed the user will be removed from the server.
+
+Editing by clicking the edit button and go into edit mode for one restaurant. You can change
+all the descriptions and data directly stored in the database.
+
+Unique username are enforced so user cannot share usernames, but user and restaurants can.
+That means you cannot edit the username to be the same either.
+
+Logging in as customer and restaurant will bring you to their respective pages, and change the
+session user to the correponding type/ id.
+
+
 
 
 - For Product where you can buy stuff and checkout：
