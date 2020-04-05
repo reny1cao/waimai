@@ -30,6 +30,7 @@ export default class ProductItem extends React.Component {
 		    <div className="card" style={{ marginBottom: "10px"}}>
 			  <div className="card-body">
 			    <h4 className="card-title">{product.name}</h4>
+                <h4 className="card-title">{product.restaurant_name}</h4>
 			    <p className="card-text">{product.description}</p>
 			    <h5 className="card-text"><small>price: </small>${product.price}</h5>
 			    <span className="card-text"><small>Available Quantity: </small>{product.available_quantity}</span>

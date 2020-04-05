@@ -20,11 +20,7 @@ class LogInPage extends React.Component {
         username: "",
         password: "",
         userType: "",
-        errMsg: "",
-        restaurant:[],
-        restaurantList:[],
-        customer:[],
-        customerList:[]
+        errMsg: ""
     };
 
     handleInputChange = event => {
@@ -53,25 +49,19 @@ class LogInPage extends React.Component {
         }
     }
 
-    componentDidMount = () => {
-        getRestaurant(this)
-        getCustomer(this)
-        console.log(this.state.restaurantList)
-    }
-
-    findId = () => {
+    // findId = () => {
         
-        if (this.state.userType === "Restaurant"){
-            this.state.restaurant = this.state.restaurantList.filter(l=>{
-                return this.state.username === l.username}
-            )
-        }
-        else if (this.state.userType === "Customer"){
-            this.state.customer = this.state.customerList.filter(l=>{
-                return this.state.username === l.username}
-            )
-        }
-    }
+    //     if (this.state.userType === "Restaurant"){
+    //         this.state.restaurant = this.state.restaurantList.filter(l=>{
+    //             return this.state.username === l.username}
+    //         )
+    //     }
+    //     else if (this.state.userType === "Customer"){
+    //         this.state.customer = this.state.customerList.filter(l=>{
+    //             return this.state.username === l.username}
+    //         )
+    //     }
+    // }
 
 
 
@@ -110,7 +100,7 @@ class LogInPage extends React.Component {
                             handleChange={this.handleInputChange}
                             errMsg={this.state.errMsg}
                             id = {this.state.id}
-                            logIn={()=>{this.findId();login(this, app, this.state.userType)}}
+                            logIn={()=>{login(this, app, this.state.userType)}}
                             backTrack={() =>backTrack(this)}
                         />
                     </div>

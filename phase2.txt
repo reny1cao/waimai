@@ -1,0 +1,24 @@
+Instruction on how to use the application
+
+npm install
+- Start front-end : 
+yarn add semantic-ui-reactc
+cd client/src
+npm Start
+
+- Start back-end
+node server.js
+
+
+- For Product where you can buy stuff and checkout：
+Click on Product tab or Go to 
+http://localhost:3000/ProductList
+You can use the add button to add the product you want to add 
+Then you can view your Shopping cart and remove anything you don't want.
+Finally you checkout to pay and will direct you to the login page
+
+
+
+- Overview of the routes 
+Get http://localhost:5000/api/products  You can get product data
+Post http://localhost:5000/api/products  You can post product data using data.js
