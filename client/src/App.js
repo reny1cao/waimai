@@ -180,31 +180,15 @@ class App extends React.Component {
                <customerCart history={history} app={this} />}
               }
         </div>)} />
-        <Route path={["/ProductList"]}
-           render = {({history}) => (
-             <div className="app">
-               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
-               <ProductList history={history} app={this} />}
-              }
-        </div>)} />
-        <Route path={["/ShoppingCart"]}
-           render = {({history}) => (
-             <div className="app">
-               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
-               <ShoppingCart history={history} app={this} />}
-              }
-        </div>)} />
-        <Route path={["/Checkout"]}
-           render = {({history}) => (
-             <div className="app">
-               {userType !== "Customer" ? <LogInPage history={history} app={this} /> : 
-               <Checkout history={history} app={this} />}
-              }
-        </div>)} />
+       
 
         <Route path="/restaurant/sign-Up" component = {RestaurantSignUp} />
         <Route path = "/customer/sign-up" component = {CustomerSignUp} /> 
         <Route path = "/SignUpPage" component = {SignUpPage} /> 
+        <Route path = "/customer/:id/cart" component = {customerCart} /> 
+        <Route path = "/ProductList" component = {ProductList} /> 
+        <Route path = "/ShoppingCart" component = {ShoppingCart}/>
+        <Route path = "/Checkout" component = {Checkout}/>
         <Route render={() => <div> 404 Not Found</div>} />
         </Switch>
       </BrowserRouter>

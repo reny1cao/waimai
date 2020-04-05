@@ -62,3 +62,7 @@ Finally you checkout to pay and will direct you to the login page
 - Overview of the routes 
 Get http://localhost:5000/api/products  You can get product data
 Post http://localhost:5000/api/products  You can post product data using data.js
+
+-Deploy 
+we successfully deploy on https://boiling-retreat-64776.herokuapp.com/
+But due to some unknown reason it does not render properly
