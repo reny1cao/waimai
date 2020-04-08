@@ -15,9 +15,8 @@ import UserEdit from './components/UserEdit'
 import './App.css';
 import UserMenu from './components/UserMenu';
 import {readCookie} from "./actions/logInActions";
-import NavBar from './components/NavBar/NavBar'
+import NavBar from './components/NavBar/NavBar';
 import customerCart from './components/customerCart'
-// import NavBar from './components/NavBar/NavBar';
 import ProductList from './components/ProductList'
 import ShoppingCart from './components/ShoppingCart'
 import Checkout from './components/Checkout'
@@ -81,6 +80,7 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
+      {/* <NavBar user={this.state.currentUser}/> */}
       
 		   <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -118,7 +118,7 @@ class App extends React.Component {
               </div>
             </nav>
           </div>
-      {/* {<NavBar history={history} app={this}/> } */}
+      {/* {<NavBar history={/history} app={this}/> } */}
       <Switch>
         <Route path = {["/Home"]}
           render = {({history}) => (

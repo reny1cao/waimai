@@ -20,7 +20,11 @@ class LogInPage extends React.Component {
         username: "",
         password: "",
         userType: "",
-        errMsg: ""
+        errMsg: "",
+        restaurant:"",
+        customer:"",
+        restaurantList:"",
+        customerList:""
     };
 
     handleInputChange = event => {
@@ -32,7 +36,7 @@ class LogInPage extends React.Component {
         this.setState({
             [name]: value
         })
-
+        this.findId()
     }
 
     handleClick = event => {
@@ -49,19 +53,25 @@ class LogInPage extends React.Component {
         }
     }
 
-    // findId = () => {
+    findId = () => {
         
-    //     if (this.state.userType === "Restaurant"){
-    //         this.state.restaurant = this.state.restaurantList.filter(l=>{
-    //             return this.state.username === l.username}
-    //         )
-    //     }
-    //     else if (this.state.userType === "Customer"){
-    //         this.state.customer = this.state.customerList.filter(l=>{
-    //             return this.state.username === l.username}
-    //         )
-    //     }
-    // }
+        if (this.state.userType === "Restaurant"){
+            this.state.restaurant = this.state.restaurantList.filter(l=>{
+                return this.state.username === l.username}
+            )
+        }
+        else if (this.state.userType === "Customer"){
+            this.state.customer = this.state.customerList.filter(l=>{
+                return this.state.username === l.username}
+            )
+        }
+
+    }
+
+    componentDidMount = () => {
+        getCustomer(this)
+        getRestaurant(this)
+    }
 
 
 
