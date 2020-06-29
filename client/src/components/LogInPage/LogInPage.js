@@ -82,11 +82,6 @@ class LogInPage extends React.Component {
         if (this.state.userType === ""){
             return(
                 <div className="LogInPage">
-                    <NavBar
-                    history = {history}
-                    app = {app}
-                    />
-
                     <SelectUser
                         title='I would like to log in as:'
                         handleClick={this.handleClick}
@@ -98,11 +93,6 @@ class LogInPage extends React.Component {
         } else {
             return (
                 <div className="LogInPage">
-                        <NavBar
-                    history = {history}
-                    app = {app}
-                    />
-
                         <LogInForm
                         pageTitle={this.state.userType}
                             username={this.state.username}
