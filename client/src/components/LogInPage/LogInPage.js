@@ -1,5 +1,5 @@
 import React from "react";
-import LogInForm from "../LogInForm/LogInForm";
+import LogInForm from "./LogInForm";
 import SelectUser from "./SelectUser";
 import {
   login,
