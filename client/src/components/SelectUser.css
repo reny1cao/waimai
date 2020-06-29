@@ -1,52 +1,41 @@
-/* .login-form__container {
-    display: inline-block;
-    border: 2px solid black;
-    margin: 10px;
-    height: 600px;
-    width: 100%;
-    text-align: center;
-  } */
+#select-title {
+  font-size: 17px;
+}
 
-  #select-title {
-      font-size: 17px;
-  }
-  
-  .login__bg-image {
-    position: relative;
-    float:left;
-    margin:50px;
-    width:500px;
-    height:500px;
-    
-  }
+.login__bg-image {
+  position: relative;
+  float: left;
+  margin: 50px;
+  width: 500px;
+  height: 500px;
+}
 
-  #img {
-      width:500px;
-      height:500px;
-  }
+#img {
+  width: 500px;
+  height: 500px;
+}
 
-  #title {
-    margin: 0;
-  }
-  
-  .select-user__grid {
-    position: absolute;
-    /* float:left; */
-    left: 50%;
-    margin-left: -250px;
-    width: 500px;
-    height: 300px;
-    top: 30%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
-    text-align: center;
-  }
-  
-  .select__submit-button{
-    margin: 40px 10px 0 10px;
-  }
+#title {
+  margin: 0;
+}
+
+.select-user__grid {
+  position: absolute;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  height: 300px;
+  top: 30%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px, rgba(0, 0, 0, 0.04) 0px 6px 6px;
+  text-align: center;
+}
+
+.select__submit-button {
+  margin: 40px 10px 0 10px;
+}
 
 .fa-users {
-    font-size: 40px;
-    margin: 20px;
-    color: #ee8572;
+  font-size: 40px;
+  margin: 20px;
+  color: #ee8572;
 }

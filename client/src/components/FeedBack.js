@@ -1,20 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form, Modal } from 'react-bootstrap'
-import {Row, Col} from 'react-bootstrap/'
-
+import { Button, Form, Modal } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap/";
 
 export class FeedBack extends Component {
-    render() {
-        const name = sessionStorage.getItem('first_name') + ' ' + sessionStorage.getItem('last_name')
-        return (
-         
-          <Modal.Dialog>
-          <Modal.Header closeButton>
-            <Modal.Title>Please provide your rating</Modal.Title>
-          </Modal.Header>
-        
-          <Modal.Body>
+  render() {
+    const name =
+      sessionStorage.getItem("first_name") +
+      " " +
+      sessionStorage.getItem("last_name");
+    return (
+      <Modal.Dialog>
+        <Modal.Header closeButton>
+          <Modal.Title>Please provide your rating</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
           <Form>
             <Form.Group as={Row} controlId="formHorizontalEmail">
               <Form.Label column sm={2}>
@@ -24,9 +25,7 @@ export class FeedBack extends Component {
                 <Form.Control type="Name" placeholder="Name" />
               </Col>
             </Form.Group>
-          
-        
-         
+
             <fieldset>
               <Form.Group as={Row}>
                 <Form.Label as="legend" column sm={2}>
@@ -51,13 +50,13 @@ export class FeedBack extends Component {
                     name="formHorizontalRadios"
                     id="formHorizontalRadios3"
                   />
-                    <Form.Check
+                  <Form.Check
                     type="radio"
                     label="4"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios3"
                   />
-                    <Form.Check
+                  <Form.Check
                     type="radio"
                     label="5"
                     name="formHorizontalRadios"
@@ -66,22 +65,16 @@ export class FeedBack extends Component {
                 </Col>
               </Form.Group>
             </fieldset>
-        
-          
-           
           </Form>
-          </Modal.Body>
-        
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary">Submit Rate</Button>
-          </Modal.Footer>
-        </Modal.Dialog>
+        </Modal.Body>
 
-          
-        )
-    }
+        <Modal.Footer>
+          <Button variant="secondary">Close</Button>
+          <Button variant="primary">Submit Rate</Button>
+        </Modal.Footer>
+      </Modal.Dialog>
+    );
+  }
 }
 
-export default FeedBack
-
+export default FeedBack;
