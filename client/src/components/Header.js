@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import Login from "./LogInPage/Login";
 import SignUp from "./SignUp";
 import { Avatar } from "./Avatar";
 

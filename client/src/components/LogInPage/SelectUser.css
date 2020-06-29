@@ -16,7 +16,7 @@
 }
 
 #title {
-  margin: 0;
+  margin: 15px  0 10px 0;
 }
 
 .select-user__grid {
@@ -36,6 +36,6 @@
 
 .fa-users {
   font-size: 40px;
-  margin: 20px;
+  margin: 25px 20px;
   color: #ee8572;
 }

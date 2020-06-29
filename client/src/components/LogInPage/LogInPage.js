@@ -1,11 +1,8 @@
 import React from "react";
 import LogInForm from "../LogInForm/LogInForm";
-import SelectUser from "../SelectUser";
+import SelectUser from "./SelectUser";
 import {
   login,
-  logInAdmin,
-  logInUser,
-  logInRestaurant,
   backTrack,
 } from "../../actions/logInActions";
 import { getRestaurant } from "../../actions/RestaurantActions";
