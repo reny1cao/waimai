@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/pages/Home/Home";
 import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart";
 import { OrderRecord } from "./components/OrderRecord";
@@ -82,7 +82,6 @@ class App extends React.Component {
             path="/loginPage"
             render={(props) => <LogInPage {...props} app={this} />}
           />
-          <Route path="/" exact component={Home} />
           <Route path="/restaurant/sign-Up" component={RestaurantSignUp} />
           <Route
             path="/Restaurant/menu"
@@ -101,12 +100,13 @@ class App extends React.Component {
           />
           <Route path="/Cart" component={Cart} />
           <Route path="/Restaurant/OrderRecord" component={OrderRecord} />
-          <Route path="/RestaurantHome" exact component={RestaurantHome} />
+          <Route path="/RestaurantHome" component={RestaurantHome} />
           <Route path="/SignUpPage" component={SignUpPage} />
           <Route path="/customer/sign-up" component={CustomerSignUp} />
           <Route path="/AdminView" component={AdminView} />
           <Route path="/FeedBack" component={FeedBack} />
           <Route path="/UserEdit" component={UserEdit} />
+          <Route exact path="/" component={Home} />
         </BrowserRouter>
       </React.Fragment>
     );
