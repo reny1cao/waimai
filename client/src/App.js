@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
-import Home from "./components/pages/Home/Home";
+import LandingPage from "./components/LandingPage/LandingPage";
 import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart";
 import { OrderRecord } from "./components/OrderRecord";
@@ -14,6 +14,7 @@ import FeedBack from "./components/FeedBack";
 import UserEdit from "./components/UserEdit";
 import "./App.css";
 import UserMenu from "./components/UserMenu";
+import CustomerMenu from "./components/CustomerMenu/CustomerMenu";
 import { readCookie } from "./actions/logInActions";
 import NavBar from "./components/NavBar/NavBar";
 
@@ -106,7 +107,8 @@ class App extends React.Component {
           <Route path="/AdminView" component={AdminView} />
           <Route path="/FeedBack" component={FeedBack} />
           <Route path="/UserEdit" component={UserEdit} />
-          <Route exact path="/" component={Home} />
+          <Route path="/customer/menu" component={CustomerMenu} />
+          <Route exact path="/" component={LandingPage} />
         </BrowserRouter>
       </React.Fragment>
     );

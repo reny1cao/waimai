@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   getRestaurant,
   createRestaurant,
-} from "../../../actions/RestaurantActions";
+} from "../../actions/RestaurantActions";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
@@ -18,10 +18,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import "./Home.css";
+
+import {products} from "../../data";
+
+import "./LandingPage.css";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  searchBar: {
     padding: "2px 4px",
     display: "flex",
     width: 500,
@@ -46,8 +49,12 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   sectionName: {
-    marginTop:20
+    marginTop: 20,
   },
+  cardList: {
+    flexWrap: "nowrap",
+    transform: 'translateZ(0)'
+  }
 }));
 
 export default function Home(props) {
@@ -61,6 +68,34 @@ export default function Home(props) {
   //   filteredData: [],
   //   restaurantList: [],
   // };
+
+  const createList = (res) => {
+      return (<Grid item xs={3}>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={res.img}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {res.restaurant_name}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                component="p"
+              >
+                $0.99 Delivery Fee • 10–20 Min • $
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Grid>)
+  }
 
   const handleInputChange = (e) => {
     console.log(e.target.value);
@@ -98,8 +133,7 @@ export default function Home(props) {
 
   return (
     <div className="home">
-      {/* <Search className="searchBar" placeholder="Find food or Restaurant" onSearch={this.handleInputChange} enterButton /> */}
-      <Paper component="form" className={classes.root}>
+      <Paper component="form" className={classes.searchBar}>
         <InputBase
           className={classes.input}
           placeholder="Find food or Restaurant"
@@ -117,42 +151,15 @@ export default function Home(props) {
       </Paper>
       <img
         id="hero-img"
-        src={require("./../../../img/hero.jpg")}
+        src={require("./hero.jpg")}
         alt="hero image"
       ></img>
-      <div className="flex-container">
-        {/* {restaurantList.map(createRestaurant)} */}
-      </div>
       <Container maxWidth="lg">
-        <Grid container spacing={3}>
-          <Grid item xs={3}>
-            <Typography className={classes.sectionName} variant="h4" gutterBottom>
-              Popular
-            </Typography>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image="./../../../img/1.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                  Village Genius Pub
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                  $0.99 Delivery Fee • 10–20 Min • $
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
+        <Typography className={classes.sectionName} variant="h4" gutterBottom>
+          Popular
+        </Typography>
+        <Grid container spacing={3} className={classes.cardList}>
+          {products.map(createList)}
         </Grid>
       </Container>
     </div>

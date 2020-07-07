@@ -23,7 +23,59 @@ class Menu extends Component {
   }
 
   state = {
-    currRestaurantMenu: [],
+    menu: [{
+      _id: 5,
+      categoryName: "Most Popular",
+      items: [{
+        _id: 6,
+        name: "Cream Corn Soup with Crab Meat",
+        description: "Sweet and testy",
+        images: "../FoodImg/1.jpg",
+        price: 15.95
+      }]
+    },
+    {
+      _id: 0,
+      categoryName: "Appeteasers",
+      items: [{
+        _id: 4,
+        name: "3 Chicken Wings",
+        description: "Tender, Spicy and Juicy. Original or Peri-Crusted",
+        images: "../FoodImg/1.jpg",
+        price: 12,
+      }, {
+        _id: 1,
+        name: "Chicken Livers and Portuguese Roll",
+        description: "Chicken Livers Topped with PERi-PERi Sauce.",
+        images: "../FoodImg/2.jpg",
+        price: 13.99,
+      }]
+    },
+    {
+      _id: 2,
+      categoryName: "Pork",
+      items: [{
+        _id: 3,
+        name: "Pork fried rice",
+        description: "Tender, Spicy and Juicy.",
+        images: "../FoodImg/1.jpg",
+        images: "../FoodImg/3.jpg",
+        price: 12
+      }]
+    },
+    {
+      _id: 7,
+      category: "Curries",
+      menuItems: [{
+        _id: 8,
+        name: "Green Coconut Curry",
+        description: "Creamy green curry cooked with coconut milk, squash, kaffir lime leaves",
+        images: "../FoodImg/1.jpg",
+        images: "../FoodImg/4.jpg",
+        price: 16
+      }]
+    }
+  ],
     name: "",
     description: "",
     price: 0,
@@ -37,9 +89,9 @@ class Menu extends Component {
     category: "",
   };
 
-  componentDidMount() {
-    getOneRestaurant(this);
-  }
+  // componentDidMount() {
+  //   getOneRestaurant(this);
+  // }
 
   handleInputChange = (event) => {
     const target = event.target;
@@ -117,6 +169,7 @@ class Menu extends Component {
     }
   };
   createCategorys = (category) => {
+    console.log(category, "from create");
     return (
       <TabPane tab={category.categoryName} key={category._id}>
         {category.items.map(this.createItems)}
@@ -145,9 +198,9 @@ class Menu extends Component {
 
   render() {
     const { history, app } = this.props;
-    const { currRestaurantMenu } = this.state;
+    const { menu } = this.state;
     const { visible, confirmLoading, addCateVisible } = this.state;
-    console.log("from Menu", this.state);
+    console.log("from Menu", menu);
     return (
       <div id="home">
         <NavBar history={history} app={app} />
@@ -158,7 +211,7 @@ class Menu extends Component {
             type="editable-card"
             onEdit={(target, action) => this.handleEdit(target, action)}
           >
-            {currRestaurantMenu.map(this.createCategorys)}
+            {menu.map(this.createCategorys)}
           </Tabs>
           <Modal
             title="Add item"
